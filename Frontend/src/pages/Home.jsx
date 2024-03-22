@@ -1,4 +1,5 @@
-import { Posts } from "../components/Posts";
+import NewPosts from "../components/NewPosts.jsx";
+import { Questions } from "../components/Questions.jsx";
 import Navbar from "../components/partials/Navbar";
 import Sidebar from "../components/partials/Sidebar";
 
@@ -11,7 +12,7 @@ export const Home = () => {
     description: "TLDRThis post provides a comprehensive overview of state management in Solid.js, a modern JavaScript framework. It covers key concepts like reactive programming and the reactivity system, and includes a practical example of building a quiz app. The post emphasizes the simplicity and efficiency of Solid.js in handling state updates.",
     created_at: "one month ago",
     image: {
-      path: "https://fakeimg.pl/300/?text=posts${index + 1}&font=lobster"
+      path: "https://imgs.search.brave.com/LaBzFN2aPMRRBuVgfWQX73ITDSqQkfPyW0ey7XKiXFs/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXIuZG9nL2xh/cmdlLzIwNTEzMDQ3/LmpwZw"
     },
     minutesToRead: 45,
     author: {
@@ -32,15 +33,21 @@ export const Home = () => {
 
 
   return (
-    <main className="bg-[#202222] text-white grid grid-cols-12 grid-rows-auto">
-      <Navbar />
-      <div className="col-span-12 md:col-span-2">
-        <Sidebar />
+    <main className="bg-[#16161a] text-white grid grid-cols-12 grid-rows-auto">
+    <Navbar />
+    <div className="h-screen hidden md:block col-span-12 md:col-span-2">
+      <Sidebar />
+    </div>
+    <div className="col-span-12 md:col-span-10 grid grid-cols-12">
+      <div className="col-span-12">
+        <NewPosts posts={posts} />
       </div>
-      <div className="col-span-12 md:col-span-10">
-        <Posts posts={posts} />
+      <div className="col-span-12">
+        <Questions posts={posts} />
       </div>
-    </main>
+    </div>
+  </main>
+
 
   );
 };
