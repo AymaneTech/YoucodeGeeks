@@ -1,5 +1,4 @@
 import { Heart, MessageCircle, Star } from "lucide-react"
-import { DefaultButton } from "./partials/Buttons"
 
 const Post = ({ post }) => {
   return (
@@ -14,7 +13,7 @@ const Post = ({ post }) => {
             <strong>{post.author.name}</strong>
             <span className="text-xs text-gray-300 ml-6">{post.created_at}</span>
           </div>
-          <div className="category font-mono">
+          <div className="category text-sm font-mono">
             <span className="border border-gray-50 rounded-xl px-4 py-1">{post.category.name}</span>
           </div>
         </div>

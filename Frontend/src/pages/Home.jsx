@@ -1,6 +1,8 @@
+import { Book } from "lucide-react";
 import { Posts } from "../components/Posts";
 import Navbar from "../components/partials/Navbar";
 import Sidebar from "../components/partials/Sidebar";
+import { Tabs, TabList, TabPanels, Tab, TabPanel, TabIndicator } from '@chakra-ui/react'
 
 
 export const Home = () => {
@@ -38,7 +40,31 @@ export const Home = () => {
         <Sidebar />
       </div>
       <div className="col-span-12 md:col-span-10">
-        <Posts posts={posts} />
+        <Tabs  position="" variant="unstyled">
+          <TabList marginX={16}>
+            <Tab>
+              All Blogs</Tab>
+            <Tab>Two</Tab>
+            <Tab>Three</Tab>
+          </TabList>
+          <TabIndicator
+            mt="-1.5px"
+            height="2px"
+            bg="blue.500"
+            borderRadius="1px"
+          />
+          <TabPanels>
+            <TabPanel>
+              <Posts posts={posts} />
+            </TabPanel>
+            <TabPanel>
+              <p>two!</p>
+            </TabPanel>
+            <TabPanel>
+              <p>three!</p>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </div>
     </main>
 
