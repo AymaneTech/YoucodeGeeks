@@ -1,4 +1,5 @@
 import { Heart, MessageCircle, Star } from "lucide-react"
+import { DefaultButton } from "./partials/Buttons"
 
 const Post = ({ post }) => {
   return (
@@ -40,7 +41,9 @@ const Post = ({ post }) => {
             {post.likes_count} like
           </div>
         </div>
+
       </div>
+
     </div>
 
   )
