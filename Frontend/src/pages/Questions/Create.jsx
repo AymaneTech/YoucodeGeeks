@@ -1,5 +1,6 @@
 
-import Model from "../Model"
+import { EditorComponent } from "../../components/EditorComponent"
+import Model from "../../components/Model"
 import {
   FormControl,
   FormHelperText,
@@ -50,6 +51,7 @@ export const Create = () => {
                 <Textarea placeholder="eg: I don't find the wanted data in the response" />
                 <FormHelperText>Expand what you said in the title.</FormHelperText>
               </FormControl>
+              <EditorComponent/>
             </div>
           </form>
         </div>

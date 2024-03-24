@@ -3,7 +3,7 @@ import { Questions } from "../components/Questions";
 import { posts } from "../components/data/posts";
 import Posts from "../components/Posts";
 import { Slink } from "../components/partials/Buttons";
-import Model from "./Model";
+import Model from "../components/Model";
 
 
 export const Home = () => {
