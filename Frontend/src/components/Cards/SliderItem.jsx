@@ -51,6 +51,9 @@ export const SliderItem = ({ post }) => {
           <Button color={"white"} flex='1' variant='ghost' leftIcon={<MessageCircle />}>
             Comment
           </Button>
+          <Button>
+            Read Blog
+          </Button>
         </CardFooter>
       </Card>
     </SplideSlide>

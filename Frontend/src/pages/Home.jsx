@@ -1,6 +1,6 @@
 import Navbar from "../components/partials/Navbar";
 import Sidebar from "../components/partials/Sidebar";
-import { Tabs, TabList, TabPanels, Tab, TabPanel, TabIndicator } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel, TabIndicator, Button } from '@chakra-ui/react'
 import { Questions } from "../components/Questions";
 import { posts } from "../components/data/posts";
 import Posts from "../components/Posts";
@@ -17,12 +17,17 @@ export const Home = () => {
         <Posts posts={posts} />
 
         <Tabs position="" variant="unstyled">
-          <TabList marginX={16}>
-            <Tab>
-              All Blogs</Tab>
-            <Tab>Two</Tab>
-            <Tab>Three</Tab>
-          </TabList>
+          <div className="flex justify-between items-center p-3">
+            <TabList>
+              <Tab>
+                All Questions</Tab>
+              <Tab>Two</Tab>
+              <Tab>Three</Tab>
+            </TabList>
+            <div>
+              <Button>Ask a question</Button>
+            </div>
+          </div>
           <TabIndicator
             mt="-1.5px"
             height="2px"
@@ -43,7 +48,7 @@ export const Home = () => {
         </Tabs>
       </div>
 
-    </main>
+    </main >
 
   );
 };

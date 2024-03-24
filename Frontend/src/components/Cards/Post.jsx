@@ -1,4 +1,4 @@
-import { Code } from "@chakra-ui/react"
+import { Button, Code } from "@chakra-ui/react"
 import { Heart, MessageCircle, Star } from "lucide-react"
 
 const Post = ({ post }) => {
@@ -8,7 +8,7 @@ const Post = ({ post }) => {
         <img className="rounded-3xl absolute top-0 left-0 w-full h-full object-cover" src="https://imgs.search.brave.com/LaBzFN2aPMRRBuVgfWQX73ITDSqQkfPyW0ey7XKiXFs/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXIuZG9nL2xh/cmdlLzIwNTEzMDQ3/LmpwZw" alt="" />
       </div>
       <div className="px-4 lg:px-8 py-4 w-full lg:w-1/2">
-        <div className="header flex  justify-between items-center">
+        <div className="header flex justify-between items-center">
           <div className="flex items-center gap-2">
             <img src={post.author.image.path} className="w-10 h-10 rounded-full" alt="" />
             <strong>{post.author.name}</strong>
@@ -35,13 +35,13 @@ const Post = ({ post }) => {
               <MessageCircle />
               {post.comments_count} comment
             </div>
+            <div className="flex gap-2 items-center">
+              <Heart />
+              {post.likes_count} like
+            </div>
           </div>
-          <div className="flex gap-2 items-center">
-            <Heart />
-            {post.likes_count} like
-          </div>
+          <Button>Go to definition</Button>
         </div>
-
       </div>
 
     </div>

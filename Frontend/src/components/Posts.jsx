@@ -8,7 +8,7 @@ const Posts = ({ posts }) => {
     <section className="my-12">
       <div className="flex justify-between items-center">
         <h1 className="font-bold font-mono text-3xl">Latest posts</h1>
-        <Button colorScheme="blue">view all</Button>
+        <Button >view all</Button>
       </div>
       <Splide className="my-12" aria-label="new posts slider" options={{
         type: 'loop',
