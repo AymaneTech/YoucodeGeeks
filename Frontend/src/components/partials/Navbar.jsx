@@ -1,5 +1,5 @@
 import { Bell, Moon, Search } from "lucide-react"
-import { Discord } from "../../pages/icons/Discord"
+import { Discord } from "../icons/Discord"
 
 const Navbar = () => {
   return (
@@ -11,7 +11,7 @@ const Navbar = () => {
       <form>
       <div className="border border-gray-500 rounded-lg p-2 px-4 flex items-center gap-4">
           <Search />
-          <input type="text" placeholder="Type to search"className="bg-[#202222] focus:outline-none focus:border-none w-full" />
+          <input type="text" placeholder="Type to search"className="bg-[#16161a] focus:outline-none focus:border-none w-full" />
           <div className="shortuct flex gap-2">
             <span className="bg-[#363939] px-2 py-1 text-xs rounded-sm ">Ctrl</span>
             +
