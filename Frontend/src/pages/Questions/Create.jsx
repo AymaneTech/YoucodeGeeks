@@ -1,5 +1,5 @@
 
-import { EditorComponent } from "../../components/EditorComponent"
+import EditorComponent  from "../../components/EditorComponent"
 import Model from "../../components/Model"
 import {
   FormControl,
@@ -41,16 +41,17 @@ export const Create = () => {
             <div className="flex flex-col gap-6">
               <FormControl isRequired>
                 <FormLabel>Question Title</FormLabel>
-                <Input type='text' placeholder="eg: How fetch an api in react ?" />
+                <Input border={"1px solid #7B7f93"} type='text' placeholder="eg: How fetch an api in react ?" />
                 <FormHelperText>Be specific, and imagine you're asking a person.</FormHelperText>
               </FormControl>
 
 
               <FormControl isRequired>
                 <FormLabel>Question Details</FormLabel>
-                <Textarea placeholder="eg: I don't find the wanted data in the response" />
+                <Textarea border={"1px solid #7B7f93"} placeholder="eg: I don't find the wanted data in the response" />
                 <FormHelperText>Expand what you said in the title.</FormHelperText>
               </FormControl>
+
               <EditorComponent/>
             </div>
           </form>
