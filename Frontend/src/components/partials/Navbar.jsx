@@ -3,16 +3,16 @@ import { Discord } from "../icons/Discord"
 
 const Navbar = () => {
   return (
-    <nav className="col-span-12 flex justify-between ml-4 mx-4 md:mr-32 my-4">
-      <div className="logo">
-        <h2 className="font-bold font-mono text-2xl">Youcode <span className="text-[#1B4CD2]">{"{"}Geeks{"}"}</span></h2>
+    <nav className="col-span-12 flex justify-between items-center px-12 py-3 sticky top-0 z-50 bg-[#16161a] text-white shadow-md transition duration-300 ease-in-out">
+      <div className="logo flex items-center  text-2xl">
+        <h2 className="font-bold font-mono">Youcode </h2>
+        <span className="text-[#1B4CD2]">{"{"}Geeks{"}"}</span>
       </div>
 
       <form>
-      <div className="border border-gray-500 rounded-lg p-2 px-4 flex items-center gap-4">
+        <div className="hidden md:flex border border-gray-500 rounded-lg p-2 px-4  items-center gap-4">
           <Search />
-          <input type="text" placeholder="Type to search"className="bg-[#16161a] focus:outline-none focus:border-none w-full" />
-          <div className="shortuct flex gap-2">
+          <input type="text" placeholder="Type to search" className="bg-transparent focus:outline-none focus:border-none w-full text-white" />  <div className="shortuct flex gap-2">
             <span className="bg-[#363939] px-2 py-1 text-xs rounded-sm ">Ctrl</span>
             +
             <span className="bg-[#363939] px-2 py-1 text-xs rounded-sm ">K</span>
@@ -32,6 +32,7 @@ const Navbar = () => {
         </li>
       </ul>
     </nav>
+
 
   )
 }

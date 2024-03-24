@@ -8,12 +8,12 @@ import Posts from "../components/Posts";
 
 export const Home = () => {
   return (
-    <main className="bg-[#16161a] text-white grid grid-cols-12 grid-rows-auto">
+    <main className="bg-[#16161a] text-white grid grid-cols-12 grid-rows-auto font-mono">
       <Navbar />
-      <div className="col-span-12 md:col-span-2">
+      <div className="col-span-12 md:col-span-2 ">
         <Sidebar />
       </div>
-      <div className="col-span-12 md:col-span-10">
+      <div className="col-span-12 md:col-span-10 mx-2 md:mx-20">
         <Posts posts={posts} />
 
         <Tabs position="" variant="unstyled">
