@@ -1,7 +1,13 @@
 .contentEditable{
   height: 320px;
   width: 100%;
-  padding: 0 8px;
+  padding: 16px 16px;
   border: 1px solid #7B7f93;
   border-radius: 12px;
+}
+
+.placeholder{
+  position: absolute;
+  top: 16px;
+  padding-left: 16px;
 }
