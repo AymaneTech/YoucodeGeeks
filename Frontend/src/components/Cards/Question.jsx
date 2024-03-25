@@ -1,5 +1,6 @@
 import { Button, Code } from "@chakra-ui/react"
 import { Heart, MessageCircle, Star } from "lucide-react"
+import { Slink } from "../partials/Buttons"
 
 const Post = ({ post }) => {
   return (
@@ -40,7 +41,7 @@ const Post = ({ post }) => {
               {post.likes_count} like
             </div>
           </div>
-          <Button>Go to definition</Button>
+          <Slink to={"posts/"+ post.slug}>Go to Definition</Slink>
         </div>
       </div>
 

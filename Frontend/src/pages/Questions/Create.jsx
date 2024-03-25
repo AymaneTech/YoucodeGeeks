@@ -3,9 +3,12 @@ import Model from "../../components/Model"
 import {
   Button,
   FormControl,
+  FormErrorMessage,
   FormHelperText,
   FormLabel,
   Input,
+  InputGroup,
+  InputLeftElement,
   ListItem,
   Select,
   StatDownArrow,
@@ -13,6 +16,7 @@ import {
   UnorderedList,
 } from '@chakra-ui/react'
 import Tags from "../../components/partials/Tags";
+import { File } from "lucide-react";
 
 
 
@@ -45,6 +49,12 @@ export const Create = () => {
             <div className="flex flex-col gap-6">
               <FormControl isRequired>
                 <FormLabel>Question Title</FormLabel>
+                <Input border={"1px solid #7B7f93"} type='file' placeholder="eg: How fetch an api in react ?" />
+                <FormHelperText>Be specific, and imagine you're asking a person.</FormHelperText>
+              </FormControl>
+
+              <FormControl isRequired>
+                <FormLabel>Question Title</FormLabel>
                 <Input border={"1px solid #7B7f93"} type='text' placeholder="eg: How fetch an api in react ?" />
                 <FormHelperText>Be specific, and imagine you're asking a person.</FormHelperText>
               </FormControl>
@@ -70,8 +80,6 @@ export const Create = () => {
               <div className="w-full text-end">
                 <Button colorScheme="blue">submit</Button>
               </div>
-
-
             </div>
           </form>
         </div>

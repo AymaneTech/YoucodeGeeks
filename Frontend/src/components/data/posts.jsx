@@ -1,6 +1,7 @@
 export const posts = Array.from({ length: 10 }, (_, index) => ({
   id: index + 1,
   title: `Post ${index + 1}`,
+  slug: `post-${index+1}`,
   description: "TLDRThis post provides a comprehensive overview of state management in Solid.js, a modern JavaScript framework. It covers key concepts like reactive programming and the reactivity system, and includes a practical example of building a quiz app. The post emphasizes the simplicity and efficiency of Solid.js in handling state updates.",
   created_at: "one month ago",
   image: {
@@ -22,3 +23,5 @@ export const posts = Array.from({ length: 10 }, (_, index) => ({
   saved: true,
   tags: ["php", "java", "react", "docker"],
 }));
+
+export const post = posts[1];

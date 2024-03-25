@@ -14,8 +14,7 @@ export const Home = () => {
       <Tabs position="" variant="unstyled">
         <div className="flex justify-between items-center p-3">
           <TabList>
-            <Tab>
-              All Questions</Tab>
+            <Tab>All Questions</Tab>
             <Tab>Two</Tab>
             <Tab>Three</Tab>
           </TabList>
