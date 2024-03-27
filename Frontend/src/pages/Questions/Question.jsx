@@ -19,8 +19,7 @@ export const Question = () => {
           <hr className="m-4 border-[#7B7F93]" />
         </div>
         <div className="content">
-          <div className="flex flex-col gap-2" dangerouslySetInnerHTML={{ __html: message }} />
-
+          <div className="flex flex-col gap-2 font-sans	" dangerouslySetInnerHTML={{ __html: message }} />
 
           <div className="tags flex gap-2 my-4">
             {question.tags.map((tag) => <span className="bg-blue-600 rounded-3xl py-1 px-2 text-center text-sm">{tag}</span>)}
@@ -35,7 +34,8 @@ export const Question = () => {
                 <option className="text-[#1C1E27]" value="value">value</option>
               </Select>
             </div>
-          <hr className="m-4 border-[#7B7F93]" />
+            <hr className="m-4 border-[#7B7F93]" />
+            
           </div>
         </div>
       </div>

@@ -35,12 +35,12 @@ e Single Responsibility Principle advocates that a class should have only one re
 
 Consider a typical Laravel controller. Instead of loading it with various responsibilities, adhere to SRP by keeping it focused on handling HTTP requests and delegating business logic to dedicated service classes. This not only enhances code readability but also makes your codebase more adaptable to change.
 
-<ol>
-  <li>onsider a typical Laravel controller. Instead of loading it with</li>
-  <li>onsider a typical Laravel controller. Instead of loading it with</li>
-  <li>onsider a typical Laravel controller. Instead of loading it with</li>
-  <li>onsider a typical Laravel controller. Instead of loading it with</li>
-</ol>
+<ul className="my-10">
+  <li>1. onsider a typical Laravel controller. Instead of loading it with</li>
+  <li>2. onsider a typical Laravel controller. Instead of loading it with</li>
+  <li>3. onsider a typical Laravel controller. Instead of loading it with</li>
+  <li>4. onsider a typical Laravel controller. Instead of loading it with</li>
+</ul>
 `
 
 export const code = `
