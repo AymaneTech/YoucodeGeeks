@@ -14,14 +14,18 @@ export const AuthInput = ({ options }) => {
       <InputGroup>
         <InputLeftElement pointerEvents='none'>{icon}</InputLeftElement>
         <Input
-          border={"1px solid #7B7f93"}
+          style={{
+            color: "white",
+            border: "1px solid #7B7f93"
+
+           }}
           type={type === "password" ? (show ? "text" : "password") : type}
           placeholder={placeholder}
         />
         {type === "password" && (
           <InputRightElement  width='4.5rem'>
             <Button bg={"transparent"} _hover={{ background: "transparent" }} size='sm' onClick={handleClick}>
-              {show ? <EyeOff /> : <Eye />}
+              {show ? <EyeOff color="white" /> : <Eye  color="white" />}
             </Button>
           </InputRightElement>
         )}

@@ -3,6 +3,7 @@ import {Home} from "./Home"
 import { Create as CreateQuestion } from "./Questions/Create"
 import { Question } from "./Questions/Question"
 import Register from "./auth/Register"
+import Login from "./auth/Login"
 
 const Pages = () => {
   return (
@@ -12,6 +13,7 @@ const Pages = () => {
         <Route path="/questions/create" element={<CreateQuestion/>}/>
         <Route path="/posts/:slug" element={<Question/>}/>
         <Route path="/register" element={<Register/>}/>
+        <Route path="/login" element={<Login/>}/>
       </Routes>
     </BrowserRouter>
   )
