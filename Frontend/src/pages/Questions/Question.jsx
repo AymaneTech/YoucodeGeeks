@@ -1,6 +1,8 @@
 import { Button, Select } from "@chakra-ui/react"
 import Model from "../../components/Model"
-import { post as question, message } from "../../components/data/posts"
+import { post as question, message, code } from "../../components/data/posts"
+import { CodeBlock, atomOneDark } from "react-code-blocks"
+import { jsx } from "react/jsx-runtime"
 
 export const Question = () => {
   return (
@@ -20,6 +22,14 @@ export const Question = () => {
         </div>
         <div className="content">
           <div className="flex flex-col gap-2 font-sans	" dangerouslySetInnerHTML={{ __html: message }} />
+          <div className="my-4">
+            <CodeBlock
+              text={code}
+              language={"js"}
+              showLineNumbers={true}
+              theme={atomOneDark}
+            />
+          </div>
 
           <div className="tags flex gap-2 my-4">
             {question.tags.map((tag) => <span className="bg-blue-600 rounded-3xl py-1 px-2 text-center text-sm">{tag}</span>)}
@@ -35,7 +45,7 @@ export const Question = () => {
               </Select>
             </div>
             <hr className="m-4 border-[#7B7F93]" />
-            
+
           </div>
         </div>
       </div>
