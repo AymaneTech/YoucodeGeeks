@@ -41,6 +41,13 @@ Consider a typical Laravel controller. Instead of loading it with various respon
   <li>3. onsider a typical Laravel controller. Instead of loading it with</li>
   <li>4. onsider a typical Laravel controller. Instead of loading it with</li>
 </ul>
+`;
+
+export const message2 = `
+  <div>
+    <p>Consider a typical Laravel controller. Instead of loading it with various responsibilities, adhere to SRP by keeping it focused on handling HTTP requests and delegating business logic to dedicated service classes. This not only enhances code readability but also makes your codebase more adaptable to change.
+    e Sing</p>
+  </div>
 `
 
 export const code = `
