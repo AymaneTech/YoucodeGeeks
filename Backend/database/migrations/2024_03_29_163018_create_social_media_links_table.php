@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('social_media_links', function (Blueprint $table) {
             $table->id();
+            $table->string("platform");
+            $table->string("link");
+            $table->foreignId("user_id")
+                ->constrained("users");
             $table->timestamps();
         });
     }
