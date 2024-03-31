@@ -13,6 +13,7 @@ class Student extends User
         "last_name",
         "email",
         "password",
-        "class_name"
+        "class_name",
+        "role_id"
     ];
 }

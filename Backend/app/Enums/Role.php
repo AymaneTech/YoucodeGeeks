@@ -4,18 +4,9 @@ namespace App\Enums;
 
 use PharIo\Manifest\Author;
 
-enum Role: string
+enum Role: int
 {
-    case STUDENT = "student";
-    case COACH = "coach";
-    case ADMIN = "admin";
-
-    public static function fromName(string $value)
-    {
-        foreach (self::cases() as $role){
-            if($role->value === $value){
-                return $role->value;
-            }
-        }
-    }
+    case STUDENT = 1;
+    case ADMIN = 2;
+    case COACH = 3;
 }

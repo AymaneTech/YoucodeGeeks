@@ -16,7 +16,7 @@ class CreateStudentAction
             "email" => $credentials["email"],
             "class_name" => $credentials["className"],
             "password" => $credentials["password"],
-            "role" => Role::fromName($credentials["role"]),
+            "role_id" => 1,
         ]);
 
         return auth()->login($student);
