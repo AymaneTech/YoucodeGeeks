@@ -13,7 +13,8 @@ return new class extends Migration
     public function up(): void
     {
         DB::statement("CREATE TABLE students (
-            badge VARCHAR(30)
+            class_name VARCHAR(30),
+            badge VARCHAR(30) NULL
         ) INHERITS(users)");
         DB::statement("ALTER TABLE  students ADD CONSTRAINT  students_id_unique UNIQUE (id);");
     }

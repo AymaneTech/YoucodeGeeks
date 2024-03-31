@@ -29,7 +29,6 @@ class BaseApiController extends Controller
         if(!empty($errorMessages)){
             $response['data'] = $errorMessages;
         }
-
         return response()->json($response, $code);
     }
     protected function respondWithToken($token): JsonResponse
