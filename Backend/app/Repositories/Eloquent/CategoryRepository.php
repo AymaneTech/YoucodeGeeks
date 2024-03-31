@@ -5,18 +5,20 @@ namespace App\Repositories\Eloquent;
 use App\DTO\CategoryDTO;
 use App\Models\Category;
 use App\Repositories\CategoryRepositoryInterface;
-use TimWassenburg\RepositoryGenerator\Repository\BaseRepository;
+use Illuminate\Database\Eloquent\Collection;
 
-/**
- * Class CategoryRepository.
- */
-class CategoryRepository  implements CategoryRepositoryInterface
+class CategoryRepository implements CategoryRepositoryInterface
 {
+    public function all(): Collection|array
+    {
+        return Category::with("image")->get();
+    }
+
     public function create(CategoryDTO $DTO): Category
     {
-           return Category::create([
-               "name" => $DTO->name,
-           ]);
+        return Category::create([
+            "name" => $DTO->name,
+        ]);
     }
 
     public function update(Category $category, CategoryDTO $DTO): bool

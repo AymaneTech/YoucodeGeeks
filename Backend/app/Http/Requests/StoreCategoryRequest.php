@@ -8,14 +8,14 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Validator;
 
-class StoreCategoryRequest extends FormRequest
+class StoreCategoryRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Gate::allows(ability: 'manage-categories');
+        return Gate::allows(ability: 'manage-dashboard');
     }
 
     public function rules(): array
@@ -24,11 +24,5 @@ class StoreCategoryRequest extends FormRequest
             "name" => "required|min:3|max:30|unique:categories",
             "image" => "required|file"
         ];
-    }
-    protected function failedValidation(Validator|ValidatorInterface $validator)
-    {
-        throw new HttpResponseException(response()->json([
-            'errors' => $validator->errors(),
-        ], 422));
     }
 }

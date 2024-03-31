@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\CategoryRepositoryInterface;
 use App\Repositories\Eloquent\CategoryRepository;
+use App\Repositories\Eloquent\TagRepository;
+use App\Repositories\TagRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -22,5 +24,6 @@ class RepositoryServiceProvider extends ServiceProvider
     public function boot(): void
     {
         app()->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
+        app()->bind(TagRepositoryInterface::class, TagRepository::class);
     }
 }

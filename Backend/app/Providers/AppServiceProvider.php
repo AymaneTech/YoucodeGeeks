@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         );
 
 
-        Gate::define(ability: "manage-categories", callback: function ($user) {
+        Gate::define(ability: "manage-dashboard", callback: function ($user) {
             return $user->role_id === Role::ADMIN->value;
         });
     }
