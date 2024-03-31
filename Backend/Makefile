@@ -11,7 +11,13 @@ install:
 	sail composer require laravel/telescope
 	sail php artisan telescope:install
 	sail composer require silverhand7/laravel-artisan-maker
+	sail composer require timwassenburg/laravel-repository-generator --dev
+	art vendor:publish --provider="TimWassenburg\RepositoryGenerator\RepositoryGeneratorServiceProvider" --tag="config"
 	sail composer require --dev barryvdh/laravel-ide-helper
 	sail composer require itsgoingd/clockwork
 	#sail composer require "matte97p/laravel-postgresql-inherit ~2.7"
 	#sail composer require barryvdh/laravel-dompdf
+
+slug:
+	./vendor/bin/sail composer require cviebrock/eloquent-sluggable
+	./vendor/bin/sail php artisan vendor:publish --provider="Cviebrock\EloquentSluggable\ServiceProvider"

@@ -2,14 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\CategoryDTO;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
-use Illuminate\Support\Str;
+use App\Repositories\CategoryRepositoryInterface;
+use App\Repositories\ImageRepositoryInterface;
+use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CategoryController extends BaseApiController
 {
+    public function __construct(
+        public CategoryRepositoryInterface $repository,
+        public ImageRepositoryInterface    $imageRepository,
+    )
+    {
+    }
+
     public function index()
     {
 
@@ -17,27 +27,29 @@ class CategoryController extends Controller
 
     public function store(StoreCategoryRequest $request)
     {
-        $validatedData = $request->validated();
-        Category::create(["name" => $validatedData["name"]]);
-        $publicId = now() . Str::random(20);
-        $upload = Cloudinary::upload($request->file("image")->getRealPath(), [
-            "public_id" => $publicId,
-            "folder" => "Youcode-geeks"
-        ])->getSecurePath();
+        $category = $this->repository->create(CategoryDTO::fromRequest($request));
+        $this->imageRepository->create(model: $category, image: $request->validated("image"));
+
+        return $this->sendResponse(
+            message: "Category created successfully",
+            result: new CategoryResource($category),
+            code: 201
+        );
     }
 
     public function show(Category $category)
     {
-        //
-    }
-
-    public function update(UpdateCategoryRequest $request, Category $category)
-    {
-        //
+        $category = $this->repository->show($category);
+        $this->sendResponse(
+            message: "",
+            result: new CategoryResource($category),
+            code: 201
+        );
     }
 
     public function destroy(Category $category)
     {
-        //
+        $this->repository->delete($category);
+        return $this->sendResponse(message: "category deleted", result: true, code: 200);
     }
 }

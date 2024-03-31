@@ -68,6 +68,10 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+    public function getFullnameAttribute(): string
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
     public function roles(): BelongsTo
     {
         return $this->belongsTo(User::class);
