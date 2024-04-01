@@ -30,9 +30,12 @@ class QuestionRepository implements QuestionRepositoryInterface
 
     public function update(Question $question, QuestionDTO $DTO): bool
     {
-//        $question->update([
-//            "title" =>
-//        ]);
+        return $question->update([
+            "title" => $DTO->title,
+            "details" => $DTO->details,
+            "body" => $DTO->body,
+            "category_id" => $DTO->category_id,
+        ]);
     }
 
     public function show(Question $question): Question

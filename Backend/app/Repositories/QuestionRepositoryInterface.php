@@ -11,9 +11,9 @@ interface QuestionRepositoryInterface
 
     public function create(QuestionDTO $DTO): Question;
 
-    public function update(Question $category, QuestionDTO $DTO): bool;
+    public function update(Question $question, QuestionDTO $DTO): bool;
 
-    public function show(Question $category): Question;
+    public function show(Question $question): Question;
 
-    public function delete(Question $category): bool;
+    public function delete(Question $question): bool;
 }
