@@ -3,11 +3,8 @@
 namespace App\Repositories\Eloquent;
 
 use App\Contracts\Services\UploadImageInterface;
-use App\Models\Image;
 use App\Repositories\ImageRepositoryInterface;
-use App\Services\UploadToCloudinaryService;
 use Illuminate\Database\Eloquent\Model;
-use TimWassenburg\RepositoryGenerator\Repository\BaseRepository;
 
 /**
  * Class ImageRepository.
@@ -15,7 +12,9 @@ use TimWassenburg\RepositoryGenerator\Repository\BaseRepository;
 class ImageRepository implements ImageRepositoryInterface
 {
 
-    public function __construct(public UploadImageInterface $uploadImage){}
+    public function __construct(public UploadImageInterface $uploadImage)
+    {
+    }
 
     public function create(Model $model, $image)
     {
@@ -25,5 +24,18 @@ class ImageRepository implements ImageRepositoryInterface
             "imageable_type" => get_class($model),
             "imageable_id" => $model->id,
         ]);
+    }
+
+    public function insert(Model $model, $images)
+    {
+        $imageEntities = [];
+        foreach ($images as $image) {
+            $imageEntities[] = [
+                "path" => $this->uploadImage->upload($image),
+                "imageable_type" => get_class($model),
+                "imageable_id" => $model->id
+            ];
+        }
+        $model->images()->insert($imageEntities);
     }
 }

@@ -12,11 +12,15 @@ return new class extends Migration {
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
+            $table->string("title")->unique();
+            $table->string("slug");
             $table->text("details");
             $table->text("body");
             $table->foreignId("author_id")
                 ->constrained("students")
+                ->cascadeOnDelete();
+            $table->foreignId("category_id")
+                ->constrained("categories")
                 ->cascadeOnDelete();
             $table->softDeletes();
             $table->timestamps();

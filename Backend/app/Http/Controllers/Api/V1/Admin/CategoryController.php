@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api\Admin;
+namespace App\Http\Controllers\Api\V1\Admin;
 
-use App\DTO\CategoryDTO;
+use App\DTO\Requests\CategoryDTO;
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
@@ -41,6 +41,7 @@ class CategoryController extends BaseApiController
     {
         dd($request);
     }
+
     public function show(Category $category)
     {
         $category = $this->repository->show($category);

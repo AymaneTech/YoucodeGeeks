@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\DTO\TagDTO;
+use App\DTO\Requests\TagDTO;
 use App\Models\Tag;
 
 interface TagRepositoryInterface

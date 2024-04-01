@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api\Auth;
+namespace App\Http\Controllers\Api\V1\Auth;
 
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\JsonResponse;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthApiController extends BaseApiController
 {
@@ -13,7 +14,7 @@ class AuthApiController extends BaseApiController
     {
         $credentials = $request->validated();
 
-        if (!$token = auth()->attempt($credentials)) {
+        if (!$token = JWTAuth::attempt($credentials)) {
             return $this->sendError(error: 'Unauthorized', code: 401);
         }
 
@@ -22,7 +23,7 @@ class AuthApiController extends BaseApiController
 
     public function logout(): JsonResponse
     {
-        auth()->logout();
+        JWTAuth::invalidate(JWTAuth::getToken());
 
         return $this->sendResponse(message: 'Successfully logged out');
     }

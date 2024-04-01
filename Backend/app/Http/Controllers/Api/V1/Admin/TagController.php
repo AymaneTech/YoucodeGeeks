@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Api\Admin;
+namespace App\Http\Controllers\Api\V1\Admin;
 
-use App\DTO\TagDTO;
+use App\DTO\Requests\TagDTO;
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreTagRequest;
 use App\Http\Requests\UpdateTagRequest;
 use App\Http\Resources\TagResource;
 use App\Models\Tag;
-use App\Repositories\ImageRepositoryInterface;
 use App\Repositories\TagRepositoryInterface;
-use function Laravel\Prompts\table;
 
 class TagController extends BaseApiController
 {

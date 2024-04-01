@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\DTO\CategoryDTO;
+use App\DTO\Requests\CategoryDTO;
 use App\Models\Category;
 
 interface CategoryRepositoryInterface

@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\DTO\TagDTO;
+use App\DTO\Requests\TagDTO;
 use App\Models\Tag;
 use App\Repositories\TagRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;

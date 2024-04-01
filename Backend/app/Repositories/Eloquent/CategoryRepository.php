@@ -2,12 +2,12 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\DTO\CategoryDTO;
+use App\DTO\Requests\CategoryDTO;
 use App\Models\Category;
 use App\Repositories\CategoryRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
-class CategoryRepository implements CategoryRepositoryInterface
+class  CategoryRepository implements CategoryRepositoryInterface
 {
     public function all(): Collection|array
     {

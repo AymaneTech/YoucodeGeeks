@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DTO;
+namespace App\DTO\Requests;
 
 use App\Http\Requests\StoreCategoryRequest;
 
