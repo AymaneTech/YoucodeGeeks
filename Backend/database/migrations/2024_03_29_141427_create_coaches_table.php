@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         DB::statement("CREATE TABLE coaches () INHERITS(users)");
-        DB::statement("ALTER TABLE  coaches ADD CONSTRAINT  coahees_id_unique UNIQUE (id);");
+        DB::statement("ALTER TABLE  coaches ADD CONSTRAINT  coahes_id_unique UNIQUE (id);");
     }
 
     /**

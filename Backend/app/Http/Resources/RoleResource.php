@@ -2,11 +2,10 @@
 
 namespace App\Http\Resources;
 
-use App\Enums\IsVerified;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class StudentResource extends JsonResource
+class RoleResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +15,7 @@ class StudentResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "firstName" => $this->first_name,
-            "lastName" => $this->last_name,
-            "email" => $this->email,
-            "role" => new RoleResource($this->role),
-            "isVerified" => $this->is_verified
+            "name" => $this->name
         ];
     }
 }

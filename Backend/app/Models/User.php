@@ -46,7 +46,6 @@ class User extends Authenticatable implements JWTSubject
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            "role" => \App\Enums\Role::class,
         ];
     }
     /**
@@ -72,8 +71,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->firstName . ' ' . $this->lastName;
     }
-    public function roles(): BelongsTo
+    public function role(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Role::class);
     }
 }

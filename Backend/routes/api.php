@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\V1\Admin\TagController;
 use App\Http\Controllers\Api\V1\Auth\AuthApiController;
 use App\Http\Controllers\Api\V1\Auth\StudentRegisterController;
 use App\Http\Controllers\Api\V1\Student\QuestionController;
+use App\Http\Controllers\ManageUsersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,7 @@ Route::group([
     'prefix' => 'auth'
 ], function ($router) {
     Route::post("register", [StudentRegisterController::class, "register"]);
-    Route::get("test", [StudentRegisterController::class, "test"]);
+    Route::get("verify", [ManageUsersController::class, "verify"]);
     Route::post('login', [AuthApiController::class, "login"]);
     Route::post('logout', [AuthApiController::class, "logout"]);
     Route::post('refresh', [AuthApiController::class, "refresh"]);

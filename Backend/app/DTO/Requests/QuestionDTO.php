@@ -15,8 +15,7 @@ readonly class QuestionDTO
         public int $author_id,
     )
     {}
-
-    public static function fromRequest(StoreQuestionRequest $request)
+    public static function fromRequest(StoreQuestionRequest $request): QuestionDTO
     {
         $validatedData = $request->validated();
         return new self(

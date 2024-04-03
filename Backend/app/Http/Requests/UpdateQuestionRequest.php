@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class UpdateQuestionRequest extends FormRequest
 {
@@ -11,13 +12,13 @@ class UpdateQuestionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Gate::allows(ability: 'student-questions');
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidwationRule|array<mixed>|string>
      */
     public function rules(): array
     {
@@ -27,7 +28,7 @@ class UpdateQuestionRequest extends FormRequest
             "body" => "required",
             "category_id" => "required",
             "tags" => "required",
-            "images" => "required|array"
+            "images" => ""
         ];
     }
 }
