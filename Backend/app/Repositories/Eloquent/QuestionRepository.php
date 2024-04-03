@@ -14,7 +14,7 @@ class QuestionRepository implements QuestionRepositoryInterface
 {
     public function all()
     {
-        return Question::with("images", "tags", "category")->get();
+        return Question::with("images", "author", "author.role", "category")->get();
     }
 
     public function create(QuestionDTO $DTO): Question

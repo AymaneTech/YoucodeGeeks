@@ -25,7 +25,7 @@ class QuestionController extends BaseApiController
         return $this->sendResponse(
             message: "question create successfully",
             result: QuestionResource::collection($this->repository->all()),
-            code: 201
+            code: 200
         );
     }
 

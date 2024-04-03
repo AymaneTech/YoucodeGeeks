@@ -28,15 +28,16 @@ class AppServiceProvider extends ServiceProvider
         Model::shouldBeStrict();
         app()->bind(
             UploadImageInterface::class,
-            UploadToStorageService::class
+            UploadToCloudinaryService::class
         );
 
 
         Gate::define(ability: "manage-dashboard", callback: function ($user) {
             return $user->role_id === Role::ADMIN->value;
-        });
+        }) ;
         Gate::define(ability: "student-questions", callback: function ($user) {
             return $user->role_id === Role::STUDENT->value && $user->is_verified;
         });
+
     }
 }

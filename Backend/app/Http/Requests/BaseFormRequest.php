@@ -15,4 +15,11 @@ abstract class BaseFormRequest extends FormRequest
             'errors' => $validator->errors(),
         ], 422));
     }
+    protected function sendError(string $error, int $code): void
+    {
+        abort(response()->json([
+            "success" => false,
+            'message' => $error,
+        ], $code));
+    }
 }

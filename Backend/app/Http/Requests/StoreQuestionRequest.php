@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class StoreQuestionRequest extends BaseFormRequest
 {
@@ -11,6 +11,12 @@ class StoreQuestionRequest extends BaseFormRequest
      */
     public function authorize(): bool
     {
+        if (Gate::denies("student-questions")) {
+            $this->sendError(
+                error: "You don't have access to perform this action (should be a student)",
+                code: 401
+            );
+        }
         return true;
     }
 

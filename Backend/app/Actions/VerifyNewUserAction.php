@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Models\Student;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Exception;
@@ -9,21 +10,14 @@ use Exception;
 class VerifyNewUserAction
 {
     /**
-     * @throws TokenInvalidException
      * @throws Exception
      */
-    public function handle($token)
+    public function handle(Student $user): Student
     {
         try {
-            $user = JWTAuth::setToken($token)->toUser();
-
-            $user->is_verified = true;
-            $user->save();
+            $user->update(["is_verified" => true]);
             return $user;
-        } catch (TokenInvalidException $e) {
-            throw new  TokenInvalidException();
         } catch (Exception $e) {
-            throw new  Exception();
-        }
+            throw new Exception("Error verifying user: " . $e->getMessage());        }
     }
 }

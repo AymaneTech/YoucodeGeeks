@@ -14,6 +14,7 @@ class Student extends User
         "email",
         "password",
         "class_name",
-        "role_id"
+        "role_id",
+        "is_verified"
     ];
 }

@@ -30,7 +30,7 @@ class Question extends Model
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class, "author_id");
+        return $this->belongsTo(Student::class, "author_id");
     }
 
     public function category(): BelongsTo
