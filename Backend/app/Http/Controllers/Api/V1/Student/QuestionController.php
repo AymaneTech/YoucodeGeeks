@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1\Student;
 use App\DTO\Requests\PostDTO;
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreQuestionRequest;
+use App\Http\Requests\UpdateQuestionRequest;
 use App\Http\Resources\QuestionResource;
 use App\Models\Question;
 use App\Repositories\Contracts\ImageRepositoryInterface;
@@ -23,7 +24,7 @@ class QuestionController extends BaseApiController
     public function index(): JsonResponse
     {
         return $this->sendResponse(
-            message: "question create successfully",
+            message: "question retrieved successfully",
             result: QuestionResource::collection($this->repository->all()),
         );
     }
@@ -35,7 +36,7 @@ class QuestionController extends BaseApiController
 
         return $this->sendResponse(
             message: "question create successfully",
-            result: $question,
+            result: new QuestionResource($question),
             code: 201
         );
     }
@@ -48,20 +49,18 @@ class QuestionController extends BaseApiController
         );
     }
 
-    public function update(StoreQuestionRequest $request, Question $question): JsonResponse
+    public function update(UpdateQuestionRequest $request, Question $question): JsonResponse
     {
         $question = $this->repository->update(post: $question, DTO: PostDTO::fromRequest($request));
         return $this->sendResponse(
             message: "question updated successfully",
-            result: new QuestionResource($question),
         );
     }
 
-    public function delete(Question $question): JsonResponse
+    public function destroy(Question $question): JsonResponse
     {
         return $this->sendResponse(
             message: "question deleted successfully",
-            result: new QuestionResource($question),
         );
     }
 

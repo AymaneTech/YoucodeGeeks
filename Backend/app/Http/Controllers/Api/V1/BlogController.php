@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
 use App\DTO\Requests\PostDTO;
+use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Resources\QuestionResource;
-use App\Models\Blog;
 use App\Models\Question;
 use App\Repositories\Contracts\ImageRepositoryInterface;
 use App\Repositories\Contracts\PostRepositoryInterface;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class BlogController extends BaseApiController
 {
@@ -26,7 +25,6 @@ class BlogController extends BaseApiController
         return $this->sendResponse(
             message: "question create successfully",
             result: QuestionResource::collection($this->repository->all()),
-            code: 200
         );
     }
 

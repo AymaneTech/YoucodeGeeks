@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Api\V1\Admin\CategoryController;
+use App\Http\Controllers\Api\V1\Admin\ClassRoomController;
 use App\Http\Controllers\Api\V1\Admin\ManageUsersController;
 use App\Http\Controllers\Api\V1\Admin\TagController;
 use App\Http\Controllers\Api\V1\Auth\AuthApiController;
 use App\Http\Controllers\Api\V1\Auth\StudentRegisterController;
 use App\Http\Controllers\Api\V1\Student\QuestionController;
+use App\Repositories\Contracts\ClassRoomRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,8 +29,8 @@ Route::group([
 Route::apiResources([
     "categories" => CategoryController::class,
     "tags" => TagController::class,
+    "classrooms" => ClassRoomController::class
 ]);
-
 Route::apiResources([
     "questions" => QuestionController::class,
 ]);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\DTO\Requests\PostDTO;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -23,12 +24,16 @@ class UpdateQuestionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title" => "required|unique:questions",
-            "details" => "required",
-            "body" => "required",
-            "category_id" => "required",
-            "tags" => "required",
-            "images" => ""
+            "title" => "required|unique:questions,title," . $this->route('question')->id,
+            'details' => 'sometimes|required',
+            'body' => 'sometimes|required',
+            'category_id' => 'sometimes|required',
+            'tags' => 'sometimes|required',
+            'images' => 'sometimes|required|array',
         ];
+    }
+    public function createDTO(): PostDTO
+    {
+        return PostDTO::fromRequest($this);
     }
 }

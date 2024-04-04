@@ -14,7 +14,7 @@ abstract class BasePostRepository implements PostRepositoryInterface
 
     public function all()
     {
-        return $this->postModel->all();
+        return $this->postModel::with("category", "images", "author", "author.role")->get();
 
     }
 
