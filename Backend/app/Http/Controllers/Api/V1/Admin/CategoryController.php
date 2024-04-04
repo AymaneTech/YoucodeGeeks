@@ -8,8 +8,8 @@ use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
-use App\Repositories\CategoryRepositoryInterface;
-use App\Repositories\ImageRepositoryInterface;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
+use App\Repositories\Contracts\ImageRepositoryInterface;
 
 class CategoryController extends BaseApiController
 {

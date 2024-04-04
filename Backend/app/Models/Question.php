@@ -9,5 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Question extends Post
 {
-
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(Student::class, "author_id");
+    }
 }

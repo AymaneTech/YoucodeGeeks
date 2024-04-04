@@ -4,8 +4,12 @@ namespace App\Providers;
 
 use App\Contracts\Services\UploadImageInterface;
 use App\Enums\Role;
+use App\Models\Post;
+use App\Models\Question;
+use App\Repositories\Contracts\PostRepositoryInterface;
+use App\Repositories\Eloquent\BlogRepository;
+use App\Repositories\Eloquent\QuestionRepository;
 use App\Services\UploadToCloudinaryService;
-use App\Services\UploadToStorageService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -15,10 +19,8 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-    public function register(): void
-    {
-        //
-    }
+    public function register()
+    {}
 
     /**
      * Bootstrap any application services.
@@ -26,15 +28,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::shouldBeStrict();
-        app()->bind(
-            UploadImageInterface::class,
-            UploadToCloudinaryService::class
-        );
-
 
         Gate::define(ability: "manage-dashboard", callback: function ($user) {
             return $user->role_id === Role::ADMIN->value;
-        }) ;
+        });
         Gate::define(ability: "student-questions", callback: function ($user) {
             return $user->role_id === Role::STUDENT->value && $user->is_verified;
         });

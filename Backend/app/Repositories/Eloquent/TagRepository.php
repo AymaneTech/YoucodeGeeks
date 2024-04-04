@@ -4,7 +4,7 @@ namespace App\Repositories\Eloquent;
 
 use App\DTO\Requests\TagDTO;
 use App\Models\Tag;
-use App\Repositories\TagRepositoryInterface;
+use App\Repositories\Contracts\TagRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
 /**

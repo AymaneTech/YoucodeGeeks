@@ -4,7 +4,7 @@ namespace App\Repositories\Eloquent;
 
 use App\DTO\Requests\CategoryDTO;
 use App\Models\Category;
-use App\Repositories\CategoryRepositoryInterface;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
 class  CategoryRepository implements CategoryRepositoryInterface

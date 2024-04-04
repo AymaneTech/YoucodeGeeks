@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\V1\Auth;
 
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\LoginUserRequest;
-use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\JsonResponse;
 use Tymon\JWTAuth\Facades\JWTAuth;
 

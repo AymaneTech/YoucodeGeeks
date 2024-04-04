@@ -8,7 +8,7 @@ use App\Http\Requests\StoreTagRequest;
 use App\Http\Requests\UpdateTagRequest;
 use App\Http\Resources\TagResource;
 use App\Models\Tag;
-use App\Repositories\TagRepositoryInterface;
+use App\Repositories\Contracts\TagRepositoryInterface;
 
 class TagController extends BaseApiController
 {

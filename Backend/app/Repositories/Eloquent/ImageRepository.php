@@ -3,7 +3,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Contracts\Services\UploadImageInterface;
-use App\Repositories\ImageRepositoryInterface;
+use App\Repositories\Contracts\ImageRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 
 /**

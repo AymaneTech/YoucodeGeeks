@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\DTO\Requests\PostDTO;
 use Illuminate\Support\Facades\Gate;
 
 class StoreQuestionRequest extends BaseFormRequest
@@ -35,5 +36,10 @@ class StoreQuestionRequest extends BaseFormRequest
             "tags" => "required",
             "images" => "required|array"
         ];
+    }
+
+    public function createDTO(): PostDTO
+    {
+        return PostDTO::fromRequest($this);
     }
 }

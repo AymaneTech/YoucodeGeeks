@@ -6,7 +6,6 @@ use App\Actions\CreateStudentAction;
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreStudentRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class StudentRegisterController extends BaseApiController
 {

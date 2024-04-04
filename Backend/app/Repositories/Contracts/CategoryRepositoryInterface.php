@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Contracts;
 
 use App\DTO\Requests\CategoryDTO;
 use App\Models\Category;

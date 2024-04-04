@@ -14,7 +14,6 @@ return new class extends Migration
     {
         DB::statement("CREATE TABLE blogs () INHERITS(posts)");
         DB::statement("ALTER TABLE  blogs ADD CONSTRAINT  blogs_id_unique UNIQUE (id);");
-
     }
 
     /**
