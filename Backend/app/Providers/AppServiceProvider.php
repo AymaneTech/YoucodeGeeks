@@ -2,14 +2,7 @@
 
 namespace App\Providers;
 
-use App\Contracts\Services\UploadImageInterface;
 use App\Enums\Role;
-use App\Models\Post;
-use App\Models\Question;
-use App\Repositories\Contracts\PostRepositoryInterface;
-use App\Repositories\Eloquent\BlogRepository;
-use App\Repositories\Eloquent\QuestionRepository;
-use App\Services\UploadToCloudinaryService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;

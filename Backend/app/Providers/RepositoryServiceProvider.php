@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Contracts\Services\UploadImageInterface;
 use App\Models\Post;
 use App\Models\Question;
 use App\Repositories\Contracts\CategoryRepositoryInterface;
@@ -16,7 +15,8 @@ use App\Repositories\Eloquent\ClassRoomRepository;
 use App\Repositories\Eloquent\ImageRepository;
 use App\Repositories\Eloquent\QuestionRepository;
 use App\Repositories\Eloquent\TagRepository;
-use App\Services\UploadToCloudinaryService;
+use App\Services\Contracts\UploadImageInterface;
+use App\Services\Implementations\UploadToCloudinaryService;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider

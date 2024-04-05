@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Implementations;
 
-use App\Contracts\Services\UploadImageInterface;
+use App\Services\Contracts\UploadImageInterface;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Support\Str;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Contracts\Services;
+namespace App\Services\Contracts;
 
 interface UploadImageInterface
 {
