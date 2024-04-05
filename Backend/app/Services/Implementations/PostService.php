@@ -5,17 +5,18 @@ namespace App\Services\Implementations;
 use App\DTO\Requests\PostDTO;
 use App\Http\Resources\QuestionResource;
 use App\Models\Post;
-use App\Models\Question;
 use App\Repositories\Contracts\PostRepositoryInterface;
-use App\Repositories\Eloquent\BasePostRepository;
+use App\Services\Contracts\ImageServiceInterface;
 use App\Services\Contracts\PostServiceInterface;
-use PhpParser\Node\Scalar\Encapsed;
-use Ramsey\Collection\Collection;
 
 class PostService implements PostServiceInterface
 {
-    public function __construct(public PostRepositoryInterface $repository)
-    {}
+    public function __construct(
+        public PostRepositoryInterface $repository,
+        public ImageServiceInterface   $imageService,
+    )
+    {
+    }
 
     public function all()
     {
@@ -29,7 +30,10 @@ class PostService implements PostServiceInterface
 
     public function create(PostDTO $DTO): QuestionResource
     {
-        return new QuestionResource($this->repository->create($DTO));
+        $post = $this->repository->create($DTO);
+//        $this->imageService->insert($post, $DTO->images);
+
+        return new QuestionResource($post);
     }
 
     public function update(Post $post, PostDTO $DTO): bool

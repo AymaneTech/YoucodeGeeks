@@ -15,9 +15,9 @@ class ImageService implements ImageServiceInterface
         $this->repository->create($model, $image);
     }
 
-    public function insert()
+    public function insert(Model $model, array $images)
     {
-        // TODO: Implement insert() method.
+        $this->repository->insert($model, $images);
     }
 
     public function update(Model $model, object $image)

@@ -2,14 +2,18 @@
 
 namespace App\Providers;
 
+use App\Services\Contracts\AnswerServiceInterface;
 use App\Services\Contracts\CategoryServiceInterface;
 use App\Services\Contracts\ClassRoomServiceInterface;
+use App\Services\Contracts\CommentServiceInterface;
 use App\Services\Contracts\ImageServiceInterface;
 use App\Services\Contracts\PostServiceInterface;
 use App\Services\Contracts\TagServiceInterface;
 use App\Services\Contracts\UploadImageInterface;
+use App\Services\Implementations\AnswerService;
 use App\Services\Implementations\CategoryService;
 use App\Services\Implementations\ClassRoomService;
+use App\Services\Implementations\CommentService;
 use App\Services\Implementations\ImageService;
 use App\Services\Implementations\PostService;
 use App\Services\Implementations\TagService;
@@ -37,5 +41,7 @@ class ServiceServiceProvider extends ServiceProvider
         app()->bind(TagServiceInterface::class, TagService::class);
         app()->bind(ImageServiceInterface::class, ImageService::class);
         app()->bind(ClassRoomServiceInterface::class, ClassRoomService::class);
+        app()->bind(AnswerServiceInterface::class, AnswerService::class);
+        app()->bind(CommentServiceInterface::class, CommentService::class);
     }
 }

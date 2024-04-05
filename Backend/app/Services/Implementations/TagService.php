@@ -15,7 +15,7 @@ class TagService implements TagServiceInterface
     }
     public function all()
     {
-        return TagResource::collection(resource: $this->repository->al());
+        return TagResource::collection(resource: $this->repository->all());
     }
 
     public function show(Tag $tag): TagResource

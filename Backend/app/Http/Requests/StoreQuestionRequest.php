@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\DTO\Requests\PostDTO;
 use Illuminate\Support\Facades\Gate;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class StoreQuestionRequest extends BaseFormRequest
 {

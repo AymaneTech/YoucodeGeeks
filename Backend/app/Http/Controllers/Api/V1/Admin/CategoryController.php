@@ -20,7 +20,7 @@ class CategoryController extends BaseApiController
 
     public function index()
     {
-        return CategoryResource::collection($this->service->all());
+        return $this->service->all();
     }
 
     public function store(StoreCategoryRequest $request)
@@ -28,7 +28,7 @@ class CategoryController extends BaseApiController
         $category = $this->service->create($request->createDTO());
         return $this->sendResponse(
             message: "Category created successfully",
-            result: new CategoryResource($category),
+            result: $category,
             code: 201
         );
     }
@@ -48,7 +48,7 @@ class CategoryController extends BaseApiController
         $category = $this->service->show($category);
         return $this->sendResponse(
             message: "success",
-            result: new CategoryResource($category),
+            result: $category,
             code: 201
         );
     }

@@ -13,6 +13,7 @@ readonly class PostDTO
         public string $details,
         public string $body,
         public int $category_id,
+        public array $images,
         public int $author_id,
     )
     {}
@@ -24,6 +25,7 @@ readonly class PostDTO
             details: $validatedData["details"],
             body: $validatedData["body"],
             category_id: $validatedData["category_id"],
+            images: $validatedData["images"],
             author_id: JWTAuth::user()->id,
         );
     }

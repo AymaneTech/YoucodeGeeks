@@ -18,7 +18,7 @@ class ClassRoomController extends BaseApiController
     {
         return $this->sendResponse(
             message: "class rooms list",
-            result: ClassRoomResource::collection($this->service->all())
+            result: $this->service->all()
         );
     }
 
@@ -26,7 +26,7 @@ class ClassRoomController extends BaseApiController
     {
         return $this->sendResponse(
             message: "class room",
-            result: new ClassRoomResource($this->service->show($classRoom))
+            result: $this->service->show($classRoom)
         );
     }
 
@@ -35,7 +35,7 @@ class ClassRoomController extends BaseApiController
         $class = $this->service->create($request->createDTO());
         return $this->sendResponse(
             message: "class room created successfully",
-            result: new ClassRoomResource($class),
+            result: $class,
             code: 201
         );
 
@@ -44,7 +44,7 @@ class ClassRoomController extends BaseApiController
     public function update(StoreClassRequest $request, ClassRoom $classRoom)
     {
         $this->service->update($classRoom, $request->createDTO());
-        return $this->sendResponse("Class room updated successfully");
+        return $this->sendResponse(message: "Class room updated successfully", code: 204);
     }
 
     public function destroy(ClassRoom $classRoom)

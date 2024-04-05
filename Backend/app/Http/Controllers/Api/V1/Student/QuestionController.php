@@ -10,33 +10,30 @@ use App\Http\Resources\QuestionResource;
 use App\Models\Question;
 use App\Repositories\Contracts\ImageRepositoryInterface;
 use App\Repositories\Contracts\PostRepositoryInterface;
+use App\Services\Contracts\PostServiceInterface;
 use Illuminate\Http\JsonResponse;
 
 class QuestionController extends BaseApiController
 {
     public function __construct(
-        public PostRepositoryInterface  $repository,
-        public ImageRepositoryInterface $imageRepository,
-    )
-    {
-    }
+        public PostServiceInterface  $service,
+    ){}
 
     public function index(): JsonResponse
     {
         return $this->sendResponse(
             message: "question retrieved successfully",
-            result: QuestionResource::collection($this->repository->all()),
+            result: QuestionResource::collection($this->service->all()),
         );
     }
 
     public function store(StoreQuestionRequest $request): JsonResponse
     {
-        $question = $this->repository->create($request->createDTO());
-        $this->imageRepository->insert($question, $request->file("images"));
+        $question = $this->service->create($request->createDTO());
 
         return $this->sendResponse(
             message: "question create successfully",
-            result: new QuestionResource($question),
+            result: $question,
             code: 201
         );
     }
@@ -45,13 +42,13 @@ class QuestionController extends BaseApiController
     {
         return $this->sendResponse(
             message: "",
-            result: new QuestionResource($this->repository->show($question)),
+            result: new QuestionResource($this->service->show($question)),
         );
     }
 
     public function update(UpdateQuestionRequest $request, Question $question): JsonResponse
     {
-        $this->repository->update(post: $question, DTO: $request->createDTO());
+        $this->service->update(post: $question, DTO: $request->createDTO());
         return $this->sendResponse(
             message: "question updated successfully",
         );
