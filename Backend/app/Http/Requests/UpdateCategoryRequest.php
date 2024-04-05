@@ -13,7 +13,7 @@ class UpdateCategoryRequest extends BaseFormRequest
      */
     public function authorize(): bool
     {
-        return Gate::allows(ability: 'manage-categories');
+        return Gate::allows(ability: 'manage-dashboard');
     }
 
     /**

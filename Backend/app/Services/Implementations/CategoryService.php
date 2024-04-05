@@ -7,31 +7,38 @@ use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use App\Repositories\Contracts\CategoryRepositoryInterface;
 use App\Services\Contracts\CategoryServiceInterface;
-use Illuminate\Support\Collection;
+use App\Services\Contracts\ImageServiceInterface;
 
 class CategoryService implements CategoryServiceInterface
 {
-    public function __construct(public CategoryRepositoryInterface $repository)
-    {}
+    public function __construct(
+        public CategoryRepositoryInterface $repository,
+        public ImageServiceInterface $imageService
+    ){}
 
     public function all()
     {
-        return CategoryResource::collection(resource: $this->repository->all());
+        return CategoryResource::collection($this->repository->all());
     }
 
     public function show(Category $category): CategoryResource
     {
-        return new CategoryResource(resource: $this->repository->show(Category: $category));
+        return new CategoryResource($this->repository->show($category));
     }
 
     public function create(CategoryDTO $DTO): CategoryResource
     {
-        return new CategoryResource(resource: $this->repository->create(DTO: $DTO));
+        $category = $this->repository->create(DTO: $DTO);
+        $this->imageService->create($category, $DTO->image);
+
+        return new CategoryResource($category);
     }
 
-    public function update(Category $category, CategoryDTO $DTO): bool
+    public function update(Category $category, CategoryDTO $DTO)
     {
-        return $this->repository->update(category: $category, DTO: $DTO);
+        $this->repository->update(category: $category, DTO: $DTO);
+        $this->imageService->update($category, $DTO->image);
+
     }
 
     public function delete(Category $category): bool

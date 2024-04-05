@@ -11,7 +11,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        DB::statement("CREATE TABLE questions () INHERITS(posts)");
+        DB::statement("CREATE TABLE questions (
+            solved boolean default false
+        ) INHERITS(posts)");
         DB::statement("ALTER TABLE  questions ADD CONSTRAINT  questions_id_unique UNIQUE (id);");
     }
 

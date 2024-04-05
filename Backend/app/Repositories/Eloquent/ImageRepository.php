@@ -26,7 +26,7 @@ class ImageRepository implements ImageRepositoryInterface
         ]);
     }
 
-    public function insert(Model $model, $images)
+    public function insert(Model $model, $images): void
     {
         $imageEntities = [];
         foreach ($images as $image) {
@@ -37,5 +37,15 @@ class ImageRepository implements ImageRepositoryInterface
             ];
         }
         $model->images()->insert($imageEntities);
+    }
+    public function update(Model $model, $image): void
+    {
+        $imagePath = $this->uploadImage->upload($image);
+        $model->image()->update([
+            "path" => $imagePath,
+            "imageable_type" => get_class($model),
+            "imageable_id" => $model->id,
+        ]);
+
     }
 }

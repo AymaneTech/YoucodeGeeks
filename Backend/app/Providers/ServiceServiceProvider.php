@@ -2,13 +2,15 @@
 
 namespace App\Providers;
 
-use App\Models\Tag;
 use App\Services\Contracts\CategoryServiceInterface;
+use App\Services\Contracts\ClassRoomServiceInterface;
 use App\Services\Contracts\ImageServiceInterface;
 use App\Services\Contracts\PostServiceInterface;
 use App\Services\Contracts\TagServiceInterface;
 use App\Services\Contracts\UploadImageInterface;
 use App\Services\Implementations\CategoryService;
+use App\Services\Implementations\ClassRoomService;
+use App\Services\Implementations\ImageService;
 use App\Services\Implementations\PostService;
 use App\Services\Implementations\TagService;
 use App\Services\Implementations\UploadToCloudinaryService;
@@ -33,5 +35,7 @@ class ServiceServiceProvider extends ServiceProvider
         app()->bind(CategoryServiceInterface::class, CategoryService::class);
         app()->bind(PostServiceInterface::class, PostService::class);
         app()->bind(TagServiceInterface::class, TagService::class);
+        app()->bind(ImageServiceInterface::class, ImageService::class);
+        app()->bind(ClassRoomServiceInterface::class, ClassRoomService::class);
     }
 }

@@ -26,10 +26,6 @@ class ClassRoom extends Model
             ]
         ];
     }
-    public function resolveRouteBinding($value, $field = null)
-    {
-        return $this->where('slug', $value)->firstOrFail();
-    }
 
     public function campus()
     {

@@ -10,26 +10,22 @@ use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use App\Repositories\Contracts\CategoryRepositoryInterface;
 use App\Repositories\Contracts\ImageRepositoryInterface;
+use App\Services\Contracts\CategoryServiceInterface;
 
 class CategoryController extends BaseApiController
 {
     public function __construct(
-        public CategoryRepositoryInterface $repository,
-        public ImageRepositoryInterface    $imageRepository,
-    )
-    {
-    }
+        public CategoryServiceInterface $service,)
+    {}
 
     public function index()
     {
-        return CategoryResource::collection($this->repository->all());
+        return CategoryResource::collection($this->service->all());
     }
 
     public function store(StoreCategoryRequest $request)
     {
-        $category = $this->repository->create($request->createDTO());
-        $this->imageRepository->create(model: $category, image: $request->validated("image"));
-
+        $category = $this->service->create($request->createDTO());
         return $this->sendResponse(
             message: "Category created successfully",
             result: new CategoryResource($category),
@@ -39,7 +35,7 @@ class CategoryController extends BaseApiController
 
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $this->repository->update($category, $request->createDTO());
+        $this->service->update($category, $request->createDTO());
         return $this->sendResponse(
             message: "Category updated successfully",
             result: new CategoryResource($category),
@@ -49,9 +45,9 @@ class CategoryController extends BaseApiController
 
     public function show(Category $category)
     {
-        $category = $this->repository->show($category);
+        $category = $this->service->show($category);
         return $this->sendResponse(
-            message: "",
+            message: "success",
             result: new CategoryResource($category),
             code: 201
         );
@@ -59,7 +55,7 @@ class CategoryController extends BaseApiController
 
     public function destroy(Category $category)
     {
-        $this->repository->delete($category);
+        $this->service->delete($category);
         return $this->sendResponse(message: "category deleted", result: true);
     }
 }

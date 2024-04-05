@@ -16,11 +16,11 @@ readonly class ClassRoomDTO
 
     public static function fromRequest(StoreClassRequest $request): ClassRoomDTO
     {
-        $request->validated();
+        $validatedData = $request->validated();
         return new self(
-            name: $request->name,
-            campusId: $request->campusId,
-            schoolYear: $request->schoolYear
+            name: $validatedData["name"],
+            campusId: $validatedData["campusId"],
+            schoolYear: $validatedData["schoolYear"]
         );
 
     }
