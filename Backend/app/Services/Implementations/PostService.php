@@ -3,33 +3,42 @@
 namespace App\Services\Implementations;
 
 use App\DTO\Requests\PostDTO;
+use App\Http\Resources\QuestionResource;
+use App\Models\Post;
 use App\Models\Question;
+use App\Repositories\Contracts\PostRepositoryInterface;
+use App\Repositories\Eloquent\BasePostRepository;
 use App\Services\Contracts\PostServiceInterface;
+use PhpParser\Node\Scalar\Encapsed;
+use Ramsey\Collection\Collection;
 
 class PostService implements PostServiceInterface
 {
+    public function __construct(public PostRepositoryInterface $repository)
+    {}
+
     public function all()
     {
-        // TODO: Implement all() method.
+        return QuestionResource::collection($this->repository->all());
     }
 
-    public function show(Question $question)
+    public function show(Post $post): QuestionResource
     {
-        // TODO: Implement show() method.
+        return new QuestionResource($this->repository->show($post));
     }
 
-    public function create(PostDTO $DTO)
+    public function create(PostDTO $DTO): QuestionResource
     {
-        // TODO: Implement create() method.
+        return new QuestionResource($this->repository->create($DTO));
     }
 
-    public function update(Question $question, PostDTO $DTO)
+    public function update(Post $post, PostDTO $DTO): bool
     {
-        // TODO: Implement update() method.
+        return $this->repository->update($post, $DTO);
     }
 
-    public function delete(Question $question)
+    public function delete(Post $post): bool
     {
-        // TODO: Implement delete() method.
+        return $this->repository->delete($post);
     }
 }

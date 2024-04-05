@@ -3,33 +3,38 @@
 namespace App\Services\Implementations;
 
 use App\DTO\Requests\TagDTO;
+use App\Http\Resources\TagResource;
 use App\Models\Tag;
+use App\Repositories\Contracts\TagRepositoryInterface;
 use App\Services\Contracts\TagServiceInterface;
 
 class TagService implements TagServiceInterface
 {
+    public function __construct(public TagRepositoryInterface $repository)
+    {
+    }
     public function all()
     {
-        // TODO: Implement all() method.
+        return TagResource::collection(resource: $this->repository->al());
     }
 
-    public function show(Tag $tag)
+    public function show(Tag $tag): TagResource
     {
-        // TODO: Implement show() method.
+        return new TagResource($this->repository->show($tag));
     }
 
-    public function create(TagDTO $DTO)
+    public function create(TagDTO $DTO): TagResource
     {
-        // TODO: Implement create() method.
+        return new TagResource($this->repository->create($DTO));
     }
 
-    public function update(Tag $tag, TagDTO $DTO)
+    public function update(Tag $tag, TagDTO $DTO): bool
     {
-        // TODO: Implement update() method.
+        return $this->repository->update($tag, $DTO);
     }
 
-    public function delete(Tag $tag)
+    public function delete(Tag $tag): bool
     {
-        // TODO: Implement delete() method.
+        return $this->repository->delete($tag);
     }
 }

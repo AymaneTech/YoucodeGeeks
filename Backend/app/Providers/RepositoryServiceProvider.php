@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Blog;
 use App\Models\Post;
 use App\Models\Question;
 use App\Repositories\Contracts\CategoryRepositoryInterface;
@@ -31,7 +32,7 @@ class RepositoryServiceProvider extends ServiceProvider
                 return new QuestionRepository($app->make(Question::class));
             }
 
-            return new BlogRepository($app->make(Post::class));
+            return new BlogRepository($app->make(Blog::class));
         });
     }
 
@@ -45,8 +46,6 @@ class RepositoryServiceProvider extends ServiceProvider
         app()->bind(TagRepositoryInterface::class, TagRepository::class);
         app()->bind(ClassRoomRepositoryInterface::class, ClassRoomRepository::class);
         app()->bind(ImageRepositoryInterface::class, ImageRepository::class);
-        // service
-        app()->bind(UploadImageInterface::class, UploadToCloudinaryService::class);
     }
 
     private function isQuestionContext(): bool
