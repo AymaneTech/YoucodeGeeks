@@ -27,7 +27,7 @@ class CategoryController extends BaseApiController
 
     public function store(StoreCategoryRequest $request)
     {
-        $category = $this->repository->create(CategoryDTO::fromRequest($request));
+        $category = $this->repository->create($request->createDTO());
         $this->imageRepository->create(model: $category, image: $request->validated("image"));
 
         return $this->sendResponse(
@@ -39,7 +39,12 @@ class CategoryController extends BaseApiController
 
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        dd($request);
+        $this->repository->update($category, $request->createDTO());
+        return $this->sendResponse(
+            message: "Category updated successfully",
+            result: new CategoryResource($category),
+            code: 200
+        );
     }
 
     public function show(Category $category)

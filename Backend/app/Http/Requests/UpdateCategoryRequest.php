@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\DTO\Requests\CategoryDTO;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Support\Facades\Gate;
 
@@ -26,5 +27,10 @@ class UpdateCategoryRequest extends BaseFormRequest
             "name" => "required",
             "image" => "required"
         ];
+    }
+
+    public function createDTO(): CategoryDTO
+    {
+        return CategoryDTO::fromRequest($this);
     }
 }

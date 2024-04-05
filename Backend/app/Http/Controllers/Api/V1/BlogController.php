@@ -30,7 +30,7 @@ class BlogController extends BaseApiController
 
     public function store(StoreQuestionRequest $request): JsonResponse
     {
-        $question = $this->repository->create((PostDTO::fromRequest($request)));
+        $question = $this->repository->create($request->createDTO());
         $this->imageRepository->insert($question, $request->file("images"));
 
         return $this->sendResponse(
@@ -50,10 +50,9 @@ class BlogController extends BaseApiController
 
     public function update(StoreQuestionRequest $request, Question $question): JsonResponse
     {
-        $question = $this->repository->update(post: $question, DTO: PostDTO::fromRequest($request));
+        $this->repository->update(post: $question, DTO: $request->createDTO());
         return $this->sendResponse(
             message: "question updated successfully",
-            result: new QuestionResource($question),
         );
     }
 

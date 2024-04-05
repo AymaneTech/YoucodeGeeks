@@ -10,7 +10,6 @@ enum IsVerified: string
     public static function fromBool(bool $isVerified): string
     {
         return $isVerified ? self::VERIFIED->value : self::UNVERIFIED->value;
-
     }
 
 }

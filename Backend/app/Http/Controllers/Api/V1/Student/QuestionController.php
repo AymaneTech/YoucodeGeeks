@@ -51,7 +51,7 @@ class QuestionController extends BaseApiController
 
     public function update(UpdateQuestionRequest $request, Question $question): JsonResponse
     {
-        $question = $this->repository->update(post: $question, DTO: PostDTO::fromRequest($request));
+        $this->repository->update(post: $question, DTO: $request->createDTO());
         return $this->sendResponse(
             message: "question updated successfully",
         );

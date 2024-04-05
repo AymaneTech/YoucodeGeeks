@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\DTO\Requests\CategoryDTO;
 use Illuminate\Contracts\Validation\Validator as ValidatorInterface;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -24,5 +25,10 @@ class StoreCategoryRequest extends BaseFormRequest
             "name" => "required|min:3|max:30|unique:categories",
             "image" => "required|file"
         ];
+    }
+
+    public function createDTO(): CategoryDTO
+    {
+        return CategoryDTO::fromRequest($this);
     }
 }

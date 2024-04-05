@@ -24,7 +24,6 @@ class ClassRoomController extends BaseApiController
 
     public function show(ClassRoom $classRoom)
     {
-        dd($classRoom);
         return $this->sendResponse(
             message: "class room",
             result: new ClassRoomResource($this->repository->show($classRoom))

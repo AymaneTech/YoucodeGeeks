@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\DTO\Requests\TagDTO;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,5 +26,9 @@ class UpdateTagRequest extends FormRequest
         return [
             "name" => "required",
         ];
+    }
+    public function createDTO(): TagDTO
+    {
+        return TagDTO::fromRequest($this);
     }
 }

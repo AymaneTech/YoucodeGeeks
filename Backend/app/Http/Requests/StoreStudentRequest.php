@@ -7,7 +7,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Validator;
 use \Illuminate\Contracts\Validation\Validator as ValidatorInterface;
 
-class StoreStudentRequest extends FormRequest
+class StoreStudentRequest extends BaseFormRequest
 {
     public function rules(): array
     {
@@ -19,11 +19,5 @@ class StoreStudentRequest extends FormRequest
             "className" => "required",
             "role" => "required"
         ];
-    }
-    protected function failedValidation(Validator|ValidatorInterface $validator)
-    {
-        throw new HttpResponseException(response()->json([
-            'errors' => $validator->errors(),
-        ], 422));
     }
 }

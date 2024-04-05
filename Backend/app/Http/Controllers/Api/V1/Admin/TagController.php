@@ -25,7 +25,7 @@ class TagController extends BaseApiController
 
     public function store(StoreTagRequest $request)
     {
-        $tag = $this->repository->create(TagDTO::fromRequest($request));
+        $tag = $this->repository->create($request->createDTO());
 
         return $this->sendResponse(
             message: "Tag created successfully",
@@ -36,7 +36,7 @@ class TagController extends BaseApiController
 
     public function update(UpdateTagRequest $request, Tag $tag)
     {
-        $tag = $this->repository->update($tag, TagDTO::fromRequest($request));
+        $this->repository->update($tag, $request->createDTO());
 
         return $this->sendResponse(
             message: "Tag updated successfully",
