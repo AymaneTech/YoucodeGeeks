@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\DTO\Requests\AnswerDTO;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -26,5 +27,10 @@ class StoreAnswerRequest extends FormRequest
             "body" => "required",
             "question_id" => "required"
         ];
+    }
+
+    public function createDTO()
+    {
+        return AnswerDTO::fromRequest($this);
     }
 }

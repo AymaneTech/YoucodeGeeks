@@ -9,7 +9,7 @@ readonly class CommentUpdateDTO
     public function __construct(public string $body)
     {}
 
-    public function fromRequest(UpdateCommentRequest $request): self
+    public static function fromRequest(UpdateCommentRequest $request): self
     {
         return new self ($request->validated("body"));
     }

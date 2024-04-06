@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\DTO\Requests\AnswerUpdateDTO;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateAnswerRequest extends FormRequest
@@ -24,5 +25,9 @@ class UpdateAnswerRequest extends FormRequest
         return [
             "body" => "required",
         ];
+    }
+    public function createDTO()
+    {
+        return AnswerUpdateDTO::fromRequest($this);
     }
 }

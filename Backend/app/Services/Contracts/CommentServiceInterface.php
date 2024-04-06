@@ -11,7 +11,7 @@ interface CommentServiceInterface
 {
     public function create(CommentDTO $DTO);
 
-    public function update(Comment $comment, CommentUpdateDTO $DTO);
+    public function update(CommentUpdateDTO $DTO, Comment $comment);
 
     public function delete(Comment $comment);
 }

@@ -3,6 +3,7 @@
 namespace App\DTO\Requests;
 
 use App\Http\Requests\StoreAnswerRequest;
+use App\Http\Requests\StoreCommentRequest;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 readonly class CommentDTO
@@ -15,7 +16,7 @@ readonly class CommentDTO
     {
     }
 
-    public static function fromRequest(StoreAnswerRequest $request)
+    public static function fromRequest(StoreCommentRequest $request)
     {
         $validatedData = $request->validated();
         return new self (

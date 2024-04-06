@@ -20,7 +20,7 @@ class CommentService implements CommentServiceInterface
         return new CommentResource($this->repository->create($DTO));
     }
 
-    public function update(Comment $comment, CommentUpdateDTO $DTO)
+    public function update(CommentUpdateDTO $DTO, Comment $comment)
     {
         return $this->repository->update($comment, $DTO);
     }

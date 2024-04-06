@@ -6,15 +6,12 @@ use App\Http\Controllers\Api\V1\Admin\ManageUsersController;
 use App\Http\Controllers\Api\V1\Admin\TagController;
 use App\Http\Controllers\Api\V1\Auth\AuthApiController;
 use App\Http\Controllers\Api\V1\Auth\StudentRegisterController;
+use App\Http\Controllers\Api\V1\BlogController;
+use App\Http\Controllers\Api\V1\CommentController;
+use App\Http\Controllers\Api\V1\Student\AnswerController;
 use App\Http\Controllers\Api\V1\Student\QuestionController;
 use App\Models\ClassRoom;
-use App\Repositories\Contracts\ClassRoomRepositoryInterface;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth');
 
 Route::group([
     'middleware' => 'api',
@@ -33,7 +30,10 @@ Route::apiResources([
     "classrooms" => ClassRoomController::class
 ]);
 Route::apiResources([
+    "blogs" => BlogController::class,
     "questions" => QuestionController::class,
+    "answers" => AnswerController::class,
+    "comments" => CommentController::class
 ]);
 
 Route::model('classroom', ClassRoom::class);

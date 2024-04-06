@@ -10,7 +10,7 @@ interface AnswerServiceInterface
 {
     public function create(AnswerDTO $DTO);
 
-    public function update(Answer $answer, AnswerUpdateDTO $DTO);
+    public function update(AnswerUpdateDTO $DTO ,Answer $answer);
 
     public function delete(Answer $answer);
 }

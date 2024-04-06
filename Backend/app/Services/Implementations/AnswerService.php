@@ -20,7 +20,7 @@ class AnswerService implements AnswerServiceInterface
         return new AnswerResource($this->repository->create($DTO));
     }
 
-    public function update(Answer $answer, AnswerUpdateDTO $DTO)
+    public function update(AnswerUpdateDTO $DTO ,Answer $answer)
     {
         return $this->repository->update($answer, $DTO);
     }

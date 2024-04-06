@@ -6,61 +6,57 @@ use App\DTO\Requests\PostDTO;
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Resources\QuestionResource;
-use App\Models\Question;
+use App\Models\Blog;
 use App\Repositories\Contracts\ImageRepositoryInterface;
 use App\Repositories\Contracts\PostRepositoryInterface;
+use App\Services\Contracts\PostServiceInterface;
 use Illuminate\Http\JsonResponse;
 
 class BlogController extends BaseApiController
 {
     public function __construct(
-        public PostRepositoryInterface  $repository,
-        public ImageRepositoryInterface $imageRepository,
-    )
-    {
-    }
+        public PostServiceInterface  $service){}
 
     public function index(): JsonResponse
     {
         return $this->sendResponse(
             message: "question create successfully",
-            result: QuestionResource::collection($this->repository->all()),
+            result: QuestionResource::collection($this->service->all()),
         );
     }
 
     public function store(StoreQuestionRequest $request): JsonResponse
     {
-        $question = $this->repository->create($request->createDTO());
-        $this->imageRepository->insert($question, $request->file("images"));
+        $blog = $this->service->create($request->createDTO());
 
         return $this->sendResponse(
-            message: "question create successfully",
-            result: $question,
+            message: "blog create successfully",
+            result: $blog,
             code: 201
         );
     }
 
-    public function show(Question $question): JsonResponse
+    public function show(Blog $blog): JsonResponse
     {
         return $this->sendResponse(
             message: "",
-            result: new QuestionResource($this->repository->show($question)),
+            result: new QuestionResource($this->service->show($blog)),
         );
     }
 
-    public function update(StoreQuestionRequest $request, Question $question): JsonResponse
+    public function update(StoreQuestionRequest $request, Blog $blog): JsonResponse
     {
-        $this->repository->update(post: $question, DTO: $request->createDTO());
+        $this->service->update(post: $blog, DTO: $request->createDTO());
         return $this->sendResponse(
             message: "question updated successfully",
         );
     }
 
-    public function delete(Question $question): JsonResponse
+    public function delete(Blog $blog): JsonResponse
     {
         return $this->sendResponse(
             message: "question deleted successfully",
-            result: new QuestionResource($question),
+            result: new QuestionResource($blog),
         );
     }
 
