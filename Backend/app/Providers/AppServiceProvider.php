@@ -28,6 +28,5 @@ class AppServiceProvider extends ServiceProvider
         Gate::define(ability: "student-questions", callback: function ($user) {
             return $user->role_id === Role::STUDENT->value && $user->is_verified;
         });
-
     }
 }

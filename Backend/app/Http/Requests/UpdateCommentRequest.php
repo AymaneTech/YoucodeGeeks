@@ -3,16 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Gate;
 
-class StoreAnswerRequest extends FormRequest
+class UpdateCommentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,8 +22,7 @@ class StoreAnswerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "body" => "required",
-            "question_id" => "required"
+            //
         ];
     }
 }

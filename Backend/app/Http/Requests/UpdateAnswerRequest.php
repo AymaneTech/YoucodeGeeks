@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Gate;
 
-class StoreAnswerRequest extends FormRequest
+class UpdateAnswerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +23,6 @@ class StoreAnswerRequest extends FormRequest
     {
         return [
             "body" => "required",
-            "question_id" => "required"
         ];
     }
 }
