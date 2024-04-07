@@ -3,6 +3,7 @@
 namespace App\Repositories\Implementations;
 
 use App\DTO\Requests\UserDTO;
+use App\Enums\Role;
 use App\Models\Admin;
 use App\Models\Student;
 use App\Models\User;
@@ -24,23 +25,23 @@ class UserRepository implements UserRepositoryInterface
     public function create(UserDTO $DTO)
     {
         try {
-            if ($DTO->role === "admin") {
+            if ($DTO->role === Role::ADMIN->value) {
                 $user = Admin::create($this->getArr($DTO));
-            } elseif ($DTO->role === "student") {
+            } elseif ($DTO->role === Role::STUDENT->value) {
                 $user = Student::create($this->getArr($DTO));
             } else {
                 throw new \InvalidArgumentException("Invalid user role: {$DTO->role}");
             }
             return $user;
         } catch (\Exception $e) {
-            throw new \RuntimeException("Error creating user: " . $e->getMessage(), $e->getCode(), $e);
+            throw new \RuntimeException("Error creating user: " . $e->getMessage());
         }
     }
 
     public function show(User $user)
     {
         try {
-            return $user->load("image", "role");
+            return $user->load("role");
         } catch (ModelNotFoundException $e) {
             throw new \RuntimeException("User not found: " . $e->getMessage(), $e->getCode(), $e);
         }

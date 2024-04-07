@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\V1\Admin\CategoryController;
 use App\Http\Controllers\Api\V1\Admin\ClassRoomController;
 use App\Http\Controllers\Api\V1\Admin\ManageUsersController;
 use App\Http\Controllers\Api\V1\Admin\TagController;
+use App\Http\Controllers\Api\V1\Admin\UserController;
 use App\Http\Controllers\Api\V1\Auth\AuthApiController;
 use App\Http\Controllers\Api\V1\Auth\StudentRegisterController;
 use App\Http\Controllers\Api\V1\BlogController;
@@ -27,8 +28,10 @@ Route::group([
 Route::apiResources([
     "categories" => CategoryController::class,
     "tags" => TagController::class,
-    "classrooms" => ClassRoomController::class
+    "classrooms" => ClassRoomController::class,
+    "users" => UserController::class,
 ]);
+
 Route::apiResources([
     "blogs" => BlogController::class,
     "questions" => QuestionController::class,

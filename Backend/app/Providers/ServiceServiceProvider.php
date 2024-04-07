@@ -10,6 +10,7 @@ use App\Services\Contracts\ImageServiceInterface;
 use App\Services\Contracts\PostServiceInterface;
 use App\Services\Contracts\TagServiceInterface;
 use App\Services\Contracts\UploadImageInterface;
+use App\Services\Contracts\UserServiceInterface;
 use App\Services\Implementations\AnswerService;
 use App\Services\Implementations\CategoryService;
 use App\Services\Implementations\ClassRoomService;
@@ -18,6 +19,7 @@ use App\Services\Implementations\ImageService;
 use App\Services\Implementations\PostService;
 use App\Services\Implementations\TagService;
 use App\Services\Implementations\UploadToCloudinaryService;
+use App\Services\Implementations\UserService;
 use Illuminate\Support\ServiceProvider;
 
 class ServiceServiceProvider extends ServiceProvider
@@ -26,9 +28,7 @@ class ServiceServiceProvider extends ServiceProvider
      * Register services.
      */
     public function register(): void
-    {
-        //
-    }
+    {}
 
     /**
      * Bootstrap services.
@@ -43,5 +43,6 @@ class ServiceServiceProvider extends ServiceProvider
         app()->bind(ClassRoomServiceInterface::class, ClassRoomService::class);
         app()->bind(AnswerServiceInterface::class, AnswerService::class);
         app()->bind(CommentServiceInterface::class, CommentService::class);
+        app()->bind(UserServiceInterface::class, UserService::class);
     }
 }
