@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Eloquent;
+namespace App\Repositories\Implementations;
 
 use App\DTO\Requests\PostDTO;
 use App\Models\Post;

@@ -2,13 +2,25 @@
 
 namespace App\Http\Requests;
 
+use App\DTO\Requests\StudentDTO;
+use App\DTO\Requests\UserDTO;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Validator;
-use \Illuminate\Contracts\Validation\Validator as ValidatorInterface;
 
-class StoreStudentRequest extends BaseFormRequest
+class StoreStudentRequest extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
     public function rules(): array
     {
         return [
@@ -19,5 +31,9 @@ class StoreStudentRequest extends BaseFormRequest
             "className" => "required",
             "role" => "required"
         ];
+    }
+    public function createDTO()
+    {
+        return StudentDTO::fromRequest($this);
     }
 }

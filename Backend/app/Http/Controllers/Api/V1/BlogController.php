@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\DTO\Requests\PostDTO;
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Resources\QuestionResource;
 use App\Models\Blog;
-use App\Repositories\Contracts\ImageRepositoryInterface;
-use App\Repositories\Contracts\PostRepositoryInterface;
 use App\Services\Contracts\PostServiceInterface;
 use Illuminate\Http\JsonResponse;
 
 class BlogController extends BaseApiController
 {
     public function __construct(
-        public PostServiceInterface  $service){}
+        public PostServiceInterface $service)
+    {
+    }
 
     public function index(): JsonResponse
     {
         return $this->sendResponse(
             message: "question create successfully",
-            result: QuestionResource::collection($this->service->all()),
+            result: $this->service->all(),
         );
     }
 
@@ -40,7 +39,7 @@ class BlogController extends BaseApiController
     {
         return $this->sendResponse(
             message: "",
-            result: new QuestionResource($this->service->show($blog)),
+            result: $this->service->show($blog),
         );
     }
 
@@ -49,14 +48,16 @@ class BlogController extends BaseApiController
         $this->service->update(post: $blog, DTO: $request->createDTO());
         return $this->sendResponse(
             message: "question updated successfully",
+            code: 204
         );
     }
 
     public function delete(Blog $blog): JsonResponse
     {
+        $blog->delete();
         return $this->sendResponse(
             message: "question deleted successfully",
-            result: new QuestionResource($blog),
+            code: 204
         );
     }
 

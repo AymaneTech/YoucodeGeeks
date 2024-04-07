@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\Api\V1\Student;
 
-use App\DTO\Requests\PostDTO;
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Requests\UpdateQuestionRequest;
 use App\Http\Resources\QuestionResource;
 use App\Models\Question;
-use App\Repositories\Contracts\ImageRepositoryInterface;
-use App\Repositories\Contracts\PostRepositoryInterface;
 use App\Services\Contracts\PostServiceInterface;
 use Illuminate\Http\JsonResponse;
 
 class QuestionController extends BaseApiController
 {
     public function __construct(
-        public PostServiceInterface  $service,
-    ){}
+        public PostServiceInterface $service,
+    )
+    {}
 
     public function index(): JsonResponse
     {
@@ -30,7 +28,6 @@ class QuestionController extends BaseApiController
     public function store(StoreQuestionRequest $request): JsonResponse
     {
         $question = $this->service->create($request->createDTO());
-
         return $this->sendResponse(
             message: "question create successfully",
             result: $question,

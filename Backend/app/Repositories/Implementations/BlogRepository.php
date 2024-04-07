@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Eloquent;
+namespace App\Repositories\Implementations;
 
 use App\Models\Blog;
 use App\Repositories\Contracts\PostRepositoryInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Eloquent;
+namespace App\Repositories\Implementations;
 
 use App\Repositories\Contracts\ImageRepositoryInterface;
 use App\Services\Contracts\UploadImageInterface;
