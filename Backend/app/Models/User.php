@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -49,7 +50,7 @@ class User extends Authenticatable implements JWTSubject
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function image()
+    public function image(): MorphOne
     {
         return $this->morphOne(Image::class, "imageable");
     }
