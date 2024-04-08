@@ -16,8 +16,8 @@ class IsStudent
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if($request->user()->role_id  !== Role::STUDENT->value && $request->user()->is_verified){
-            return response()->json(data: ["message" => "You are not a student to have access here"], status: 403);
+        if($request->user()->role_id  !== Role::STUDENT->value && $request->user()->role_id !== Role::ADMIN->value){
+            return response()->json(data: ["message" => "You are not a student to have access here (middleware)"], status: 403);
         }
         return $next($request);
     }

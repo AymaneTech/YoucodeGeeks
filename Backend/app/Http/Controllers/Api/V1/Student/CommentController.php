@@ -7,10 +7,12 @@ use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Models\Comment;
 use App\Services\Contracts\CommentServiceInterface;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
 
 class CommentController extends BaseApiController
 {
+    use AuthorizesRequests;
     public function __construct(public CommentServiceInterface $service)
     {
     }
@@ -36,6 +38,7 @@ class CommentController extends BaseApiController
 
     public function destroy(Comment $comment): JsonResponse
     {
+        $this->authorize("delete", $comment);
         $this->service->delete($comment);
         return $this->sendResponse(
             message: "comment deleted successfully",

@@ -7,16 +7,15 @@ use App\Http\Controllers\Api\V1\Admin\{CategoryController,
     UserController};
 use App\Http\Controllers\Api\V1\Auth\{AuthApiController, StudentRegisterController};
 use App\Http\Controllers\Api\V1\Student\{AnswerController, BlogController, CommentController, QuestionController};
-use App\Http\Middleware\{IsAdmin, IsLoggedIn, IsStudent};
+use App\Http\Middleware\{IsAdmin, IsGuest, IsLoggedIn, IsStudent};
 use App\Models\ClassRoom;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
     'middleware' => 'api',
-    'prefix' => 'auth'
+    'prefix' => IsGuest::class
 ], static function ($router) {
     Route::post("register", [StudentRegisterController::class, "register"]);
-    Route::get("verify/{user}", [ManageUsersController::class, "verify"]);
     Route::post('login', [AuthApiController::class, "login"]);
     Route::post('logout', [AuthApiController::class, "logout"]);
     Route::post('refresh', [AuthApiController::class, "refresh"]);
@@ -32,6 +31,7 @@ Route::group([
         "categories" => CategoryController::class,
         "tags" => TagController::class,
     ]);
+    Route::get("verify/{user}", [ManageUsersController::class, "verify"]);
 })->name("dashboard");
 
 Route::group([

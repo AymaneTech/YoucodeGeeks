@@ -21,7 +21,6 @@ class QuestionController extends BaseApiController
 
     public function index(): JsonResponse
     {
-        $this->authorize("viewAny", Question::class);
         return $this->sendResponse(
             message: "question retrieved successfully",
             result: QuestionResource::collection($this->service->all()),
@@ -40,7 +39,6 @@ class QuestionController extends BaseApiController
 
     public function show(Question $question): JsonResponse
     {
-        $this->authorize("view", Question::class);
         return $this->sendResponse(
             message: "",
             result: new QuestionResource($this->service->show($question)),

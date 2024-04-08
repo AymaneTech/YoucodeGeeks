@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -23,7 +24,7 @@ class AdminSeeder extends Seeder
             "password" => Hash::make("password")
         ]);
 
-        User::create([
+        Student::create([
             "first_name" => "user",
             "last_name" => "user last name",
             "email" => "user@gmail.com",

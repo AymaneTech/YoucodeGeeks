@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Api\V1\Student;
 
 use App\Http\Controllers\BaseApiController;
-use App\Http\Requests\StoreQuestionRequest;
+use App\Http\Requests\StoreBlogRequest;
+use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Services\Contracts\PostServiceInterface;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
 
 class BlogController extends BaseApiController
 {
+    use AuthorizesRequests;
     public function __construct(
         public PostServiceInterface $service)
-    {}
+    {
+    }
 
     public function index(): JsonResponse
     {
@@ -22,7 +26,7 @@ class BlogController extends BaseApiController
         );
     }
 
-    public function store(StoreQuestionRequest $request): JsonResponse
+    public function store(StoreBlogRequest $request): JsonResponse
     {
         $blog = $this->service->create($request->createDTO());
 
@@ -41,7 +45,7 @@ class BlogController extends BaseApiController
         );
     }
 
-    public function update(StoreQuestionRequest $request, Blog $blog): JsonResponse
+    public function update(UpdateBlogRequest $request, Blog $blog): JsonResponse
     {
         $this->service->update(post: $blog, DTO: $request->createDTO());
         return $this->sendResponse(
@@ -52,6 +56,7 @@ class BlogController extends BaseApiController
 
     public function delete(Blog $blog): JsonResponse
     {
+        $this->authorize("delete", $blog);
         $blog->delete();
         return $this->sendResponse(
             message: "question deleted successfully",

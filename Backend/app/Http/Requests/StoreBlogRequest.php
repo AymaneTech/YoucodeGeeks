@@ -3,19 +3,20 @@
 namespace App\Http\Requests;
 
 use App\DTO\Requests\PostDTO;
+use App\Models\Blog;
 use App\Models\Question;
 
-class StoreQuestionRequest extends BaseFormRequest
+class StoreBlogRequest extends BaseFormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()->can("create", Question::class);
+        return $this->user()->can("create", Blog::class);
     }
 
     public function rules(): array
     {
         return [
-            "title" => "required | unique:questions",
+            "title" => "required | unique:blogs",
             "details" => "required",
             "body" => "required",
             "category_id" => "required",

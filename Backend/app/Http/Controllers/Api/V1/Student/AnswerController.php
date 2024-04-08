@@ -7,9 +7,11 @@ use App\Http\Requests\StoreAnswerRequest;
 use App\Http\Requests\UpdateAnswerRequest;
 use App\Models\Answer;
 use App\Services\Contracts\AnswerServiceInterface;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AnswerController extends BaseApiController
 {
+    use AuthorizesRequests;
     public function __construct(public AnswerServiceInterface $service)
     {
     }
@@ -35,6 +37,7 @@ class AnswerController extends BaseApiController
 
     public function destroy(Answer $answer)
     {
+        $this->authorize("delete", $answer);
         $this->service->delete($answer);
         return $this->sendResponse(
             message: "answer deleted successfully",

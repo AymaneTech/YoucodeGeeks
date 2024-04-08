@@ -17,7 +17,7 @@ class AnswerResource extends JsonResource
         return [
             "id" => $this->id,
             "body" => $this->body,
-            "author" => new StudentResource($this->author),
+            "author" => new AuthorResource($this->author),
         ];
     }
 }
