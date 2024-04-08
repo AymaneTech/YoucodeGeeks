@@ -8,7 +8,7 @@ use App\Repositories\Contracts\PostRepositoryInterface;
 /**
  * Class QuestionRepository.
  */
-class QuestionRepository extends BasePostRepository implements PostRepositoryInterface
+class QuestionRepository extends BasePostRepository
 {
     public function __construct(Question $postModel)
     {

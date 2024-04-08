@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\Api\V1\Student;
 
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Models\Comment;
 use App\Services\Contracts\CommentServiceInterface;
+use Illuminate\Http\JsonResponse;
 
 class CommentController extends BaseApiController
 {
@@ -14,7 +15,7 @@ class CommentController extends BaseApiController
     {
     }
 
-    public function store(StoreCommentRequest $request)
+    public function store(StoreCommentRequest $request): JsonResponse
     {
         $comment = $this->service->create($request->createDTO());
         return $this->sendResponse(
@@ -24,7 +25,7 @@ class CommentController extends BaseApiController
         );
     }
 
-    public function update(UpdateCommentRequest $request, Comment $comment)
+    public function update(UpdateCommentRequest $request, Comment $comment): JsonResponse
     {
         $this->service->update($request->createDTO(), $comment);
         return $this->sendResponse(
@@ -33,7 +34,7 @@ class CommentController extends BaseApiController
         );
     }
 
-    public function destroy(Comment $comment)
+    public function destroy(Comment $comment): JsonResponse
     {
         $this->service->delete($comment);
         return $this->sendResponse(

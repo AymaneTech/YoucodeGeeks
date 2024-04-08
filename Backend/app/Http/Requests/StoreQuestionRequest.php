@@ -3,30 +3,16 @@
 namespace App\Http\Requests;
 
 use App\DTO\Requests\PostDTO;
+use App\Models\Question;
 use Illuminate\Support\Facades\Gate;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class StoreQuestionRequest extends BaseFormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        if (Gate::denies("student-questions")) {
-            $this->sendError(
-                error: "You don't have access to perform this action (should be a student)",
-                code: 401
-            );
-        }
-        return true;
+        return $this->user()->can("create", Question::class);
     }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
@@ -38,7 +24,6 @@ class StoreQuestionRequest extends BaseFormRequest
             "images" => "required|array"
         ];
     }
-
     public function createDTO(): PostDTO
     {
         return PostDTO::fromRequest($this);

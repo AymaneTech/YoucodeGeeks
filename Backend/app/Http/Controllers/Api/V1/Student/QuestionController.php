@@ -8,10 +8,12 @@ use App\Http\Requests\UpdateQuestionRequest;
 use App\Http\Resources\QuestionResource;
 use App\Models\Question;
 use App\Services\Contracts\PostServiceInterface;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
 
 class QuestionController extends BaseApiController
 {
+    use AuthorizesRequests;
     public function __construct(
         public PostServiceInterface $service,
     )
@@ -19,6 +21,7 @@ class QuestionController extends BaseApiController
 
     public function index(): JsonResponse
     {
+        $this->authorize("viewAny", Question::class);
         return $this->sendResponse(
             message: "question retrieved successfully",
             result: QuestionResource::collection($this->service->all()),
@@ -37,6 +40,7 @@ class QuestionController extends BaseApiController
 
     public function show(Question $question): JsonResponse
     {
+        $this->authorize("view", Question::class);
         return $this->sendResponse(
             message: "",
             result: new QuestionResource($this->service->show($question)),
@@ -53,6 +57,8 @@ class QuestionController extends BaseApiController
 
     public function destroy(Question $question): JsonResponse
     {
+        $this->authorize("delete", $question);
+        $this->service->delete($question);
         return $this->sendResponse(
             message: "question deleted successfully",
         );

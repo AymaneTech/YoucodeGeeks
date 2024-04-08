@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Enums\Role;
+use App\Models\Question;
+use App\Policies\QuestionPolicy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -28,8 +30,6 @@ class AppServiceProvider extends ServiceProvider
         Gate::define(ability: "student-questions", callback: function ($user) {
             return $user->role_id === Role::STUDENT->value && $user->is_verified;
         });
-        Gate::define(ability: "student", callback: function ($user) {
-            return $user->role_id === Role::STUDENT->value && $user->is_verified;
-        });
+        Gate::policy(Question::class, QuestionPolicy::class);
     }
 }

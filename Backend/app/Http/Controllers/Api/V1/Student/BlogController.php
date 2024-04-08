@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\Api\V1\Student;
 
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreQuestionRequest;
-use App\Http\Resources\QuestionResource;
 use App\Models\Blog;
 use App\Services\Contracts\PostServiceInterface;
 use Illuminate\Http\JsonResponse;
