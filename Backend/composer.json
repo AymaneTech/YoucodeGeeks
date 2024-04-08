@@ -9,6 +9,7 @@
         "cloudinary-labs/cloudinary-laravel": "^2.1",
         "cviebrock/eloquent-sluggable": "^11.0",
         "laravel/framework": "^11.0",
+        "laravel/pulse": "^1.0@beta",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "silverhand7/laravel-artisan-maker": "^3.0",
@@ -67,6 +68,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "beta",
     "prefer-stable": true
 }

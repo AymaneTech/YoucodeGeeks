@@ -26,6 +26,11 @@ class UserController extends BaseApiController
     public function store(StoreUserRequest $request)
     {
         $user = $this->service->create($request->createDTO());
+        return $this->sendResponse(
+            message: "user created successfully",
+            result: $user,
+            code: 201
+        );
     }
 
     public function show(User $user)

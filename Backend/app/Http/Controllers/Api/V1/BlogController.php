@@ -13,8 +13,7 @@ class BlogController extends BaseApiController
 {
     public function __construct(
         public PostServiceInterface $service)
-    {
-    }
+    {}
 
     public function index(): JsonResponse
     {

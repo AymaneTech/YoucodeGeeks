@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Api\V1\Admin;
 
-use App\DTO\Requests\CategoryDTO;
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
-use App\Repositories\Contracts\CategoryRepositoryInterface;
-use App\Repositories\Contracts\ImageRepositoryInterface;
 use App\Services\Contracts\CategoryServiceInterface;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryController extends BaseApiController
 {
