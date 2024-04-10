@@ -1,10 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\V1\Admin\{CategoryController,
-    ClassRoomController,
-    ManageUsersController,
-    TagController,
-    UserController};
+use App\Http\Controllers\Api\V1\Admin\{CategoryController, ClassRoomController, ManageUsersController, TagController, UserController};
 use App\Http\Controllers\Api\V1\Auth\{AuthApiController, StudentRegisterController};
 use App\Http\Controllers\Api\V1\Student\{AnswerController, BlogController, CommentController, QuestionController};
 use App\Http\Middleware\{IsAdmin, IsGuest, IsLoggedIn, IsStudent};
@@ -12,14 +8,13 @@ use App\Models\ClassRoom;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
-    'middleware' => 'api',
-    'prefix' => IsGuest::class
+    'middleware' => IsGuest::class,
+    'prefix' => 'v1'
 ], static function ($router) {
     Route::post("register", [StudentRegisterController::class, "register"]);
     Route::post('login', [AuthApiController::class, "login"]);
     Route::post('logout', [AuthApiController::class, "logout"]);
-    Route::post('refresh', [AuthApiController::class, "refresh"]);
-});
+    Route::post('refresh', [AuthApiController::class, "refresh"]);});
 
 Route::group([
     "prefix" => "v1",
