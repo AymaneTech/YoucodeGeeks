@@ -42,3 +42,8 @@ Route::group([
 });
 
 Route::model('classroom', ClassRoom::class);
+
+
+Route::get("hey", function (){
+    return "hey";
+});
