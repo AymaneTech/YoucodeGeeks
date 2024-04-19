@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Models\Blog;
-use App\Models\Post;
 use App\Models\Question;
 use App\Repositories\Contracts\AnswerRepositoryInterface;
 use App\Repositories\Contracts\CategoryRepositoryInterface;

@@ -4,6 +4,7 @@ namespace App\Services\Implementations;
 
 use App\DTO\Requests\TagDTO;
 use App\Http\Resources\TagResource;
+use App\Models\Post;
 use App\Models\Tag;
 use App\Repositories\Contracts\TagRepositoryInterface;
 use App\Services\Contracts\TagServiceInterface;
@@ -36,5 +37,9 @@ class TagService implements TagServiceInterface
     public function delete(Tag $tag): bool
     {
         return $this->repository->delete($tag);
+    }
+    public function syncTags(Post $post, array $tags)
+    {
+        return $this->repository->syncTags($post, $tags);
     }
 }

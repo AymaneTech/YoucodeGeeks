@@ -18,8 +18,9 @@ class StudentRegisterController extends BaseApiController
     {
         try {
             $token = $this->action->handle($request->createDTO());
+            return "here";
             return $this->respondWithToken($token);
-        } catch (HttpResponseException $e) {
+        } catch (\Exception $e) {
             return $this->sendError(error: "could not create this user", errorMessages: [$e->getMessage()], code: 424);
         }
     }

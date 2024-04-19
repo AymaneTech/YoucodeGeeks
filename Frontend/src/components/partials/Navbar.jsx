@@ -1,5 +1,5 @@
 import { Bell, Moon, Search } from "lucide-react"
-import { Discord } from "../icons/Discord"
+// import { Discord } from "../icons/Discord"
 
 const Navbar = () => {
   return (
@@ -28,7 +28,7 @@ const Navbar = () => {
           <Moon />
         </li>
         <li className="transition duration-300 ease-in-out transform hover:scale-110">
-          <Discord />
+          {/* <Discord /> */}
         </li>
       </ul>
     </nav>

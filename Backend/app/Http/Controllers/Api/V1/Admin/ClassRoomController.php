@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreClassRequest;
-use App\Http\Resources\ClassRoomResource;
 use App\Models\ClassRoom;
 use App\Services\Contracts\ClassRoomServiceInterface;
 

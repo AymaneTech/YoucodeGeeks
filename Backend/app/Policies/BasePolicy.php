@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class BasePolicy
 {
-    public function before(User $user)
-    {
-        return $user->role_id === Role::ADMIN->value;
-    }
+
     public function create(User $user): bool
     {
         return $user->role_id === Role::STUDENT->value;

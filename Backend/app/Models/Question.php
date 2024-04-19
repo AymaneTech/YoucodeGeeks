@@ -13,4 +13,8 @@ class Question extends Post
     {
         return $this->belongsTo(Student::class, "author_id");
     }
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

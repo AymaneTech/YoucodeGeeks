@@ -22,7 +22,8 @@ class QuestionResource extends JsonResource
             "body" => $this->body,
             "category" => new CategoryResource($this->category),
             "images" => ImageResource::collection($this->images),
-            "author" => new AuthorResource($this->author)
+            "author" => new AuthorResource($this->author),
+            "tags" => $this->tags,
         ];
     }
 }

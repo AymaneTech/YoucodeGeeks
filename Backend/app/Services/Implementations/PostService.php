@@ -5,19 +5,22 @@ namespace App\Services\Implementations;
 use App\DTO\Requests\PostDTO;
 use App\Http\Resources\QuestionResource;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Repositories\Contracts\PostRepositoryInterface;
 use App\Services\Contracts\ImageServiceInterface;
 use App\Services\Contracts\PostServiceInterface;
+use App\Services\Contracts\TagServiceInterface;
 
 class PostService implements PostServiceInterface
 {
     public function __construct(
         public PostRepositoryInterface $repository,
         public ImageServiceInterface   $imageService,
+        public TagServiceInterface $tagService
     )
     {
     }
-
+        
     public function all()
     {
         return QuestionResource::collection($this->repository->all());
@@ -31,6 +34,7 @@ class PostService implements PostServiceInterface
     public function create(PostDTO $DTO): QuestionResource
     {
         $post = $this->repository->create($DTO);
+        $this->tagService->syncTags($post, $DTO->tags);
 //        $this->imageService->insert($post, $DTO->images);
 
         return new QuestionResource($post);
@@ -38,7 +42,9 @@ class PostService implements PostServiceInterface
 
     public function update(Post $post, PostDTO $DTO): bool
     {
-        return $this->repository->update($post, $DTO);
+        $this->repository->update($post, $DTO);
+        $this->tagService->syncTags($post, $DTO->tags);
+        return true;
     }
 
     public function delete(Post $post): bool

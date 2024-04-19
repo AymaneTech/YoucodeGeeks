@@ -44,6 +44,5 @@ Route::group([
 Route::model('classroom', ClassRoom::class);
 
 
-Route::get("hey", function (){
-    return "hey";
-});
+// helpers endpoint
+Route::get("v1/helpers/classrooms", [ClassRoomController::class, "index"]);

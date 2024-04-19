@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Implementations;
 
+use App\DTO\Requests\StudentDTO;
 use App\DTO\Requests\UserDTO;
 use App\Enums\Role;
 use App\Models\Admin;
@@ -22,7 +23,7 @@ class UserRepository implements UserRepositoryInterface
         return User::with("image", "role")->get();
     }
 
-    public function create(UserDTO $DTO)
+    public function create(UserDTO|StudentDTO $DTO)
     {
         try {
             if ($DTO->role === Role::ADMIN->value) {
@@ -67,9 +68,9 @@ class UserRepository implements UserRepositoryInterface
         }
     }
 
-    private function getArr(UserDTO $DTO): array
+    private function getArr(UserDTO|StudentDTO $DTO): array
     {
-        return [
+        $array = [
             "first_name" => $DTO->firstName,
             "last_name" => $DTO->lastName,
             "email" => $DTO->email,
@@ -77,5 +78,9 @@ class UserRepository implements UserRepositoryInterface
             "role_id" => $DTO->role,
             "is_verified" => $DTO->isVerified
         ];
+        if(property_exists($DTO, "className")){
+            $array["class_name"] = $DTO->className;
+        }
+        return $array;
     }
 }

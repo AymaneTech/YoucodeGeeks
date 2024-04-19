@@ -3,23 +3,23 @@
 namespace App\Actions;
 
 use App\DTO\Requests\StudentDTO;
-use App\DTO\Requests\UserDTO;
-use App\Models\Student;
+use App\Repositories\Implementations\UserRepository;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class CreateStudentAction
 {
+    public function __construct(public UserRepository $repository)
+    {
+    }
+
     public function handle(StudentDTO $DTO)
     {
-        $student = Student::create([
-            "first_name" => $DTO->firstName,
-            "last_name" => $DTO->lastName,
-            "email" => $DTO->email,
-            "class_name" => $DTO->className,
-            "password" => $DTO->password,
-            "role_id" => 1,
-        ]);
-
-        return auth()->login($student);
+        try {
+            $student = $this->repository->create($DTO);
+            return auth()->login($student);
+        } catch (JWTException $e) {
+            throw new JWTException("Could not create student");
+        }
     }
 
 }

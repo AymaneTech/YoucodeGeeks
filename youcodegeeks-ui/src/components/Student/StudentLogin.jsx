@@ -1,4 +1,3 @@
-import {z} from "zod"
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {
@@ -13,14 +12,16 @@ import {Button} from "@/components/ui/button.jsx";
 import {Input} from "@/components/ui/input.jsx";
 import {axiosClient} from "@/Api/axios.js";
 import {Loader} from "lucide-react";
+import {setToken} from "@/Helpers/auth.js";
+import {loginSchema} from "@/Validations/User.js";
+import {useNavigate} from "react-router-dom";
+import {STUDENT_HOME} from "@/Routes/index.jsx";
 
-const formSchema = z.object({
-    email: z.string().email().min(2).max(30),
-    password: z.string().min(6).max(30),
-})
 export const StudentLogin = () => {
+
+    const navigate = useNavigate();
     const form = useForm({
-        resolver: zodResolver(formSchema),
+        resolver: zodResolver(loginSchema),
         defaultValues: {
             email: "aymane@gmail.com",
             password: "password",
@@ -28,10 +29,12 @@ export const StudentLogin = () => {
     })
 
     const onSubmit = async values => {
-        const data = await axiosClient.post("login", values)
-            .then((response) =>
-                console.log(response)
-            ).catch(error =>
+         await axiosClient.post("login", values)
+            .then((response) => {
+                setToken(response.data.access_token);
+                navigate(STUDENT_HOME)
+            })
+            .catch(error =>
                 form.setError("email", {
                     message: error.response.data.message
                 })
@@ -39,9 +42,13 @@ export const StudentLogin = () => {
     };
 
     return (
-        <>
+        <div className="w-[500px] bg-gray-100 p-10 rounded-xl shadow-xl">
+            <div className="my-12 text-[#0F172A]">
+                <h1 className="font-bold text-3xl">Wlecome back Geek! </h1>
+                <p>please to enter the required informations to login</p>
+            </div>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                     <FormField
                         control={form.control}
                         name="email"
@@ -68,12 +75,12 @@ export const StudentLogin = () => {
                             </FormItem>
                         )}
                     />
-                    <Button disabled={ form.formState.isSubmitting } type="submit">
+                    <Button className="w-[100%]" disabled={form.formState.isSubmitting} type="submit">
                         {
-                            form.formState.isSubmitting && <Loader className="m-2 animate-spin" />
+                            form.formState.isSubmitting && <Loader className="m-2 animate-spin"/>
                         }Login</Button>
                 </form>
             </Form>
-        </>
+        </div>
     )
 }
