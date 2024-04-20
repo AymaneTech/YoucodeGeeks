@@ -20,7 +20,7 @@ class StoreQuestionRequest extends BaseFormRequest
             "body" => "required",
             "category_id" => "required",
             "tags" => "required",
-            "images" => "required | array"
+            "images" => "required | array",
         ];
     }
 

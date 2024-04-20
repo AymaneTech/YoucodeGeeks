@@ -3,6 +3,7 @@
 namespace App\Repositories\Contracts;
 
 use App\DTO\Requests\TagDTO;
+use App\Models\Post;
 use App\Models\Tag;
 
 interface TagRepositoryInterface
@@ -16,4 +17,6 @@ interface TagRepositoryInterface
     public function show(Tag $tag): Tag;
 
     public function delete(Tag $tag): bool;
+
+    public function syncTags(Post $post, array $tags);
 }

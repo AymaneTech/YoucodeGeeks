@@ -6,7 +6,9 @@ use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Requests\UpdateQuestionRequest;
 use App\Http\Resources\QuestionResource;
+use App\Models\Post;
 use App\Models\Question;
+use App\Models\Tag;
 use App\Services\Contracts\PostServiceInterface;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
@@ -14,10 +16,12 @@ use Illuminate\Http\JsonResponse;
 class QuestionController extends BaseApiController
 {
     use AuthorizesRequests;
+
     public function __construct(
         public PostServiceInterface $service,
     )
-    {}
+    {
+    }
 
     public function index(): JsonResponse
     {
@@ -40,8 +44,8 @@ class QuestionController extends BaseApiController
     public function show(Question $question): JsonResponse
     {
         return $this->sendResponse(
-            message: "",
-            result: new QuestionResource($this->service->show($question)),
+            message: null,
+            result: ($this->service->show($question)),
         );
     }
 

@@ -3,6 +3,7 @@
 namespace App\Services\Contracts;
 
 use App\DTO\Requests\TagDTO;
+use App\Models\Post;
 use App\Models\Tag;
 
 interface TagServiceInterface
@@ -16,5 +17,6 @@ interface TagServiceInterface
     public function update(Tag $tag, TagDTO $DTO);
 
     public function delete(Tag $tag);
+    public function syncTags(Post $post, array $tags);
 
 }

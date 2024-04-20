@@ -17,9 +17,9 @@ class StudentRegisterController extends BaseApiController
     public function register(StoreStudentRequest $request)
     {
         try {
-            $token = $this->action->handle($request->createDTO());
-            return $this->respondWithToken($token);
-        } catch (HttpResponseException $e) {
+            $result = $this->action->handle($request->createDTO());
+            return $this->respondWithToken($result["token"], $result["student"]);
+        } catch (\Exception $e) {
             return $this->sendError(error: "could not create this user", errorMessages: [$e->getMessage()], code: 424);
         }
     }

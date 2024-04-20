@@ -15,6 +15,7 @@ readonly class PostDTO
         public int $category_id,
         public array $images,
         public int $author_id,
+        public array $tags,
     )
     {}
     public static function fromRequest(StoreQuestionRequest|UpdateQuestionRequest $request): PostDTO
@@ -27,6 +28,7 @@ readonly class PostDTO
             category_id: $validatedData["category_id"],
             images: $validatedData["images"],
             author_id: JWTAuth::user()->id,
+            tags: $validatedData["tags"],
         );
     }
 

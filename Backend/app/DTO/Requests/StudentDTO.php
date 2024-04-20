@@ -12,7 +12,9 @@ readonly class StudentDTO
         public string $email,
         public string $password,
         public string $className,
-        public string $role,
+        public int $role,
+        public object $image,
+        public bool $isVerified
     ){}
 
     public static function fromRequest(StoreStudentRequest $request)
@@ -24,7 +26,9 @@ readonly class StudentDTO
             email: $validatedData['email'],
             password: $validatedData['password'],
             className: $validatedData["className"],
-            role: $validatedData['role']
+            role: 1,
+            image: $validatedData['image'],
+            isVerified: false,
         );
     }
 }

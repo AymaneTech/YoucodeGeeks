@@ -3,6 +3,7 @@
 namespace App\Repositories\Implementations;
 
 use App\DTO\Requests\TagDTO;
+use App\Models\Post;
 use App\Models\Tag;
 use App\Repositories\Contracts\TagRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
@@ -38,5 +39,16 @@ class TagRepository implements TagRepositoryInterface
     public function show(Tag $tag): Tag
     {
         return $tag;
+    }
+    public function syncTags(Post $post, array $tags)
+    {
+        $tagModels = collect($tags)
+            ->map(function ($tag) {
+                return Tag::firstOrCreate([
+                    'name' => $tag,
+                ]);
+            });
+
+        $post->tags()->sync($tagModels->pluck('id'));
     }
 }
