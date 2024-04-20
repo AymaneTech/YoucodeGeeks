@@ -1,5 +1,5 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
 import {
     Form,
     FormControl,
@@ -8,22 +8,22 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form.jsx";
-import { Button } from "@/components/ui/button.jsx";
-import { Input } from "@/components/ui/input.jsx";
-import { axiosClient } from "@/Api/axios.js";
-import { Loader } from "lucide-react";
-import { useEffect, useState } from "react";
-import { registerSchema } from "@/Validations/User.js";
-import { useDispatch, useSelector } from "react-redux";
-import { Register } from "@/Features/UserSlice.js";
-import { isAuthenticated } from "@/Helpers/auth.js";
-import { useNavigate } from "react-router-dom";
+import {Button} from "@/components/ui/button.jsx";
+import {Input} from "@/components/ui/input.jsx";
+import {Loader} from "lucide-react";
+import {useEffect, useState} from "react";
+import {registerSchema} from "@/Validations/User.js";
+import {useDispatch, useSelector} from "react-redux";
+import {Register} from "@/Features/UserSlice.js";
+import {isAuthenticated} from "@/Helpers/auth.js";
+import {useNavigate} from "react-router-dom";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.jsx";
+import {getClassrooms} from "@/Features/ClassRoomSlice.js";
 
 export const StudentRegister = () => {
-    const [classRooms, setClassRooms] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
-    const { response } = useSelector((state) => state.user);
+    const {response} = useSelector((state) => state.user);
+    const {classRooms} = useSelector((state) => state.classRooms);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -46,7 +46,7 @@ export const StudentRegister = () => {
         },
     });
 
-    const { control, handleSubmit, formState } = form;
+    const {control, handleSubmit, formState} = form;
 
     const onSubmit = async (values) => {
         const formData = new FormData();
@@ -62,23 +62,11 @@ export const StudentRegister = () => {
         await dispatch(Register(formData));
         if (isAuthenticated()) {
             navigate("/home");
-        }else {
-            console.log(response)
-
-        }
-    };
-
-    const getClassrooms = async () => {
-        try {
-            const response = await axiosClient.get("helpers/classrooms");
-            setClassRooms(response.data.data);
-        } catch (error) {
-            console.log(error.response.data.message);
         }
     };
 
     useEffect(() => {
-        getClassrooms();
+        dispatch(getClassrooms());
     }, []);
 
     return (
@@ -89,13 +77,13 @@ export const StudentRegister = () => {
             </div>
             <Form {...form}>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" encType="multipart/form-data">
-                    <input type="file" name="image" onChange={onImageChange} />
+                    <input type="file" name="image" onChange={onImageChange}/>
 
                     <div className="flex justify-between">
                         <FormField
                             control={control}
                             name="firstName"
-                            render={({ field }) => (
+                            render={({field}) => (
                                 <FormItem className="w-72">
                                     <FormLabel>First Name</FormLabel>
                                     <FormControl>
@@ -110,7 +98,7 @@ export const StudentRegister = () => {
                         <FormField
                             control={control}
                             name="lastName"
-                            render={({ field }) => (
+                            render={({field}) => (
                                 <FormItem className="w-72">
                                     <FormLabel>Last Name</FormLabel>
                                     <FormControl>
@@ -127,7 +115,7 @@ export const StudentRegister = () => {
                     <FormField
                         control={control}
                         name="email"
-                        render={({ field }) => (
+                        render={({field}) => (
                             <FormItem>
                                 <FormLabel>Email</FormLabel>
                                 <FormControl>
@@ -146,7 +134,8 @@ export const StudentRegister = () => {
                         <Select>
                             <FormLabel className="block">Class Room</FormLabel>
                             <SelectTrigger className="" disabled={classRooms.length === 0}>
-                                <SelectValue placeholder={classRooms.length > 0 ? classRooms[0].name : "Select a class"} />
+                                <SelectValue
+                                    placeholder={classRooms.length > 0 ? classRooms[0].name : "Select a class"}/>
                             </SelectTrigger>
                             <SelectContent>
                                 {classRooms.map((classRoom) => (
@@ -162,7 +151,7 @@ export const StudentRegister = () => {
                         <FormField
                             control={control}
                             name="password"
-                            render={({ field }) => (
+                            render={({field}) => (
                                 <FormItem className="w-72">
                                     <FormLabel>Password</FormLabel>
                                     <FormControl>
@@ -177,7 +166,7 @@ export const StudentRegister = () => {
                         <FormField
                             control={control}
                             name="password_confirmation"
-                            render={({ field }) => (
+                            render={({field}) => (
                                 <FormItem className="w-72">
                                     <FormLabel>Confirm Password</FormLabel>
                                     <FormControl>
@@ -192,7 +181,7 @@ export const StudentRegister = () => {
                     </div>
 
                     <Button className="w-[100%]" disabled={formState.isSubmitting} type="submit">
-                        {formState.isSubmitting && <Loader className="m-2 animate-spin" />}
+                        {formState.isSubmitting && <Loader className="m-2 animate-spin"/>}
                         Register
                     </Button>
                 </form>
