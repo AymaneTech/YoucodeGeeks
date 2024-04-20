@@ -1,4 +1,4 @@
-    import {StudentRegister} from "@/components/Student/StudentRegister.jsx";
+    import {StudentRegister} from "@/components/Authentication/StudentRegister.jsx";
 
 export const Register = () => {
     return (
