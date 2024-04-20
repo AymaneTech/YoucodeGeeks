@@ -22,6 +22,23 @@ export const Login = createAsyncThunk(
     }
 );
 
+export const Register = createAsyncThunk(
+    "user/register",
+    async (userCredentials, {rejectWithValue}) => {
+        try {
+            const response = await axiosClient.post("register", userCredentials, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            setToken(response.data.access_token);
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+
 const userSlice = createSlice({
     name: "user",
     initialState,
@@ -41,7 +58,24 @@ const userSlice = createSlice({
                 state.loading = false;
                 state.error = "Incorrect Information";
                 state.response = action.payload;
+            });
+        builder
+            .addCase(Register.pending, (state) => {
+                state.loading = true;
+                state.error = "";
             })
+            .addCase(Register.fulfilled, (state, action) => {
+                state.loading = false;
+                state.user = action.payload.user;
+                state.error = "";
+                state.response = "";
+            })
+            .addCase(Register.rejected, (state, action) => {
+                state.loading = false;
+                state.error = "Incorrect Information";
+                state.response = action.payload.errors;
+            });
+
     }
 })
 

@@ -16,7 +16,7 @@ class StoreStudentRequest extends BaseFormRequest
             "email" => "required|email|unique:students",
             "password" => "required|confirmed",
             "className" => "required",
-            "image" => "required"
+            "image" => "required|image"
         ];
     }
     public function createDTO()

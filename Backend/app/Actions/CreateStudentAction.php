@@ -16,7 +16,10 @@ class CreateStudentAction
     {
         try {
             $student = $this->repository->create($DTO);
-            return auth()->login($student);
+            return [
+                "token" => auth()->login($student),
+                "student" => $student
+            ];
         } catch (JWTException $e) {
             throw new JWTException("Could not create student");
         }

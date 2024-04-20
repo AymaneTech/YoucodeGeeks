@@ -14,7 +14,7 @@ export const StudentLogin = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {error} = useSelector((state) => state.user);
+    const {response} = useSelector((state) => state.user);
     const form = useForm({
         resolver: zodResolver(loginSchema), defaultValues: {
             email: "aymane@gmail.com", password: "password",
@@ -44,7 +44,7 @@ export const StudentLogin = () => {
                             <Input placeholder="email" {...field} />
                         </FormControl>
                         <FormMessage>
-                            {error && error}
+                            {response && response}
                         </FormMessage>
                     </FormItem>)}
                 />
