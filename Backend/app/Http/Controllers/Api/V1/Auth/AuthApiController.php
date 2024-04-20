@@ -15,7 +15,7 @@ class AuthApiController extends BaseApiController
     public function login(LoginUserRequest $request)
     {
         $credentials = $request->validated();
-        try {
+        try  {
             if (!$token = JWTAuth::attempt($credentials)) {
                 return $this->sendError(error: "Invalid credentials", code: 401);
             }
@@ -37,6 +37,6 @@ class AuthApiController extends BaseApiController
 
     public function refresh(): JsonResponse
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithToken(auth()->refresh(), auth()->user());
     }
 }
