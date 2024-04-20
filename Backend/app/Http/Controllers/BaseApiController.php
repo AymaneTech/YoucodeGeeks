@@ -31,12 +31,13 @@ class BaseApiController extends Controller
         }
         return response()->json($response, $code);
     }
-    protected function respondWithToken($token): JsonResponse
+    protected function respondWithToken($token, $user): JsonResponse
     {
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'user' => $user
         ], );
     }
 }

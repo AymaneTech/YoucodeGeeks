@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api\V1\Auth;
 
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\LoginUserRequest;
+use App\Http\Resources\UserResource;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -14,13 +16,16 @@ class AuthApiController extends BaseApiController
     {
         $credentials = $request->validated();
         try {
-            if (! $token = JWTAuth::attempt($credentials)) {
+            if (!$token = JWTAuth::attempt($credentials)) {
                 return $this->sendError(error: "Invalid credentials", code: 401);
             }
         } catch (JWTException $e) {
-            return $this->sendError(error: "Could not create token", code: 500, );
+            return $this->sendError(error: "Could not create token", code: 500,);
         }
-        return $this->respondWithToken($token);
+        $user = new UserResource(
+            User::where("email", $credentials["email"])->first()
+        );
+        return $this->respondWithToken($token, $user);
     }
 
     public function logout(): JsonResponse
