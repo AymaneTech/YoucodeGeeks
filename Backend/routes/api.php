@@ -46,3 +46,4 @@ Route::model('classroom', ClassRoom::class);
 
 // helpers endpoint
 Route::get("v1/helpers/classrooms", [ClassRoomController::class, "index"]);
+Route::get("v1/helpers/categories", [CategoryController::class, "index"]);

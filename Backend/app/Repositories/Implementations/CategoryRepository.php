@@ -11,7 +11,9 @@ class  CategoryRepository implements CategoryRepositoryInterface
 {
     public function all(): Collection|array
     {
-        return Category::with("image")->get();
+        return Category::with("image")
+        ->withCount("blogs", "questions")
+        ->get();
     }
 
     public function create(CategoryDTO $DTO): Category

@@ -17,6 +17,12 @@ class Category extends Model
     {
         return $this->morphOne(Image::class, "imageable");
     }
+    public function blogs (){
+        return $this->hasMany(Blog::class);
+    }
+    public function questions(){
+        return $this->hasMany(Question::class);
+    }
 
     public function getRouteKeyName()
     {
