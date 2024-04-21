@@ -15,3 +15,9 @@ axiosClient.interceptors.request.use((config) => {
 }, (error) => {
     return Promise.reject(error);
 });
+
+export const formDataConfig = {
+    headers: {
+        "Content-Type": "multipart/form-data",
+    },
+}

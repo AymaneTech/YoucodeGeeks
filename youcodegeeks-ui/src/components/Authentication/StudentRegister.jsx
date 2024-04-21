@@ -15,7 +15,7 @@ import {useEffect, useState} from "react";
 import {registerSchema} from "@/Validations/User.js";
 import {useDispatch, useSelector} from "react-redux";
 import {Register} from "@/Features/UserSlice.js";
-import {isAuthenticated} from "@/Helpers/auth.js";
+import {isAuthenticated} from "@/Helpers/functions.js";
 import {useNavigate} from "react-router-dom";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.jsx";
 import {getClassrooms} from "@/Features/ClassRoomSlice.js";

@@ -1,25 +1,25 @@
-import {Button} from "@/components/ui/button"
 import {
     Dialog, DialogClose,
     DialogContent,
-    DialogDescription,
-    DialogFooter,
+    DialogDescription, DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog"
-import {Input} from "@/components/ui/input"
-import {Label} from "@/components/ui/label"
-import {useForm} from "react-hook-form";
-import {zodResolver} from "@hookform/resolvers/zod";
+    DialogTrigger
+} from "@/components/ui/dialog.jsx";
+import {Button} from "@/components/ui/button.jsx";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form.jsx";
-import {createCategorySchema} from "@/Validations/Category.js";
+import {Input} from "@/components/ui/input.jsx";
+import {Label} from "@/components/ui/label.jsx";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {createCategorySchema} from "@/Validations/Category.js";
 import {createCategory} from "@/Features/CategorySlice.js";
+import {AiOutlineEdit} from "react-icons/ai";
+import {Pencil} from "lucide-react";
 
-export const CategoryCreate = () => {
-
+export const CategoryEdit = ({id}) => {
     const [imageValue, setImageValue] = useState();
     const dispatch = useDispatch()
 
@@ -40,7 +40,7 @@ export const CategoryCreate = () => {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline" className="bg-blue-600">Add Category</Button>
+                <Button variant="none" className="m-0 p-0"><Pencil /></Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>

@@ -33,10 +33,10 @@ class CategoryController extends BaseApiController
 
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $this->service->update($category, $request->createDTO());
+        $newCategory = $this->service->update($category, $request->createDTO());
         return $this->sendResponse(
             message: "Category updated successfully",
-            result: new CategoryResource($category),
+            result: $newCategory,
             code: 200
         );
     }
