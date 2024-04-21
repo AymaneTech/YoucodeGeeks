@@ -24,4 +24,5 @@ class UpdateCategoryRequest extends BaseFormRequest
     {
         return CategoryDTO::fromRequest($this);
     }
+
 }

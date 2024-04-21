@@ -14,14 +14,14 @@ export const Categories = () => {
     }, []);
 
     return (
-        <div className="border p-4 rounded-xl border-gray-200">
-            <div className="flex justify-between">
-                <h2 className="text-3xl font-semibold">Categories</h2>
+        <>
+            <div className="flex justify-between my-4">
+                <h2 className="text-3xl font-semibold">Manage Categories</h2>
                 <CategoryCreate/>
             </div>
             <div>
-               <DataTable data={categories} columns={getCategoriesColumns()} />
+                <DataTable data={categories} columns={getCategoriesColumns()}/>
             </div>
-        </div>
+        </>
     )
 }

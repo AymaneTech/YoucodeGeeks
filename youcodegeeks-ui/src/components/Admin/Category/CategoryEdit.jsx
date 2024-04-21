@@ -10,22 +10,21 @@ import {Button} from "@/components/ui/button.jsx";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form.jsx";
 import {Input} from "@/components/ui/input.jsx";
 import {Label} from "@/components/ui/label.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {createCategorySchema} from "@/Validations/Category.js";
-import {createCategory} from "@/Features/CategorySlice.js";
-import {AiOutlineEdit} from "react-icons/ai";
+import {createCategorySchema} from "@/Validations/Admin.js";
+import {updateCategory} from "@/Features/CategorySlice.js";
 import {Pencil} from "lucide-react";
 
-export const CategoryEdit = ({id}) => {
+export const CategoryEdit = ({category}) => {
     const [imageValue, setImageValue] = useState();
     const dispatch = useDispatch()
 
     const form = useForm({
         resolver: zodResolver(createCategorySchema), defaultValues: {
-            name: "web development", image: null,
+            name: category.name, image: null,
         },
     })
     const handleImage = (e) => {
@@ -35,17 +34,20 @@ export const CategoryEdit = ({id}) => {
         const formData = new FormData();
         formData.append("image", imageValue);
         formData.append("name", values.name);
-        dispatch(createCategory(formData))
+        dispatch(updateCategory({slug: category.slug, formData}))
     }
+    useEffect(() => {
+        console.log(category)
+    }, []);
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="none" className="m-0 p-0"><Pencil /></Button>
+                <Button variant="none" className="m-0 p-0"><Pencil/></Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Add New Category</DialogTitle>
-                    <DialogDescription>Fill out the details for the new category.</DialogDescription>
+                    <DialogTitle>Update this Category Category</DialogTitle>
+                    <DialogDescription>Update the category details.</DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4 py-4">
@@ -55,7 +57,7 @@ export const CategoryEdit = ({id}) => {
                             render={({field}) => (<FormItem>
                                 <FormLabel>Name</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="name" {...field} />
+                                    <Input {...field} />
                                 </FormControl>
                                 <FormMessage></FormMessage>
                             </FormItem>)}

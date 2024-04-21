@@ -1,9 +1,5 @@
-import {Button} from "@/components/ui/button.jsx";
-import {MoreHorizontal} from "lucide-react";
-import {
-    DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu.jsx";
 import {CategoryEdit} from "@/components/Admin/Category/CategoryEdit.jsx";
+import {CategoryDelete} from "@/components/Admin/Category/CategoryDelete.jsx";
 
 export const getCategoriesColumns = () => [
     {
@@ -27,9 +23,9 @@ export const getCategoriesColumns = () => [
     },
     {
         id: "actions", cell: ({row}) => (
-            <div className="flex space-x-1.5">
-                <CategoryEdit id={row.original.id}/>
-                <CategoryEdit id={row.original.id}/>
+            <div className="flex gap-4  ">
+                <CategoryEdit category={row.original}/>
+                <CategoryDelete slug={row.original.slug}/>
             </div>
         )
     }

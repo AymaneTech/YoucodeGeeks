@@ -7,6 +7,7 @@ import {NotFound} from "../Pages/NotFound.jsx";
 import {GuestLayout} from "@/Layout/GuestLayout.jsx";
 import {DashboardLayout} from "@/Layout/DashboardLayout.jsx";
 import {Categories} from "@/Pages/Admin/Categories.jsx";
+import {Tags} from "@/Pages/Admin/Tags.jsx";
 
 export const LOGIN_ROUTE = "/login"
 export const STUDENT_HOME = "/home"
@@ -21,6 +22,18 @@ export const routes = createBrowserRouter([
                 {
                   path: "/dashboard/categories",
                   element: <Categories/>
+                },
+                {
+                    path: "/dashboard/tags",
+                    element: <Tags/>
+                },
+                {
+                    path: "/dashboard/categories",
+                    element: <Categories/>
+                },
+                {
+                    path: "/dashboard/categories",
+                    element: <Categories/>
                 }
             ]
         },
