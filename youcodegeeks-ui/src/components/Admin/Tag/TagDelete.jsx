@@ -1,15 +1,15 @@
 import {Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog.jsx";
 import {Button} from "@/components/ui/button.jsx";
 import {useDispatch} from "react-redux";
-import {deleteCategory} from "@/Features/CategorySlice.js";
 import {Trash} from "lucide-react";
+import {deleteTag} from "@/Features/TagsSlice.js";
 
 export const TagDelete = ({slug}) => {
 
     const dispatch = useDispatch();
     const onSubmit = async (e) => {
         e.preventDefault()
-        await dispatch(deleteCategory(slug))
+        await dispatch(deleteTag(slug))
     }
     return (
         <Dialog>

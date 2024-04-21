@@ -9,36 +9,27 @@ import {
 import {Button} from "@/components/ui/button.jsx";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form.jsx";
 import {Input} from "@/components/ui/input.jsx";
-import {Label} from "@/components/ui/label.jsx";
 import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {createCategorySchema} from "@/Validations/Admin.js";
-import {updateCategory} from "@/Features/CategorySlice.js";
+import { createTagSchema } from "@/Validations/Admin.js";
 import {Pencil} from "lucide-react";
+import {updateTag} from "@/Features/TagsSlice.js";
 
-export const TagEdit = ({category}) => {
-    const [imageValue, setImageValue] = useState();
+export const TagEdit = ({tag}) => {
     const dispatch = useDispatch()
 
     const form = useForm({
-        resolver: zodResolver(createCategorySchema), defaultValues: {
-            name: category.name, image: null,
+        resolver: zodResolver(createTagSchema), defaultValues: {
+            name: tag.name,
         },
     })
-    const handleImage = (e) => {
-        setImageValue(e.target.files[0])
-    }
     const onSubmit = async (values) => {
-        const formData = new FormData();
-        formData.append("image", imageValue);
-        formData.append("name", values.name);
-        dispatch(updateCategory({slug: category.slug, formData}))
+        console.log(values)
+        dispatch(updateTag({slug: tag.slug, data: values}))
     }
-    useEffect(() => {
-        console.log(category)
-    }, []);
+
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -46,8 +37,8 @@ export const TagEdit = ({category}) => {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Update this Category Category</DialogTitle>
-                    <DialogDescription>Update the category details.</DialogDescription>
+                    <DialogTitle>Update this Tag</DialogTitle>
+                    <DialogDescription>Update the tag details.</DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4 py-4">
@@ -62,15 +53,9 @@ export const TagEdit = ({category}) => {
                                 <FormMessage></FormMessage>
                             </FormItem>)}
                         />
-                        <div className="flex flex-col items-start gap-3">
-                            <Label className="text-right" htmlFor="image">
-                                Image
-                            </Label>
-                            <input type="file" name="image" onChange={handleImage}/>
-                        </div>
                         <DialogFooter>
                             <DialogClose asChild>
-                                <Button type="submit">Save Category</Button>
+                                <Button type="submit">Save Tag</Button>
                             </DialogClose>
                         </DialogFooter>
                     </form>

@@ -1,5 +1,5 @@
 import DataTable from "@/components/DataTable/DataTable.jsx";
-import {getCategoriesColumns} from "@/components/DataTable/GetCategoriesColumns.jsx";
+import {columns} from "@/components/DataTable/Columns.jsx";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getCategories} from "@/Features/CategorySlice.js";
@@ -20,7 +20,7 @@ export const Categories = () => {
                 <CategoryCreate/>
             </div>
             <div>
-                <DataTable data={categories} columns={getCategoriesColumns()}/>
+                <DataTable data={categories} columns={columns()}/>
             </div>
         </>
     )

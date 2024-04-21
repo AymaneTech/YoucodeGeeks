@@ -14,6 +14,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form.jsx";
 import {createTagSchema} from "@/Validations/Admin.js";
 import {useDispatch} from "react-redux";
+import {createTag} from "@/Features/TagsSlice.js";
 
 export const TagCreate = () => {
 
@@ -25,7 +26,7 @@ export const TagCreate = () => {
         },
     })
     const onSubmit = async (values) => {
-        console.log(values)
+        dispatch(createTag(values))
     }
     return (
         <Dialog>

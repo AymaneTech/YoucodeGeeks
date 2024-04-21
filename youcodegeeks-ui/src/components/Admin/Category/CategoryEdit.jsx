@@ -36,9 +36,7 @@ export const CategoryEdit = ({category}) => {
         formData.append("name", values.name);
         dispatch(updateCategory({slug: category.slug, formData}))
     }
-    useEffect(() => {
-        console.log(category)
-    }, []);
+
     return (
         <Dialog>
             <DialogTrigger asChild>

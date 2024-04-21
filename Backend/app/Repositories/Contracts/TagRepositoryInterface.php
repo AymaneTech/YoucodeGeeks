@@ -12,7 +12,7 @@ interface TagRepositoryInterface
 
     public function create(TagDTO $DTO): Tag;
 
-    public function update(Tag $tag, TagDTO $DTO): bool;
+    public function update(Tag $tag, TagDTO $DTO): Tag;
 
     public function show(Tag $tag): Tag;
 
