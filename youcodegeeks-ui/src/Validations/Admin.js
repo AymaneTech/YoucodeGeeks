@@ -1,4 +1,4 @@
-import {object, string, any} from "zod";
+import {object, string, any, number} from "zod";
 
 export const createCategorySchema = object({
     name: string().min(2).max(30),
@@ -7,4 +7,10 @@ export const createCategorySchema = object({
 
 export const createTagSchema = object({
     name: string().min(2).max(30),
+})
+
+export const classRoomSchema = object({
+    name: string().min(2).max(30),
+    campusId: number(),
+    schoolYear: string(),
 })

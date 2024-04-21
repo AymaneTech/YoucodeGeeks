@@ -3,7 +3,7 @@ import {CategoryDelete} from "@/components/Admin/Category/CategoryDelete.jsx";
 import {TagEdit} from "@/components/Admin/Tag/TagEdit.jsx";
 import {TagDelete} from "@/components/Admin/Tag/TagDelete.jsx";
 
-export const columns = () => [
+export const categoriescolumns = () => [
     {
         accessorKey: "image", header: "Image", cell: info => {
             const imageData = info.getValue();
@@ -33,7 +33,7 @@ export const columns = () => [
     }
 ]
 
-export const getTagsColumns = () => [
+export const tagsColumns = () => [
     {
         accessorKey: "id", header: "ID"
     },
@@ -41,10 +41,26 @@ export const getTagsColumns = () => [
         accessorKey: "name", header: "Name"
     },
     {
-        accessorKey: "blogsNumber", header: "Blogs Number"
+        id: "actions", cell: ({row}) => (
+            <div className="flex gap-4  ">
+                <TagEdit tag={row.original}/>
+                <TagDelete slug={row.original.slug}/>
+            </div>
+        )
+    }
+]
+export const classRoomssColumns = () => [
+    {
+        accessorKey: "id", header: "ID"
     },
     {
-        accessorKey: "questionsNumber", header: "Questions Number"
+        accessorKey: "name", header: "Name"
+    },
+    {
+        accessorKey: "campus.name", header: "Campus Name"
+    },
+    {
+        accessorKey: "schoolYear", header: "school year"
     },
     {
         id: "actions", cell: ({row}) => (

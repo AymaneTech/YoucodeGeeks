@@ -1,6 +1,11 @@
 <?php
 
-use App\Http\Controllers\Api\V1\Admin\{CategoryController, ClassRoomController, ManageUsersController, TagController, UserController};
+use App\Http\Controllers\Api\V1\Admin\{CampusController,
+    CategoryController,
+    ClassRoomController,
+    ManageUsersController,
+    TagController,
+    UserController};
 use App\Http\Controllers\Api\V1\Auth\{AuthApiController, StudentRegisterController};
 use App\Http\Controllers\Api\V1\Student\{AnswerController, BlogController, CommentController, QuestionController};
 use App\Http\Middleware\{IsAdmin, IsGuest, IsLoggedIn, IsStudent};
@@ -25,6 +30,7 @@ Route::group([
         "classrooms" => ClassRoomController::class,
         "categories" => CategoryController::class,
         "tags" => TagController::class,
+        "campuses" => CampusController::class,
     ]);
     Route::get("verify/{user}", [ManageUsersController::class, "verify"]);
 })->name("dashboard");

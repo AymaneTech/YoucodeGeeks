@@ -16,7 +16,7 @@ class StoreClassRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => "required",
+            "name" => "required|unique:class_rooms,name",
             "schoolYear" => "required",
             "campusId" => "required"
         ];

@@ -1,7 +1,7 @@
 import {TagCreate} from "@/components/Admin/Tag/TagCreate.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import DataTable from "@/components/DataTable/DataTable.jsx";
-import {getTagsColumns} from "@/components/DataTable/Columns.jsx";
+import {tagsColumns} from "@/components/DataTable/Columns.jsx";
 import {useEffect} from "react";
 import {getTags} from "@/Features/TagsSlice.js";
 
@@ -18,7 +18,7 @@ export const Tags = () => {
                 <TagCreate/>
             </div>
             <div>
-                <DataTable data={tags} columns={getTagsColumns()}/>
+                <DataTable data={tags} columns={tagsColumns()}/>
             </div>
         </>
     )

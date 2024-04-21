@@ -17,7 +17,8 @@ export const getClassrooms = createAsyncThunk(
             return rejectWithValue(error.response.data.message);
         }
     }
-)
+);
+
 const classRoomsSlice = createSlice({
     name: "classrooms",
     initialState,

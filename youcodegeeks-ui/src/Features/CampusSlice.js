@@ -1,93 +1,93 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {axiosClient, formDataConfig} from "@/Api/axios.js";
+import {axiosClient} from "@/Api/axios.js";
 
 const initialState = {
-    categories: [], loading: false, error: "", response: ""
+    campus: [], loading: false, error: "", response: ""
 }
 
-export const createCategory = createAsyncThunk("category/create", async (data, rejectWithValue) => {
+export const createCampus = createAsyncThunk("campus/create", async (data, rejectWithValue) => {
     try {
-        const response = await axiosClient.post("categories", data, formDataConfig);
+        const response = await axiosClient.post("campus", data);
         return response.data.data;
     } catch (error) {
         return rejectWithValue(error.return.data.message);
     }
 })
-export const updateCategory = createAsyncThunk("category/update", async (data, rejectWithValue) => {
+export const updateCampus = createAsyncThunk("category/update", async (data, rejectWithValue) => {
     try {
-        const response = await axiosClient.patch(`categories/${data.slug}`, data.formData, formDataConfig);
+        const response = await axiosClient.patch(`campus/${data.slug}`, data.formData, formDataConfig);
         return response.data.data;
     } catch (error) {
         console.log(error.response.data.errors);
         return rejectWithValue(error.response.data.errors);
     }
 });
-export const deleteCategory = createAsyncThunk("category/delete", async (slug, rejectWithValue) => {
+export const deleteCampus = createAsyncThunk("category/delete", async (slug, rejectWithValue) => {
     try {
-        axiosClient.delete("categories/" + slug);
+        axiosClient.delete("campus/" + slug);
         return slug;
     }catch (error) {
         return rejectWithValue(error.response.data.message);
     }
 })
 
-export const getCategories = createAsyncThunk("categories/get", async (rejectWithValue) => {
+export const getCampus = createAsyncThunk("campus/get", async (rejectWithValue) => {
     try {
-        const response = await axiosClient.get("categories");
+        const response = await axiosClient.get("campus");
         return response.data.data;
     } catch (error) {
         return rejectWithValue(error.response.data.message);
     }
 })
 
-const categoriesSlice = createSlice({
-    name: "categories", initialState, extraReducers: (builder) => {
+const campusSlice = createSlice({
+    name: "campus", initialState, extraReducers: (builder) => {
         builder
-            .addCase(getCategories.pending, (state) => {
+            .addCase(getCampus.pending, (state) => {
                 state.loading = true;
                 state.error = "";
             })
-            .addCase(getCategories.fulfilled, (state, action) => {
+            .addCase(getCampus.fulfilled, (state, action) => {
                 state.loading = false;
-                state.categories = action.payload;
+                state.campus = action.payload;
                 state.error = "";
                 state.response = "";
             })
-            .addCase(getCategories.rejected, (state, action) => {
+            .addCase(getCampus.rejected, (state, action) => {
                 console.log("rejected");
                 state.loading = false;
                 state.error = "Incorrect Information";
                 state.response = action.payload;
             });
         builder
-            .addCase(createCategory.pending, (state) => {
+            .addCase(createCampus.pending, (state) => {
                 state.loading = true;
                 state.error = "";
             })
-            .addCase(createCategory.fulfilled, (state, action) => {
+            .addCase(createCampus.fulfilled, (state, action) => {
                 state.loading = false;
-                state.categories = [...state.categories, action.payload];
+                state.campus = [...state.campus, action.payload];
                 state.error = "";
                 state.response = "";
             })
-            .addCase(createCategory.rejected, (state, action) => {
+            .addCase(createCampus.rejected, (state, action) => {
                 console.log("rejected");
                 state.loading = false;
                 state.error = "Incorrect Information";
                 state.response = action.payload;
             });
         builder
-            .addCase(deleteCategory.pending, (state) => {
+            .addCase(deleteCampus.pending, (state) => {
                 state.loading = true;
                 state.error = "";
             })
-            .addCase(deleteCategory.fulfilled, (state, action) => {
+            .addCase(deleteCampus.fulfilled, (state, action) => {
                 state.loading = false;
-                state.categories = state.categories.filter(c => c.slug !== action.payload),
-                state.error = "";
+                state.campus = state.campus.filter(c => c.slug !== action.payload),
+                    state.error = "";
                 state.response = "";
             })
-            .addCase(deleteCategory.rejected, (state, action) => {
+            .addCase(deleteCampus.rejected, (state, action) => {
                 console.log("rejected");
                 state.loading = false;
                 state.error = "operation rejected";
@@ -95,4 +95,4 @@ const categoriesSlice = createSlice({
             })
     }
 })
-export default categoriesSlice.reducer
+export default campusSlice.reducer
