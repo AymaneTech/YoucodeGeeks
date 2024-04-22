@@ -7,15 +7,15 @@ const initialState = {
 
 export const createCampus = createAsyncThunk("campus/create", async (data, rejectWithValue) => {
     try {
-        const response = await axiosClient.post("campus", data);
+        const response = await axiosClient.post("campuses", data);
         return response.data.data;
     } catch (error) {
-        return rejectWithValue(error.return.data.message);
+        return rejectWithValue(error.return.data.errors);
     }
 })
 export const updateCampus = createAsyncThunk("category/update", async (data, rejectWithValue) => {
     try {
-        const response = await axiosClient.patch(`campus/${data.slug}`, data.formData, formDataConfig);
+        const response = await axiosClient.patch(`campuses/${data.slug}`, data.formData, formDataConfig);
         return response.data.data;
     } catch (error) {
         console.log(error.response.data.errors);
@@ -24,7 +24,7 @@ export const updateCampus = createAsyncThunk("category/update", async (data, rej
 });
 export const deleteCampus = createAsyncThunk("category/delete", async (slug, rejectWithValue) => {
     try {
-        axiosClient.delete("campus/" + slug);
+        axiosClient.delete("campuses/" + slug);
         return slug;
     }catch (error) {
         return rejectWithValue(error.response.data.message);
@@ -33,7 +33,7 @@ export const deleteCampus = createAsyncThunk("category/delete", async (slug, rej
 
 export const getCampus = createAsyncThunk("campus/get", async (rejectWithValue) => {
     try {
-        const response = await axiosClient.get("campus");
+        const response = await axiosClient.get("campuses");
         return response.data.data;
     } catch (error) {
         return rejectWithValue(error.response.data.message);
@@ -54,7 +54,8 @@ const campusSlice = createSlice({
                 state.response = "";
             })
             .addCase(getCampus.rejected, (state, action) => {
-                console.log("rejected");
+                console.log("get campus rejected");
+                console.log(action.payload)
                 state.loading = false;
                 state.error = "Incorrect Information";
                 state.response = action.payload;

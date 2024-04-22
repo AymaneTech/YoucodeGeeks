@@ -12,44 +12,34 @@ import {Input} from "@/components/ui/input"
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form.jsx";
-import {createTagSchema} from "@/Validations/Admin.js";
 import {useDispatch} from "react-redux";
-import {createTag} from "@/Features/TagsSlice.js";
 import {useEffect} from "react";
+import {getCampus} from "@/Features/CampusSlice.js";
+import {classRoomSchema} from "@/Validations/Admin.js";
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue
+} from "@/components/ui/select.jsx";
+import * as classRooms from "zod";
+import {ClassroomsSelect} from "@/components/Partials/ClassroomsSelect.jsx";
 
 export const ClassRoomCreate = () => {
 
     const dispatch = useDispatch()
 
     const form = useForm({
-        resolver: zodResolver(createTagSchema), defaultValues: {
+        resolver: zodResolver(classRoomSchema), defaultValues: {
             name: "blockchain",
             schoolYear: "",
             campusId: null
         },
     })
-    const onSubmit = async (values) => {
-        dispatch(createTag(values))
-    }
-    useEffect(() => {
-        dispatch(getCampus())
-    }, []);
-    return (
-        <Dialog>
-            <DialogTrigger asChild>
-                <Button variant="outline" className="bg-blue-600">Add Tag</Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-                <DialogHeader>
-                    <DialogTitle>Add New Tag</DialogTitle>
-                    <DialogDescription>Fill out the details for the new tag.</DialogDescription>
-                </DialogHeader>
-                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4 py-4">
-                        <FormField
-                            control={form.control}
-                            name="name"
-                            render={({field}) => (<FormItem>
+    // TODO: complete this boring shit
                                 <FormLabel>Name</FormLabel>
                                 <FormControl>
                                     <Input placeholder="name" {...field} />
@@ -57,10 +47,23 @@ export const ClassRoomCreate = () => {
                                 <FormMessage></FormMessage>
                             </FormItem>)}
                         />
-
+                        <ClassroomsSelect/>
+                        <Select>
+                            <SelectTrigger>
+                                <SelectValue placeholder="Select a School Year" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    <SelectLabel>School Year</SelectLabel>
+                                    <SelectItem value="first_year">First Year</SelectItem>
+                                    <SelectItem value="second_year">Second Year</SelectItem>
+                                    <SelectItem value="old_school">Old School</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
                         <DialogFooter>
                             <DialogClose asChild>
-                                <Button type="submit">Save Tag</Button>
+                                <Button type="submit">Save Class ROom</Button>
                             </DialogClose>
                         </DialogFooter>
                     </form>

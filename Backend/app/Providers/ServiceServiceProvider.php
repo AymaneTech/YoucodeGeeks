@@ -13,6 +13,7 @@ use App\Services\Contracts\{AnswerServiceInterface,
     UploadImageInterface,
     UserServiceInterface};
 use App\Services\Implementations\{AnswerService,
+    CampusService,
     CategoryService,
     ClassRoomService,
     CommentService,
@@ -45,6 +46,6 @@ class ServiceServiceProvider extends ServiceProvider
         app()->bind(AnswerServiceInterface::class, AnswerService::class);
         app()->bind(CommentServiceInterface::class, CommentService::class);
         app()->bind(UserServiceInterface::class, UserService::class);
-        app()->bind(CampusServiceInterface::class, CampusServiceInterface::class);
+        app()->bind(CampusServiceInterface::class, CampusService::class);
     }
 }
