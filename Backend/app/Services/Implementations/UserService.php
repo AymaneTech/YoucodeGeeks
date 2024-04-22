@@ -6,12 +6,14 @@ use App\DTO\Requests\UserDTO;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryInterface;
+use App\Services\Contracts\ImageServiceInterface;
 use App\Services\Contracts\UserServiceInterface;
 
 class UserService implements UserServiceInterface
 {
     public function __construct(
-        public UserRepositoryInterface $repository
+        public UserRepositoryInterface $repository,
+        public ImageServiceInterface $imageService
     ){}
 
     public function all()
@@ -26,7 +28,10 @@ class UserService implements UserServiceInterface
 
     public function create(UserDTO $DTO)
     {
-        return new UserResource($this->repository->create($DTO));
+        $user = $this->repository->create($DTO);
+        $this->imageService->create($user, $DTO->image);
+        return new UserResource($user);
+
     }
 
     public function update(User $user, UserDTO $DTO)

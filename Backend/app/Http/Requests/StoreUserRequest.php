@@ -20,9 +20,10 @@ class StoreUserRequest extends BaseFormRequest
         return [
             "firstName" => "required|string",
             "lastName" => "required|string",
-            "email" => "required|email|unique:students",
+            "email" => "required|email|unique:users",
             "password" => "required|confirmed",
-            "role" => "required"
+            "role" => "required",
+            "image" => "required|image"
         ];
     }
 

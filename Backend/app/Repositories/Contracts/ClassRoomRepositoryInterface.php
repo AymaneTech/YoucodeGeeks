@@ -11,7 +11,7 @@ interface ClassRoomRepositoryInterface
 
     public function create(ClassRoomDTO $DTO): ClassRoom;
 
-    public function update(ClassRoom $classRoom, ClassRoomDTO $DTO): bool;
+    public function update(ClassRoom $classRoom, ClassRoomDTO $DTO): ClassRoom;
 
     public function show(ClassRoom $classRoom): ClassRoom;
 

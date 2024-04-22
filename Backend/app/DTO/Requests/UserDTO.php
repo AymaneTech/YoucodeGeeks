@@ -13,10 +13,10 @@ readonly class UserDTO
         public string $email,
         public string $password,
         public int $role,
+        public object $image,
         public bool   $isVerified,
-    )
-    {
-    }
+    ){}
+    
     public static function fromRequest(StoreUserRequest $request)
     {
         $validatedData = $request->validated();
@@ -26,6 +26,7 @@ readonly class UserDTO
             email: $validatedData['email'],
             password: $validatedData['password'],
             role: Role::role($validatedData['role']),
+            image: $validatedData["image"],
             isVerified: true
         );
     }

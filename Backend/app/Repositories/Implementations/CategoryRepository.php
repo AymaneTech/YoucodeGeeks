@@ -11,19 +11,23 @@ class  CategoryRepository implements CategoryRepositoryInterface
 {
     public function all(): Collection|array
     {
-        return Category::with("image")->get();
+        return Category::with("image")
+            ->withCount("blogs", "questions")
+            ->get();
     }
 
     public function create(CategoryDTO $DTO): Category
     {
-        return Category::create([
+        return  Category::create([
             "name" => $DTO->name,
-        ]);
+        ])->load("image")
+            ->loadCount("blogs", "questions");
     }
 
-    public function update(Category $category, CategoryDTO $DTO): bool
+    public function update(Category $category, CategoryDTO $DTO): Category
     {
-        return $category->update(["name" => $DTO->name]);
+        $category->update(["name" => $DTO->name]);
+        return $category;
     }
 
     public function delete(Category $category): bool

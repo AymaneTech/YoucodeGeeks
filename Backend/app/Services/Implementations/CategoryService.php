@@ -36,8 +36,9 @@ class CategoryService implements CategoryServiceInterface
 
     public function update(Category $category, CategoryDTO $DTO)
     {
-        $this->repository->update(category: $category, DTO: $DTO);
+        $newCategory = $this->repository->update(category: $category, DTO: $DTO);
         $this->imageService->update($category, $DTO->image);
+        return new CategoryResource($newCategory);
 
     }
 

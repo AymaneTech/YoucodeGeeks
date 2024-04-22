@@ -29,9 +29,9 @@ class TagService implements TagServiceInterface
         return new TagResource($this->repository->create($DTO));
     }
 
-    public function update(Tag $tag, TagDTO $DTO): bool
+    public function update(Tag $tag, TagDTO $DTO): TagResource
     {
-        return $this->repository->update($tag, $DTO);
+        return new TagResource( $this->repository->update($tag, $DTO));
     }
 
     public function delete(Tag $tag): bool

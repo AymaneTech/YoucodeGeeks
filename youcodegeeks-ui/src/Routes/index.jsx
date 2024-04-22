@@ -1,11 +1,15 @@
+
 import {createBrowserRouter} from "react-router-dom";
-import {Login} from "../Pages/Login.jsx";
-import {Register} from "../Pages/Register.jsx";
+import {Login} from "../Pages/Authentication/Login.jsx";
+import {Register} from "../Pages/Authentication/Register.jsx";
 import {Home} from "../Pages/Home.jsx";
 import {NotFound} from "../Pages/NotFound.jsx";
-import {StudentLayout} from "@/Layout/StudentLayout.jsx";
 import {GuestLayout} from "@/Layout/GuestLayout.jsx";
 import {DashboardLayout} from "@/Layout/DashboardLayout.jsx";
+import {Categories} from "@/Pages/Admin/Categories.jsx";
+import {Tags} from "@/Pages/Admin/Tags.jsx";
+import {ClassRooms} from "@/Pages/Admin/ClassRooms.jsx";
+import {Users} from "@/Pages/Admin/Users.jsx";
 
 export const LOGIN_ROUTE = "/login"
 export const STUDENT_HOME = "/home"
@@ -14,8 +18,28 @@ export const routes = createBrowserRouter([
             element: <DashboardLayout/>,
             children: [
                 {
-                    path: "/home",
+                    path: "/dashboard",
                     element: <Home/>
+                },
+                {
+                  path: "/dashboard/categories",
+                  element: <Categories/>
+                },
+                {
+                    path: "/dashboard/tags",
+                    element: <Tags/>
+                },
+                {
+                    path: "/dashboard/classRooms",
+                    element: <ClassRooms/>
+                },
+                {
+                    path: "/dashboard/categories",
+                    element: <Categories/>
+                },
+                {
+                    path: "/dashboard/users",
+                    element: <Users/>
                 }
             ]
         },

@@ -25,9 +25,10 @@ class TagRepository implements TagRepositoryInterface
         ]);
     }
 
-    public function update(Tag $tag, TagDTO $DTO): bool
+    public function update(Tag $tag, TagDTO $DTO): Tag
     {
-        return $tag->update(["name" => $DTO->name]);
+        $tag->update(["name" => $DTO->name]);
+        return $tag;
 
     }
 

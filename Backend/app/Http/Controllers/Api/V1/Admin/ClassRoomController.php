@@ -42,8 +42,9 @@ class ClassRoomController extends BaseApiController
 
     public function update(StoreClassRequest $request, ClassRoom $classRoom)
     {
-        $this->service->update($classRoom, $request->createDTO());
-        return $this->sendResponse(message: "Class room updated successfully", code: 204);
+        $newClassRoom = $this->service->update($classRoom, $request->createDTO());
+
+        return $this->sendResponse(message: "Class room updated successfully", result: $newClassRoom, code: 200);
     }
 
     public function destroy(ClassRoom $classRoom)

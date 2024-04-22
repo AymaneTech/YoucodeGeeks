@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {axiosClient} from "@/Api/axios.js";
-import {setToken} from "@/Helpers/auth.js";
+import {axiosClient, formDataConfig} from "@/Api/axios.js";
+import {setToken} from "@/Helpers/functions.js";
 
 const initialState = {
     user: {},
@@ -26,11 +26,7 @@ export const Register = createAsyncThunk(
     "user/register",
     async (userCredentials, {rejectWithValue}) => {
         try {
-            const response = await axiosClient.post("register", userCredentials, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            });
+            const response = await axiosClient.post("register", userCredentials, formDataConfig);
             setToken(response.data.access_token);
             return response.data;
         } catch (error) {
@@ -39,7 +35,7 @@ export const Register = createAsyncThunk(
     }
 )
 
-const userSlice = createSlice({
+const authSlice = createSlice({
     name: "user",
     initialState,
     extraReducers: (builder) => {
@@ -79,4 +75,4 @@ const userSlice = createSlice({
     }
 })
 
-export default userSlice.reducer
+export default authSlice.reducer

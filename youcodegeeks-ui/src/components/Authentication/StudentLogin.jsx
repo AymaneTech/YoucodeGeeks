@@ -6,15 +6,15 @@ import {Input} from "@/components/ui/input.jsx";
 import {Loader} from "lucide-react";
 import {loginSchema} from "@/Validations/User.js";
 import {useDispatch, useSelector} from "react-redux";
-import {Login} from "@/Features/UserSlice.js";
+import {Login} from "@/Features/AuthSlice.js";
 import {useNavigate} from "react-router-dom";
-import {isAuthenticated} from "@/Helpers/auth.js";
+import { isAuthenticated,} from "@/Helpers/functions.js";
 
 export const StudentLogin = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {response} = useSelector((state) => state.user);
+    const {response, user} = useSelector((state) => state.user);
     const form = useForm({
         resolver: zodResolver(loginSchema), defaultValues: {
             email: "aymane@gmail.com", password: "password",
@@ -24,7 +24,7 @@ export const StudentLogin = () => {
     const onSubmit = async (values) => {
         await dispatch(Login(values));
         if (isAuthenticated()) {
-            navigate("/home");
+            navigate("/dashboard/categories");
         }
     };
 

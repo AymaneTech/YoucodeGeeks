@@ -14,16 +14,16 @@ import {Loader} from "lucide-react";
 import {useEffect, useState} from "react";
 import {registerSchema} from "@/Validations/User.js";
 import {useDispatch, useSelector} from "react-redux";
-import {Register} from "@/Features/UserSlice.js";
-import {isAuthenticated} from "@/Helpers/auth.js";
+import {Register} from "@/Features/AuthSlice.js";
+import {isAuthenticated} from "@/Helpers/functions.js";
 import {useNavigate} from "react-router-dom";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.jsx";
 import {getClassrooms} from "@/Features/ClassRoomSlice.js";
+import {Selects} from "@/components/Partials/Selects.jsx";
 
 export const StudentRegister = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const {response} = useSelector((state) => state.user);
-    const {classRooms} = useSelector((state) => state.classRooms);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -127,26 +127,7 @@ export const StudentRegister = () => {
                             </FormItem>
                         )}
                     />
-
-                    {classRooms.length === 0 ? (
-                        <p>No classrooms available</p>
-                    ) : (
-                        <Select>
-                            <FormLabel className="block">Class Room</FormLabel>
-                            <SelectTrigger className="" disabled={classRooms.length === 0}>
-                                <SelectValue
-                                    placeholder={classRooms.length > 0 ? classRooms[0].name : "Select a class"}/>
-                            </SelectTrigger>
-                            <SelectContent>
-                                {classRooms.map((classRoom) => (
-                                    <SelectItem key={classRoom.id} value={classRoom.id}>
-                                        {classRoom.name}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    )}
-
+                    <Selects/>
                     <div className="flex justify-between">
                         <FormField
                             control={control}

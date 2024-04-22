@@ -3,6 +3,7 @@
 namespace App\Services\Contracts;
 
 use App\DTO\Requests\ClassRoomDTO;
+use App\Http\Resources\ClassRoomResource;
 use App\Models\ClassRoom;
 
 interface ClassRoomServiceInterface
@@ -13,7 +14,7 @@ interface ClassRoomServiceInterface
 
     public function create(ClassRoomDTO $DTO);
 
-    public function update(ClassRoom $classRoom, ClassRoomDTO $DTO);
+    public function update(ClassRoom $classRoom, ClassRoomDTO $DTO): ClassRoomResource;
 
     public function delete(ClassRoom $classRoom);
 

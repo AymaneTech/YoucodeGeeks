@@ -37,11 +37,12 @@ class TagController extends BaseApiController
 
     public function update(UpdateTagRequest $request, Tag $tag)
     {
-        $this->service->update($tag, $request->createDTO());
+        $newTag = $this->service->update($tag, $request->createDTO());
 
         return $this->sendResponse(
             message: "Tag updated successfully",
-            code: 201
+            result: $newTag,
+            code: 200
         );
     }
 
