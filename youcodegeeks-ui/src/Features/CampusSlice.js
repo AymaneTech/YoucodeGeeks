@@ -13,7 +13,7 @@ export const createCampus = createAsyncThunk("campus/create", async (data, rejec
         return rejectWithValue(error.return.data.errors);
     }
 })
-export const updateCampus = createAsyncThunk("category/update", async (data, rejectWithValue) => {
+export const updateCampus = createAsyncThunk("campus/update", async (data, rejectWithValue) => {
     try {
         const response = await axiosClient.patch(`campuses/${data.slug}`, data.formData, formDataConfig);
         return response.data.data;
@@ -22,7 +22,7 @@ export const updateCampus = createAsyncThunk("category/update", async (data, rej
         return rejectWithValue(error.response.data.errors);
     }
 });
-export const deleteCampus = createAsyncThunk("category/delete", async (slug, rejectWithValue) => {
+export const deleteCampus = createAsyncThunk("campus/delete", async (slug, rejectWithValue) => {
     try {
         axiosClient.delete("campuses/" + slug);
         return slug;

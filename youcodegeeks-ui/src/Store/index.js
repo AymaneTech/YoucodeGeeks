@@ -12,6 +12,5 @@ export const store = configureStore({
         categories: CategorySlice,
         tags: TagsSlice,
         campus: CampusSlice
-
     }
 })

@@ -29,9 +29,9 @@ class ClassRoomService implements ClassRoomServiceInterface
         return new ClassRoomResource($this->repository->create($DTO));
     }
 
-    public function update(ClassRoom $classRoom, ClassRoomDTO $DTO): bool
+    public function update(ClassRoom $classRoom, ClassRoomDTO $DTO): ClassRoomResource
     {
-        return $this->repository->update($classRoom, $DTO);
+        return new ClassRoomResource($this->repository->update($classRoom, $DTO));
     }
 
     public function delete(ClassRoom $classRoom): bool

@@ -19,7 +19,7 @@ import {isAuthenticated} from "@/Helpers/functions.js";
 import {useNavigate} from "react-router-dom";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.jsx";
 import {getClassrooms} from "@/Features/ClassRoomSlice.js";
-import {ClassroomsSelect} from "@/components/Partials/ClassroomsSelect.jsx";
+import {Selects} from "@/components/Partials/Selects.jsx";
 
 export const StudentRegister = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -127,7 +127,7 @@ export const StudentRegister = () => {
                             </FormItem>
                         )}
                     />
-                    <ClassroomsSelect/>
+                    <Selects/>
                     <div className="flex justify-between">
                         <FormField
                             control={control}

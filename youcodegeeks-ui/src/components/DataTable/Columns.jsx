@@ -2,6 +2,8 @@ import {CategoryEdit} from "@/components/Admin/Category/CategoryEdit.jsx";
 import {CategoryDelete} from "@/components/Admin/Category/CategoryDelete.jsx";
 import {TagEdit} from "@/components/Admin/Tag/TagEdit.jsx";
 import {TagDelete} from "@/components/Admin/Tag/TagDelete.jsx";
+import {ClassRoomEdit} from "@/components/Admin/ClassRooms/ClassRoomEdit.jsx";
+import {ClassRoomDelete} from "@/components/Admin/ClassRooms/ClassRoomDelete.jsx";
 
 export const categoriescolumns = () => [
     {
@@ -65,8 +67,8 @@ export const classRoomssColumns = () => [
     {
         id: "actions", cell: ({row}) => (
             <div className="flex gap-4  ">
-                <TagEdit tag={row.original}/>
-                <TagDelete slug={row.original.slug}/>
+                <ClassRoomEdit classRoom={row.original}/>
+                <ClassRoomDelete slug={row.original.slug}/>
             </div>
         )
     }

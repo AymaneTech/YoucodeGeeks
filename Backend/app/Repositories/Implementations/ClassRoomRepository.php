@@ -3,10 +3,8 @@
 namespace App\Repositories\Implementations;
 
 use App\DTO\Requests\ClassRoomDTO;
-use App\Models\Class;
 use App\Models\ClassRoom;
 use App\Repositories\Contracts\ClassRoomRepositoryInterface;
-use TimWassenburg\RepositoryGenerator\Repository\BaseRepository;
 
 /**
  * Class ClassRoomRepository.
@@ -27,13 +25,14 @@ class ClassRoomRepository  implements ClassRoomRepositoryInterface
         ]);
     }
 
-    public function update(ClassRoom $classRoom, ClassRoomDTO $DTO): bool
+    public function update(ClassRoom $classRoom, ClassRoomDTO $DTO): ClassRoom
     {
-        return $classRoom->update([
+        $classRoom->update([
             "name" => $DTO->name,
             "campus_id" => $DTO->campusId,
             "school_year" => $DTO->schoolYear,
         ]);
+        return $classRoom;
     }
 
     public function delete(ClassRoom $classRoom): bool

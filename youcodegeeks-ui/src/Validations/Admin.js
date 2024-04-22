@@ -11,6 +11,6 @@ export const createTagSchema = object({
 
 export const classRoomSchema = object({
     name: string().min(2).max(30),
-    campusId: number(),
+    campusId: string(),
     schoolYear: string(),
 })

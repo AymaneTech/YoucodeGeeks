@@ -2,14 +2,14 @@ import {Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Dia
 import {Button} from "@/components/ui/button.jsx";
 import {useDispatch} from "react-redux";
 import {Trash} from "lucide-react";
-import {deleteTag} from "@/Features/TagsSlice.js";
+import {deleteClassRoom} from "@/Features/ClassRoomSlice.js";
 
 export const ClassRoomDelete = ({slug}) => {
 
     const dispatch = useDispatch();
     const onSubmit = async (e) => {
         e.preventDefault()
-        await dispatch(deleteTag(slug))
+        await dispatch(deleteClassRoom(slug))
     }
     return (
         <Dialog>

@@ -24,7 +24,7 @@ export const updateCategory = createAsyncThunk("category/update", async (data, r
 });
 export const deleteCategory = createAsyncThunk("category/delete", async (slug, rejectWithValue) => {
     try {
-        axiosClient.delete("categories/" + slug);
+        await axiosClient.delete("categories/" + slug);
         return slug;
     }catch (error) {
         return rejectWithValue(error.response.data.message);
@@ -39,6 +39,7 @@ export const getCategories = createAsyncThunk("categories/get", async (rejectWit
         return rejectWithValue(error.response.data.message);
     }
 })
+
 
 const categoriesSlice = createSlice({
     name: "categories", initialState, extraReducers: (builder) => {
@@ -65,6 +66,7 @@ const categoriesSlice = createSlice({
                 state.error = "";
             })
             .addCase(createCategory.fulfilled, (state, action) => {
+                console.log("class rooms fulfilled")
                 state.loading = false;
                 state.categories = [...state.categories, action.payload];
                 state.error = "";
