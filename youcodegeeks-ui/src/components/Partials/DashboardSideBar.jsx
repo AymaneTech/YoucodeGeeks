@@ -48,7 +48,7 @@ export const DashboardSidebar = () => {
                             <School2 size={16}/>
                             Manage Class Rooms
                         </Link>
-                        <Link to="dashboard/classRooms" className="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-transparent dark:hover:bg-muted/50 dark:text-white">
+                        <Link to="dashboard/users" className="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-transparent dark:hover:bg-muted/50 dark:text-white">
                             <School2 size={16}/>
                             Manage Users
                         </Link>

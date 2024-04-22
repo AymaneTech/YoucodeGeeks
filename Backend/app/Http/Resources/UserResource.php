@@ -20,6 +20,7 @@ class UserResource extends JsonResource
             "lastName" => $this->last_name,
             "email" => $this->email,
             "role" => new RoleResource($this->role),
+            "image" => new ImageResource($this->image),
             "isVerified" => $this->is_verified
         ];
     }

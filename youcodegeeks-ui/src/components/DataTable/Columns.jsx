@@ -73,3 +73,32 @@ export const classRoomssColumns = () => [
         )
     }
 ]
+
+export const usersColumns = () => [
+    {
+        accessorKey: "id", header: "ID"
+    },
+    {
+        accessorKey: "firstName", header: "First Name"
+    },
+    {
+        accessorKey: "lastName", header: "Last Name"
+    },
+    {
+        accessorKey: "email", header: "Email"
+    },
+    {
+        accessorKey: "role.name", header: "User Role"
+    },
+    {
+        accessorKey: "isVerified", header: "Status"
+    },
+    {
+        id: "actions", cell: ({row}) => (
+            <div className="flex gap-4  ">
+                <ClassRoomEdit classRoom={row.original}/>
+                <ClassRoomDelete slug={row.original.slug}/>
+            </div>
+        )
+    }
+]

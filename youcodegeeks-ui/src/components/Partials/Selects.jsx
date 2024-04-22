@@ -106,3 +106,41 @@ export const SchoolYearSelect = ({control}) => {
         />
     )
 }
+const USER_ROLES = {
+    STUDENT: 1,
+    ADMIN: 2,
+    COACH: 3,
+};
+
+export const UserRoleSelect = ({ control }) => {
+    return (
+        <FormField
+            control={control}
+            name="userRole"
+            render={({ field }) => (
+                <FormItem>
+                    <FormLabel>User Role</FormLabel>
+                    <Controller
+                        control={control}
+                        name="userRole"
+                        render={({ field }) => (
+                            <Select onValueChange={field.onChange} value={field.value}>
+                                <SelectTrigger className="">
+                                    <SelectValue placeholder="Select a user role" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>User Roles</SelectLabel>
+                                        <SelectItem value={USER_ROLES.STUDENT}>Student</SelectItem>
+                                        <SelectItem value={USER_ROLES.ADMIN}>Admin</SelectItem>
+                                        <SelectItem value={USER_ROLES.COACH}>Coach</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        )}
+                    />
+                </FormItem>
+            )}
+        />
+    );
+};
