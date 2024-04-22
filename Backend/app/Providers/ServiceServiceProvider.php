@@ -1,26 +1,26 @@
 <?php
 
 namespace App\Providers;
-
-use App\Services\Contracts\AnswerServiceInterface;
-use App\Services\Contracts\CategoryServiceInterface;
-use App\Services\Contracts\ClassRoomServiceInterface;
-use App\Services\Contracts\CommentServiceInterface;
-use App\Services\Contracts\ImageServiceInterface;
-use App\Services\Contracts\PostServiceInterface;
-use App\Services\Contracts\TagServiceInterface;
-use App\Services\Contracts\UploadImageInterface;
-use App\Services\Contracts\UserServiceInterface;
-use App\Services\Implementations\AnswerService;
-use App\Services\Implementations\CategoryService;
-use App\Services\Implementations\ClassRoomService;
-use App\Services\Implementations\CommentService;
-use App\Services\Implementations\ImageService;
-use App\Services\Implementations\PostService;
-use App\Services\Implementations\TagService;
-use App\Services\Implementations\UploadToCloudinaryService;
-use App\Services\Implementations\UserService;
 use Illuminate\Support\ServiceProvider;
+use App\Services\Contracts\{AnswerServiceInterface,
+    CampusServiceInterface,
+    CategoryServiceInterface,
+    ClassRoomServiceInterface,
+    CommentServiceInterface,
+    ImageServiceInterface,
+    PostServiceInterface,
+    TagServiceInterface,
+    UploadImageInterface,
+    UserServiceInterface};
+use App\Services\Implementations\{AnswerService,
+    CategoryService,
+    ClassRoomService,
+    CommentService,
+    ImageService,
+    PostService,
+    TagService,
+    UploadToCloudinaryService,
+    UserService,};
 
 class ServiceServiceProvider extends ServiceProvider
 {
@@ -28,7 +28,8 @@ class ServiceServiceProvider extends ServiceProvider
      * Register services.
      */
     public function register(): void
-    {}
+    {
+    }
 
     /**
      * Bootstrap services.
@@ -44,5 +45,6 @@ class ServiceServiceProvider extends ServiceProvider
         app()->bind(AnswerServiceInterface::class, AnswerService::class);
         app()->bind(CommentServiceInterface::class, CommentService::class);
         app()->bind(UserServiceInterface::class, UserService::class);
+        app()->bind(CampusServiceInterface::class, CampusServiceInterface::class);
     }
 }
