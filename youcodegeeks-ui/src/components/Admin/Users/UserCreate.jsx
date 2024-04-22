@@ -10,22 +10,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { createCategorySchema } from "@/Validations/Admin.js";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createCategory } from "@/Features/CategorySlice.js";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select.jsx";
 import { SelectLabel } from "@radix-ui/react-select";
 
 export const UserCreate = () => {
-    const USER_ROLES = {
-        STUDENT: 1,
-        ADMIN: 2,
-        COACH: 3,
-    };
-
-    const [showAdditionalFields, setShowAdditionalFields] = useState({
-        student: false,
-        admin: false,
-        coach: false
-    });
     const [imageValue, setImageValue] = useState();
     const dispatch = useDispatch()
 
@@ -39,37 +27,12 @@ export const UserCreate = () => {
         setImageValue(e.target.files[0])
     }
 
-    const handleUserRoleChange = async (role) => {
-        if (role === USER_ROLES.ADMIN) {
-           await setShowAdditionalFields({
-                ...showAdditionalFields,
-                admin: !showAdditionalFields.admin
-            });
-        } else if (role === USER_ROLES.STUDENT) {
-            setShowAdditionalFields({
-                ...showAdditionalFields,
-                student: !showAdditionalFields.student
-            });
-        } else if (role === USER_ROLES.COACH) {
-            setShowAdditionalFields({
-                ...showAdditionalFields,
-                coach: !showAdditionalFields.coach
-            });
-        } else {
-            setShowAdditionalFields({
-                student: false,
-                admin: false,
-                coach: false
-            });
-        }
-    };
-
     const onSubmit = async (values) => {
         const formData = new FormData();
         formData.append("image", imageValue);
         formData.append("name", values.name);
-        dispatch(createCategory(formData))
     }
+
 
     return (
         <Dialog>
@@ -114,22 +77,16 @@ export const UserCreate = () => {
                                         control={form.control}
                                         name="userRole"
                                         render={({ field }) => (
-                                            <Select
-                                                onValueChange={(value) => {
-                                                    field.onChange(value);
-                                                    handleUserRoleChange(value);
-                                                }}
-                                                value={field.value}
-                                            >
+                                            <Select onValueChange={handleUserRoleChange}>
                                                 <SelectTrigger className="">
                                                     <SelectValue placeholder="Select a user role" />
                                                 </SelectTrigger>
                                                 <SelectContent>
                                                     <SelectGroup>
                                                         <SelectLabel>User Roles</SelectLabel>
-                                                        <SelectItem value={USER_ROLES.STUDENT}>Student</SelectItem>
-                                                        <SelectItem value={USER_ROLES.ADMIN}>Admin</SelectItem>
-                                                        <SelectItem value={USER_ROLES.COACH}>Coach</SelectItem>
+                                                        <SelectItem value={1}>Student</SelectItem>
+                                                        <SelectItem value={2}>Admin</SelectItem>
+                                                        <SelectItem value={3}>Coach</SelectItem>
                                                     </SelectGroup>
                                                 </SelectContent>
                                             </Select>
@@ -138,15 +95,15 @@ export const UserCreate = () => {
                                 </FormItem>
                             )}
                         />
-                        {showAdditionalFields.student && (
+                        {showStudentField && (
                             <FormField
                                 control={form.control}
-                                name="additionalField"
+                                name="classroom"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Additional Field</FormLabel>
+                                        <FormLabel>Classroom</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Additional Field" {...field} />
+                                            <Input placeholder="Classroom" {...field} />
                                         </FormControl>
                                         <FormMessage></FormMessage>
                                     </FormItem>
