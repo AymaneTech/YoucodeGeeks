@@ -1,16 +1,18 @@
 import {configureStore} from "@reduxjs/toolkit";
-import userSlice from "@/Features/UserSlice.js";
 import classRoomSlice from "@/Features/ClassRoomSlice.js";
 import CategorySlice from "@/Features/CategorySlice.js";
 import TagsSlice from "@/Features/TagsSlice.js";
 import CampusSlice from "@/Features/CampusSlice.js";
+import UsersSlice from "@/Features/UsersSlice.js";
+import authSlice from "@/Features/AuthSlice.js";
 
 export const store = configureStore({
     reducer: {
-        user: userSlice,
+        user: authSlice,
         classRooms: classRoomSlice,
         categories: CategorySlice,
         tags: TagsSlice,
-        campus: CampusSlice
+        campus: CampusSlice,
+        users: UsersSlice,
     }
 })

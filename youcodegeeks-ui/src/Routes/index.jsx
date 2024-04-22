@@ -9,6 +9,7 @@ import {DashboardLayout} from "@/Layout/DashboardLayout.jsx";
 import {Categories} from "@/Pages/Admin/Categories.jsx";
 import {Tags} from "@/Pages/Admin/Tags.jsx";
 import {ClassRooms} from "@/Pages/Admin/ClassRooms.jsx";
+import {Users} from "@/Pages/Admin/Users.jsx";
 
 export const LOGIN_ROUTE = "/login"
 export const STUDENT_HOME = "/home"
@@ -35,6 +36,10 @@ export const routes = createBrowserRouter([
                 {
                     path: "/dashboard/categories",
                     element: <Categories/>
+                },
+                {
+                    path: "/dashboard/users",
+                    element: <Users/>
                 }
             ]
         },

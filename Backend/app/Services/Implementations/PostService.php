@@ -20,7 +20,7 @@ class PostService implements PostServiceInterface
     )
     {
     }
-        
+
     public function all()
     {
         return QuestionResource::collection($this->repository->all());
@@ -35,7 +35,7 @@ class PostService implements PostServiceInterface
     {
         $post = $this->repository->create($DTO);
         $this->tagService->syncTags($post, $DTO->tags);
-//        $this->imageService->insert($post, $DTO->images);
+    //    $this->imageService->insert($post, $DTO->images);
 
         return new QuestionResource($post);
     }

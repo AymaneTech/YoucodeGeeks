@@ -35,7 +35,7 @@ export const Register = createAsyncThunk(
     }
 )
 
-const userSlice = createSlice({
+const authSlice = createSlice({
     name: "user",
     initialState,
     extraReducers: (builder) => {
@@ -75,4 +75,4 @@ const userSlice = createSlice({
     }
 })
 
-export default userSlice.reducer
+export default authSlice.reducer

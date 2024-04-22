@@ -1,7 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {axiosClient} from "@/Api/axios.js";
-import {data} from "autoprefixer";
-import {deleteTag, updateTag} from "@/Features/TagsSlice.js";
 
 const initialState = {
     classRooms: [],

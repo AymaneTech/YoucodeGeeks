@@ -6,7 +6,7 @@ import {Input} from "@/components/ui/input.jsx";
 import {Loader} from "lucide-react";
 import {loginSchema} from "@/Validations/User.js";
 import {useDispatch, useSelector} from "react-redux";
-import {Login} from "@/Features/UserSlice.js";
+import {Login} from "@/Features/AuthSlice.js";
 import {useNavigate} from "react-router-dom";
 import { isAuthenticated,} from "@/Helpers/functions.js";
 
