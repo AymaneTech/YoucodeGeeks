@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {axiosClient} from "@/Api/axios.js";
-import {deleteCategory} from "@/Features/CategorySlice.js";
 
 const initialState = {
     tags: [], loading: false, error: "", response: ""

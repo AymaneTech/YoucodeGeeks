@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\V1\Admin\{CampusController,
     CategoryController,
     ClassRoomController,
     ManageUsersController,
+    StatisticsController,
     TagController,
     UserController};
 use App\Http\Controllers\Api\V1\Auth\{AuthApiController, StudentRegisterController};
@@ -32,6 +33,7 @@ Route::group([
         "tags" => TagController::class,
         "campuses" => CampusController::class,
     ]);
+    Route::get("statistics/", [StatisticsController::class, "statistics"]);
     Route::get("users/verify/{user}", [ManageUsersController::class, "verify"]);
 })->name("dashboard");
 

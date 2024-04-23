@@ -24,7 +24,7 @@ class StoreUserRequest extends BaseFormRequest
             "password" => "required|confirmed",
             "role" => "required",
             "image" => "required|image",
-            "className" => "sometimes",
+            "classRoomId" => "sometimes",
         ];
     }
 

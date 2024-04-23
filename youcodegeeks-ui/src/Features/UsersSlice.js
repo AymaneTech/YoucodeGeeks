@@ -1,7 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {axiosClient, formDataConfig} from "@/Api/axios.js";
-import {getClassrooms} from "@/Features/ClassRoomSlice.js";
-import {deleteCategory} from "@/Features/CategorySlice.js";
 
 const initialState = {
     users: [],

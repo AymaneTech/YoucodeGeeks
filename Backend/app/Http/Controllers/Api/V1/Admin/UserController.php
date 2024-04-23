@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Resources\StudentResource;
+use App\Models\Student;
 use App\Models\User;
 use App\Services\Contracts\UserServiceInterface;
+use Mockery\Exception;
 
 class UserController extends BaseApiController
 {
@@ -17,10 +20,18 @@ class UserController extends BaseApiController
 
     public function index()
     {
-        return $this->sendResponse(
-            message: "users list",
-            result: $this->service->all()
-        );
+        try {
+            return $this->sendResponse(
+                message: "users list",
+                result: $this->service->all(),
+            );
+        } catch (Exception $e) {
+            return $this->sendResponse(message: "users list failed",
+                result: $e->getMessage(),
+                code: $e->getCode()
+            );
+        }
+
     }
 
     public function store(StoreUserRequest $request)

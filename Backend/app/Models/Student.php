@@ -16,4 +16,10 @@ class Student extends User
         "role_id",
         "is_verified"
     ];
+
+    public function classRoom()
+    {
+        return $this->belongsTo(ClassRoom::class, "class_room_id");
+    }
+
 }
