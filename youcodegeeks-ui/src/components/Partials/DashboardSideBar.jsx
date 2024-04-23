@@ -27,32 +27,45 @@ export const DashboardSidebar = () => {
             </div>
 
             <nav className="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
-                <ul className="space-y-1.5">
+                <ul className="flex flex-col gap-y-4">
                     <li>
-                        <Link to="dashboard" className="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-transparent dark:hover:bg-muted/50 dark:text-white">
-                           <HomeIcon size={16}/>
+                        <Link to="dashboard"
+                              className="text-[16px] flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-transparent dark:hover:bg-muted/50 dark:text-white">
+                            <HomeIcon size={22}/>
                             Dashboard
                         </Link>
-                        <Link to="dashboard/categories" className="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-transparent dark:hover:bg-muted/50 dark:text-white">
-                            <BiCategory size={16}/>
+                    </li>
+                    <li>
+                        <Link to="dashboard/categories"
+                              className="text-[16px] flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-transparent dark:hover:bg-muted/50 dark:text-white">
+                            <BiCategory size={22}/>
                             Manage Categories
                         </Link>
-                        <Link to="dashboard/tags" className="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-transparent dark:hover:bg-muted/50 dark:text-white">
-                            <TagIcon size={16}/>
+                    </li>
+                    <li>
+                        <Link to="dashboard/tags"
+                              className="text-[16px] flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-transparent dark:hover:bg-muted/50 dark:text-white">
+                            <TagIcon size={22}/>
                             Manage Tags
                         </Link>
-
-                        <Link to="dashboard/classRooms" className="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-transparent dark:hover:bg-muted/50 dark:text-white">
-                            <School2 size={16}/>
+                    </li>
+                    <li>
+                        <Link to="dashboard/classRooms"
+                              className="text-[16px] flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-transparent dark:hover:bg-muted/50 dark:text-white">
+                            <School2 size={22}/>
                             Manage Class Rooms
                         </Link>
-                        <Link to="dashboard/users" className="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-transparent dark:hover:bg-muted/50 dark:text-white">
-                            <UsersIcon size={16}/>
+                    </li>
+                    <li>
+                        <Link to="dashboard/users"
+                              className="text-[16px] flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-transparent dark:hover:bg-muted/50 dark:text-white">
+                            <UsersIcon size={22}/>
                             Manage Users
                         </Link>
                     </li>
-                </ul>
-            </nav>
-        </div>
-    );
+            </ul>
+        </nav>
+</div>
+)
+    ;
 };
