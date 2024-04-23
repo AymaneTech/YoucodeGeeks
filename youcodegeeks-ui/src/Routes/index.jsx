@@ -6,11 +6,11 @@ import {Home} from "../Pages/Home.jsx";
 import {NotFound} from "../Pages/NotFound.jsx";
 import {GuestLayout} from "@/Layout/GuestLayout.jsx";
 import {DashboardLayout} from "@/Layout/DashboardLayout.jsx";
-import {Categories} from "@/Pages/Admin/Categories.jsx";
-import {Tags} from "@/Pages/Admin/Tags.jsx";
-import {ClassRooms} from "@/Pages/Admin/ClassRooms.jsx";
-import {Users} from "@/Pages/Admin/Users.jsx";
-import {DashboardHome} from "@/Pages/Admin/DashboardHome.jsx";
+import {Categories} from "@/Pages/Dashboard/Categories.jsx";
+import {Tags} from "@/Pages/Dashboard/Tags.jsx";
+import {ClassRooms} from "@/Pages/Dashboard/ClassRooms.jsx";
+import {Users} from "@/Pages/Dashboard/Users.jsx";
+import {DashboardHome} from "@/Pages/Dashboard/DashboardHome.jsx";
 
 export const LOGIN_ROUTE = "/login"
 export const STUDENT_HOME = "/home"
