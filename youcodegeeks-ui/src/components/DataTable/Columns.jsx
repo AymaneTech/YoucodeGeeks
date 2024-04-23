@@ -99,7 +99,7 @@ export const usersColumns = () => [
         id: "actions", cell: ({row}) => (
             <div className="flex gap-4  ">
                 <UserVerify user={row.original}/>
-                <UserDelete slug={row.original.slug}/>
+                <UserDelete id={row.original.id}/>
             </div>
         )
     }
