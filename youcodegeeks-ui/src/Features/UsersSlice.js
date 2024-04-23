@@ -23,7 +23,6 @@ export const createUser = createAsyncThunk(
     "users/create",
     async (data, rejectWithValue) => {
         try {
-            console.log("user data ", data)
             const response = await axiosClient.post("users", data, formDataConfig);
             return response.data.data;
         } catch (error) {
@@ -31,6 +30,17 @@ export const createUser = createAsyncThunk(
         }
     }
 )
+export const verifyUser = createAsyncThunk (
+    "users/verify",
+    async (id, rejectWithValue) => {
+        try {
+            const response = await axiosClient.get(`users/verify/${id}`);
+            return response.data.data;
+        }catch (error) {
+            return rejectWithValue(error.response.data.message);
+        }
+    }
+);
 
 const UsersSlice = createSlice({
     name: "users",
@@ -67,6 +77,34 @@ const UsersSlice = createSlice({
             })
             .addCase(createUser.rejected, (state, action) => {
                 console.log("user create rejected");
+                state.loading = false;
+                state.error = "Incorrect Information";
+                state.response = action.payload;
+            });
+        builder
+            .addCase(verifyUser.pending, (state) => {
+                state.loading = true;
+                state.error = "";
+            })
+            .addCase(verifyUser.fulfilled, (state, action) => {
+                console.log("verfiy user fulfilled")
+                const {id, isVerfied} = action.payload;
+                state.loading = false;
+                state.users = state.users.map(user => {
+                    if (user.id !== id) {
+                        return user;
+                    }
+                    console.log(action.payload)
+                    return {
+                        ...user,
+                        isVerified: isVerfied,
+                    };
+                });
+                state.error = "";
+                state.response = "";
+            })
+            .addCase(verifyUser.rejected, (state, action) => {
+                console.log("verify users rejected");
                 state.loading = false;
                 state.error = "Incorrect Information";
                 state.response = action.payload;

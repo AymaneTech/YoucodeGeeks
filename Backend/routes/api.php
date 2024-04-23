@@ -32,7 +32,7 @@ Route::group([
         "tags" => TagController::class,
         "campuses" => CampusController::class,
     ]);
-    Route::get("verify/{user}", [ManageUsersController::class, "verify"]);
+    Route::get("users/verify/{user}", [ManageUsersController::class, "verify"]);
 })->name("dashboard");
 
 Route::group([
