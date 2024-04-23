@@ -5,14 +5,21 @@ import {SelectLabel} from "@radix-ui/react-select";
 import {useEffect} from "react";
 import {getCampus} from "@/Features/CampusSlice.js";
 import {Controller} from "react-hook-form";
+import {getClassrooms} from "@/Features/ClassRoomSlice.js";
 
-export const Selects = () => {
+export const ClassRoomsSelect = () => {
+    const dispatch = useDispatch();
     const {classRooms} = useSelector((state) => state.classRooms)
+
+    useEffect(() => {
+        dispatch(getClassrooms())
+    }, []);
+
     return (
         <>  {classRooms.length === 0 ? (
             <p>No classrooms available</p>
         ) : (
-            <Select name="">
+            <Select name="className">
                 <FormLabel>Class Room</FormLabel>
                 <SelectTrigger>
                     <SelectValue placeholder="Selects a class room"/>

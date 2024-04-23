@@ -17,9 +17,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {Register} from "@/Features/AuthSlice.js";
 import {isAuthenticated} from "@/Helpers/functions.js";
 import {useNavigate} from "react-router-dom";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.jsx";
 import {getClassrooms} from "@/Features/ClassRoomSlice.js";
-import {Selects} from "@/components/Partials/Selects.jsx";
+import {ClassRoomsSelect} from "@/components/Partials/Selects.jsx";
 
 export const StudentRegister = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -127,7 +126,7 @@ export const StudentRegister = () => {
                             </FormItem>
                         )}
                     />
-                    <Selects/>
+                    <ClassRoomsSelect/>
                     <div className="flex justify-between">
                         <FormField
                             control={control}

@@ -22,3 +22,15 @@ export const registerSchema = object({
     password_confirmation: string().min(6).max(30),
     image: any(),
 });
+
+export const userSchema = object({
+    firstName: string().min(2).max(30),
+    lastName: string().min(2).max(30),
+    email: string().email().min(2).max(30),
+    password: string().min(6).max(30),
+    password_confirmation: string().min(6).max(30),
+    image: any(),
+    role: any(),
+    className: string().optional()
+
+})
