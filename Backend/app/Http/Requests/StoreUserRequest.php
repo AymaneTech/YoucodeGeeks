@@ -23,7 +23,8 @@ class StoreUserRequest extends BaseFormRequest
             "email" => "required|email|unique:users",
             "password" => "required|confirmed",
             "role" => "required",
-            "image" => "required|image"
+            "image" => "required|image",
+            "classRoomId" => "sometimes",
         ];
     }
 

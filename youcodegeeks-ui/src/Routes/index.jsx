@@ -10,6 +10,7 @@ import {Categories} from "@/Pages/Admin/Categories.jsx";
 import {Tags} from "@/Pages/Admin/Tags.jsx";
 import {ClassRooms} from "@/Pages/Admin/ClassRooms.jsx";
 import {Users} from "@/Pages/Admin/Users.jsx";
+import {DashboardHome} from "@/Pages/Admin/DashboardHome.jsx";
 
 export const LOGIN_ROUTE = "/login"
 export const STUDENT_HOME = "/home"
@@ -19,7 +20,7 @@ export const routes = createBrowserRouter([
             children: [
                 {
                     path: "/dashboard",
-                    element: <Home/>
+                    element: <DashboardHome/>
                 },
                 {
                   path: "/dashboard/categories",

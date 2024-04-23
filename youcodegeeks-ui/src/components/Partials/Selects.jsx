@@ -1,40 +1,43 @@
 import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.jsx";
-import {FormField, FormItem, FormLabel} from "@/components/ui/form.jsx";
+import {FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {SelectLabel} from "@radix-ui/react-select";
 import {useEffect} from "react";
 import {getCampus} from "@/Features/CampusSlice.js";
 import {Controller} from "react-hook-form";
+import {getClassrooms} from "@/Features/ClassRoomSlice.js";
 
-export const Selects = () => {
-    const {classRooms} = useSelector((state) => state.classRooms)
+export const ClassRoomsSelect = ({ value, onChange }) => {
+    const dispatch = useDispatch();
+    const { classRooms } = useSelector((state) => state.classRooms);
+
+    useEffect(() => {
+        dispatch(getClassrooms());
+    }, []);
+
     return (
-        <>  {classRooms.length === 0 ? (
-            <p>No classrooms available</p>
-        ) : (
-            <Select name="">
-                <FormLabel>Class Room</FormLabel>
-                <SelectTrigger>
-                    <SelectValue placeholder="Selects a class room"/>
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectGroup>
-                        <SelectLabel>Class Rooms</SelectLabel>
-                        {classRooms.map((classRoom) => (
-                            <SelectItem key={classRoom.id} value={classRoom.name}>
-                                {classRoom.name}
-                            </SelectItem>
-                        ))}
-                    </SelectGroup>
-                </SelectContent>
-            </Select>
-        )}</>
-    )
-}
+        <Select value={value} onValueChange={onChange} name="className">
+            <SelectTrigger>
+                <SelectValue placeholder="Select a class room" />
+            </SelectTrigger>
+            <SelectContent>
+                <SelectGroup>
+                    <SelectLabel>Class Rooms</SelectLabel>
+                    {classRooms.map((classRoom) => (
+                        <SelectItem key={classRoom.id} value={classRoom.id}>
+                            {classRoom.name}
+                        </SelectItem>
+                    ))}
+                </SelectGroup>
+            </SelectContent>
+        </Select>
+    );
+};
 
 export const CampusSelect = ({form}) => {
     const {campus} = useSelector((state) => state.campus)
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(getCampus())
     }, []);

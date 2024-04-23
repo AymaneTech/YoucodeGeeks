@@ -15,7 +15,7 @@ class StoreStudentRequest extends BaseFormRequest
             "lastName" => "required|string",
             "email" => "required|email|unique:students",
             "password" => "required|confirmed",
-            "className" => "required",
+            "class_room_id" => "required",
             "image" => "required|image"
         ];
     }

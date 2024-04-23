@@ -3,13 +3,14 @@ import {Button} from "@/components/ui/button.jsx";
 import {useDispatch} from "react-redux";
 import {deleteCategory} from "@/Features/CategorySlice.js";
 import {Trash} from "lucide-react";
+import {deleteUser} from "@/Features/UsersSlice.js";
 
-export const UserDelete = ({slug}) => {
+export const UserDelete = ({id}) => {
 
     const dispatch = useDispatch();
     const onSubmit = async (e) => {
         e.preventDefault()
-        await dispatch(deleteCategory(slug))
+        await dispatch(deleteUser(id))
     }
     return (
         <Dialog>

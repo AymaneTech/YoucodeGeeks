@@ -24,7 +24,7 @@ export const StudentLogin = () => {
     const onSubmit = async (values) => {
         await dispatch(Login(values));
         if (isAuthenticated()) {
-            navigate("/dashboard/categories");
+            navigate("/dashboard");
         }
     };
 

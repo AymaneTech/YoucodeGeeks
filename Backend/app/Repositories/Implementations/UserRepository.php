@@ -6,6 +6,7 @@ use App\DTO\Requests\StudentDTO;
 use App\DTO\Requests\UserDTO;
 use App\Enums\Role;
 use App\Models\Admin;
+use App\Models\Coach;
 use App\Models\Student;
 use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryInterface;
@@ -20,7 +21,11 @@ class UserRepository implements UserRepositoryInterface
 
     public function all()
     {
-        return User::with("image", "role")->get();
+        return [
+            "students" => Student::with("image", "role", "classRoom")->get(),
+            "coaches" => Coach::with("image", "role")->get(),
+            "admins" => Admin::with("image", "role")->get()
+        ];
     }
 
     public function create(UserDTO|StudentDTO $DTO)
@@ -30,6 +35,8 @@ class UserRepository implements UserRepositoryInterface
                 $user = Admin::create($this->getArr($DTO));
             } elseif ($DTO->role === Role::STUDENT->value) {
                 $user = Student::create($this->getArr($DTO));
+            } elseif ($DTO->role === Role::COACH->value) {
+                $user = Coach::create($this->getArr($DTO));
             } else {
                 throw new \InvalidArgumentException("Invalid user role: {$DTO->role}");
             }
@@ -78,7 +85,7 @@ class UserRepository implements UserRepositoryInterface
             "role_id" => $DTO->role,
             "is_verified" => $DTO->isVerified
         ];
-        if(property_exists($DTO, "className")){
+        if (property_exists($DTO, "className")) {
             $array["class_name"] = $DTO->className;
         }
         return $array;

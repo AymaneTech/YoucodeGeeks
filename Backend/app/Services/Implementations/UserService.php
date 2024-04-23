@@ -3,6 +3,8 @@
 namespace App\Services\Implementations;
 
 use App\DTO\Requests\UserDTO;
+use App\Http\Resources\CoachResource;
+use App\Http\Resources\StudentResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryInterface;
@@ -18,7 +20,12 @@ class UserService implements UserServiceInterface
 
     public function all()
     {
-        return UserResource::collection($this->repository->all());
+        $users = $this->repository->all();
+        return [
+            "students" => StudentResource::collection($users["students"]),
+            "coaches" => CoachResource::collection($users["coaches"]),
+            "admins" => UserResource::collection($users["admins"])
+        ];
     }
 
     public function show(User $user)
