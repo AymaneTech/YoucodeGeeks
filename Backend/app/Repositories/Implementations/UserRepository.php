@@ -6,6 +6,7 @@ use App\DTO\Requests\StudentDTO;
 use App\DTO\Requests\UserDTO;
 use App\Enums\Role;
 use App\Models\Admin;
+use App\Models\Coach;
 use App\Models\Student;
 use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryInterface;
@@ -30,7 +31,9 @@ class UserRepository implements UserRepositoryInterface
                 $user = Admin::create($this->getArr($DTO));
             } elseif ($DTO->role === Role::STUDENT->value) {
                 $user = Student::create($this->getArr($DTO));
-            } else {
+            } elseif ($DTO->role === Role::COACH->value){
+                $user = Coach::create($this->getArr($DTO));
+            }else {
                 throw new \InvalidArgumentException("Invalid user role: {$DTO->role}");
             }
             return $user;

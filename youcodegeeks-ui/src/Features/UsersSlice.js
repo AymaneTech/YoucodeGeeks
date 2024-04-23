@@ -13,21 +13,21 @@ export const getUsers = createAsyncThunk(
     async (rejectWithValue) => {
         try {
             const response = await axiosClient.get("users");
-            console.log(response.data.data)
             return response.data.data;
         } catch (error) {
             return rejectWithValue(error.response.data.message);
         }
     }
 );
-export const cerateUser = createAsyncThunk(
+export const createUser = createAsyncThunk(
     "users/create",
     async (data, rejectWithValue) => {
         try {
-            const response = await axiosClient.post("users/create", data, formDataConfig);
+            console.log("user data ", data)
+            const response = await axiosClient.post("users", data, formDataConfig);
             return response.data.data;
         } catch (error) {
-            return rejectWithValue(error.response.data.message);
+            return rejectWithValue(error.response.data.errors);
         }
     }
 )
@@ -42,14 +42,31 @@ const UsersSlice = createSlice({
                 state.error = "";
             })
             .addCase(getUsers.fulfilled, (state, action) => {
-                console.log("fulfilled");
                 state.loading = false;
                 state.users = action.payload;
                 state.error = "";
                 state.response = "";
             })
             .addCase(getUsers.rejected, (state, action) => {
-                console.log("rejected");
+                console.log("get users rejected");
+                state.loading = false;
+                state.error = "Incorrect Information";
+                state.response = action.payload;
+            });
+        builder
+            .addCase(createUser.pending, (state) => {
+                state.loading = true;
+                state.error = "";
+            })
+            .addCase(createUser.fulfilled, (state, action) => {
+                console.log("create user fulfilled");
+                state.loading = false;
+                state.users = [...state.users, action.payload];
+                state.error = "";
+                state.response = "";
+            })
+            .addCase(createUser.rejected, (state, action) => {
+                console.log("user create rejected");
                 state.loading = false;
                 state.error = "Incorrect Information";
                 state.response = action.payload;

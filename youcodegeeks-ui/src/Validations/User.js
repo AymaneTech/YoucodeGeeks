@@ -31,6 +31,4 @@ export const userSchema = object({
     password_confirmation: string().min(6).max(30),
     image: any(),
     role: any(),
-    className: string().optional()
-
 })

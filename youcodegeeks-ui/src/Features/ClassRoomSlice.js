@@ -61,7 +61,7 @@ const classRoomsSlice = createSlice({
                 state.error = "";
             })
             .addCase(getClassrooms.fulfilled, (state, action) => {
-                console.log("fulfilled");
+                console.log("get classroom fulfilled");
                 state.loading = false;
                 state.classRooms = action.payload;
                 state.error = "";

@@ -4,7 +4,7 @@ import {
 } from "@/components/ui/dialog"
 import {Input} from "@/components/ui/input"
 import {Label} from "@/components/ui/label"
-import { useForm} from "react-hook-form";
+import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form.jsx";
 import {useState} from "react";
@@ -13,149 +13,212 @@ import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVal
 import {SelectLabel} from "@radix-ui/react-select";
 import {userSchema} from "@/Validations/User.js";
 import {ClassRoomsSelect} from "@/components/Partials/Selects.jsx";
+import {createUser} from "@/Features/UsersSlice.js";
 
 export const UserCreate = () => {
-    const [imageValue, setImageValue] = useState();
+    const [imageValue, setImageValue] = useState()
+    const [className, setClassName] = useState(null)
+    const [showClassName, setShowClassName] = useState(false);
     const dispatch = useDispatch()
-
     const form = useForm({
-        resolver: zodResolver(userSchema), defaultValues: {
+        resolver: zodResolver(userSchema),
+        defaultValues: {
             firstName: "aymane",
             lastName: "January",
             email: "aymane@gmail.com",
             password: "password",
             password_confirmation: "password",
-            role: "student",
-            className: ""
+            role: 2,
         },
     })
 
     const handleImage = (e) => {
         setImageValue(e.target.files[0])
     }
-    const handleClassNameField = (e) => {
-        const classNameInput = document.querySelector('#className');
-        if (e === 1){
-            classNameInput.classList.toggle("hidden");
-        }
-    }
 
     const onSubmit = async (values) => {
-        const formData = new FormData();
-        formData.append("image", imageValue);
+        const formData = new FormData()
+        formData.append("image", imageValue)
+        if (values.role == 1) {
+            formData.append("className", className)
+        }
         for (const [key, value] of Object.entries(values)) {
-            if (key !== 'image') {
-                formData.append(key, value);
+            if (key !== "image") {
+                formData.append(key, value)
             }
         }
-        console.log(formData)
-
+        dispatch(createUser(formData))
     }
-
-
-    return (<Dialog>
+    return (
+        <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline" className="bg-blue-600">Add User</Button>
+                <Button variant="outline" className="bg-blue-600">
+                    Add User
+                </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
                     <DialogTitle>Add New User</DialogTitle>
-                    <DialogDescription>Fill out the details for the new category.</DialogDescription>
+                    <DialogDescription>
+                        Fill out the details for the new category.
+                    </DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4 py-4">
+                    <form
+                        onSubmit={form.handleSubmit(onSubmit)}
+                        className="grid gap-4 py-4" showClassName
+                    >
                         <div className="flex flex-col items-start gap-3">
                             <Label className="text-right" htmlFor="image">
                                 Image
                             </Label>
-                            <input type="file" name="image" onChange={handleImage}/>
+                            <input
+                                type="file"
+                                name="image"
+                                onChange={handleImage}
+                            />
                         </div>
                         <div className="flex gap-4 items-center">
                             <FormField
                                 control={form.control}
                                 name="firstName"
-                                render={({field}) => (<FormItem>
+                                render={({field}) => (
+                                    <FormItem>
                                         <FormLabel>First Name</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="name" {...field} />
+                                            <Input
+                                                placeholder="name"
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage></FormMessage>
-                                    </FormItem>)}
+                                    </FormItem>
+                                )}
                             />
                             <FormField
                                 control={form.control}
                                 name="lastName"
-                                render={({field}) => (<FormItem>
+                                render={({field}) => (
+                                    <FormItem>
                                         <FormLabel>Last Name</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="name" {...field} />
+                                            <Input
+                                                placeholder="name"
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage></FormMessage>
-                                    </FormItem>)}
+                                    </FormItem>
+                                )}
                             />
                         </div>
                         <FormField
                             control={form.control}
                             name="email"
-                            render={({field}) => (<FormItem>
+                            render={({field}) => (
+                                <FormItem>
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="email@gmail.com" {...field} />
+                                        <Input
+                                            placeholder="email@gmail.com"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage></FormMessage>
-                                </FormItem>)}
+                                </FormItem>
+                            )}
                         />
                         <div className="flex gap-4 items-center">
                             <FormField
                                 control={form.control}
                                 name="password"
-                                render={({field}) => (<FormItem>
+                                render={({field}) => (
+                                    <FormItem>
                                         <FormLabel>Password</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="password" {...field} />
+                                            <Input
+                                                placeholder="password"
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage></FormMessage>
-                                    </FormItem>)}
+                                    </FormItem>
+                                )}
                             />
                             <FormField
                                 control={form.control}
                                 name="password_confirmation"
-                                render={({field}) => (<FormItem>
-                                        <FormLabel>Password Confirmation</FormLabel>
+                                render={({field}) => (
+                                    <FormItem>
+                                        <FormLabel>
+                                            Password Confirmation
+                                        </FormLabel>
                                         <FormControl>
-                                            <Input placeholder="password" {...field} />
+                                            <Input
+                                                placeholder="password"
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage></FormMessage>
-                                    </FormItem>)}
+                                    </FormItem>
+                                )}
                             />
                         </div>
                         <FormField
                             control={form.control}
                             name="role"
-                            render={({field}) => (<FormItem>
+                            render={({field}) => (
+                                <FormItem>
                                     <FormLabel>User Role</FormLabel>
                                     <Select
-                                        onValueChange={handleClassNameField}
-                                        value={field.value}
+                                        onValueChange={(value) => {
+                                            value == 1 ? setShowClassName(true) : setShowClassName(false);
+                                            form.setValue("role", value);
+                                        }}
+                                        value={form.getValues("role")}
                                     >
                                         <SelectTrigger className="">
                                             <SelectValue placeholder="Select a user role"/>
                                         </SelectTrigger>
                                         <SelectContent>
                                             <SelectGroup>
-                                                <SelectLabel>User Roles</SelectLabel>
-                                                <SelectItem value={1}>Student</SelectItem>
-                                                <SelectItem value={2}>Admin</SelectItem>
-                                                <SelectItem value={3}>Coach</SelectItem>
+                                                <SelectLabel>
+                                                    User Roles
+                                                </SelectLabel>
+                                                <SelectItem value={1}>
+                                                    Student
+                                                </SelectItem>
+                                                <SelectItem value={2}>
+                                                    Admin
+                                                </SelectItem>
+                                                <SelectItem value={3}>
+                                                    Coach
+                                                </SelectItem>
                                             </SelectGroup>
                                         </SelectContent>
                                     </Select>
                                     <FormMessage/>
-                                </FormItem>)}
+                                </FormItem>
+                            )}
                         />
-                        <div id="className"  className="hidden">
-                            <ClassRoomsSelect/>
-                        </div>
+                        {showClassName && (
+                            <div id="">
+                                <FormField
+                                    control={form.control}
+                                    name="className"
+                                    render={({field}) => (
+                                        <FormItem>
+                                            <FormLabel>Class Room</FormLabel>
+                                            <ClassRoomsSelect
+                                                value={field.value}
+                                                onChange={(e) => setClassName(e)}
+                                            />
+                                            <FormMessage/>
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                        )}
 
                         <DialogFooter>
                             <DialogClose asChild>
@@ -165,5 +228,6 @@ export const UserCreate = () => {
                     </form>
                 </Form>
             </DialogContent>
-        </Dialog>)
+        </Dialog>
+    )
 }
