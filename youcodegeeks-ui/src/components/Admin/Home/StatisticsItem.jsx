@@ -1,4 +1,3 @@
-import {UsersIcon} from "lucide-react";
 
 export const StatisticsItem = ({options}) => {
     const {title, number, icon} = options;

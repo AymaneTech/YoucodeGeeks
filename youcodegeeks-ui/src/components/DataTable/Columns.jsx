@@ -104,3 +104,27 @@ export const usersColumns = () => [
         )
     }
 ]
+export const questionsColumns = () => [
+    {
+        accessorKey: "id", header: "ID"
+    },
+    {
+        accessorKey: "title", header: "Title"
+    },
+    {
+        accessorKey: "details", header: "Details"
+    },
+    {
+        accessorKey: "category.name", header: "Category"
+    },
+    {
+        accessorKey: "author.first_name", header: "Author"
+    },
+    {
+        id: "actions", cell: ({row}) => (
+            <div className="flex gap-4  ">
+                <UserDelete id={row.original.id}/>
+            </div>
+        )
+    }
+]

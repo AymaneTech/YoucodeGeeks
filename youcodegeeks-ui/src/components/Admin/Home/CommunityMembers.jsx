@@ -10,9 +10,6 @@ export const CommunityMembers = () => {
     useEffect(() => {
         dispatch(getUsers())
     }, []);
-    useEffect(() => {
-        console.log(users.students)
-    }, [users]);
     return (
         <>
             <div className="bg-[#1A1F3A] rounded-xl p-8">

@@ -104,7 +104,6 @@ const UsersSlice = createSlice({
                     if (user.id !== id) {
                         return user;
                     }
-                    console.log(action.payload)
                     return {
                         ...user,
                         isVerified: isVerfied,

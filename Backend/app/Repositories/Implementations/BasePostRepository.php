@@ -14,7 +14,7 @@ abstract class BasePostRepository implements PostRepositoryInterface
 
     public function all()
     {
-        return $this->postModel::with("category", "images", "author", "author.role")->get();
+        return $this->postModel::with("category", "images", "author", "author.role", "tags")->get();
     }
 
     public function create(PostDTO $DTO): Post
@@ -40,7 +40,7 @@ abstract class BasePostRepository implements PostRepositoryInterface
 
     public function show(Post $post): Post
     {
-        return $post->load("images", "category", "author");
+        return $post->load("images", "category", "author", "tags");
     }
 
     public function delete(Post $post): bool

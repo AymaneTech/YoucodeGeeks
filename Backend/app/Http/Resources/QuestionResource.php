@@ -20,7 +20,12 @@ class QuestionResource extends JsonResource
             "slug" => $this->slug,
             "details" => $this->details,
             "body" => $this->body,
-            "category" => new CategoryResource($this->category),
+            "category" => [
+                "id" => $this->category->id,
+                "name" => $this->category->name,
+                "slug" => $this->category->slug,
+                "image" => (new ImageResource($this->category->image)),
+            ],
             "images" => ImageResource::collection($this->images),
             "author" => new AuthorResource($this->author),
             "tags" => $this->tags,
