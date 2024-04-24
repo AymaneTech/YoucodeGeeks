@@ -1,4 +1,4 @@
-import {RoleFlag} from "@/components/Partials/RoleFlag.jsx";
+import {RoleFlag} from "@/components/Partials/Elements/RoleFlag.jsx";
 
 export const UsersList = ({title, users}) => {
 

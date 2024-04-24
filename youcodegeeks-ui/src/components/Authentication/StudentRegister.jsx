@@ -18,7 +18,7 @@ import {Register} from "@/Features/AuthSlice.js";
 import {isAuthenticated} from "@/Helpers/functions.js";
 import {useNavigate} from "react-router-dom";
 import {getClassrooms} from "@/Features/ClassRoomSlice.js";
-import {ClassRoomsSelect} from "@/components/Partials/Selects.jsx";
+import {ClassRoomsSelect} from "@/components/Partials/Elements/Selects.jsx";
 
 export const StudentRegister = () => {
     const [selectedImage, setSelectedImage] = useState(null);

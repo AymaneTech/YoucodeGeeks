@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form.jsx";
 import { classRoomSchema } from "@/Validations/Admin.js";
 
-import {CampusSelect, SchoolYearSelect} from "@/components/Partials/Selects.jsx";
+import {CampusSelect, SchoolYearSelect} from "@/components/Partials/Elements/Selects.jsx";
 import {useDispatch} from "react-redux";
 import {createClassRooms} from "@/Features/ClassRoomSlice.js";
 

@@ -1,4 +1,4 @@
-import {StatisticsItem} from "@/components/Partials/StatisticsItem.jsx";
+import {StatisticsItem} from "@/components/Admin/Home/StatisticsItem.jsx";
 import {UsersIcon} from "lucide-react";
 import {BiCategoryAlt, BiLogoBlogger} from "react-icons/bi";
 import {useEffect} from "react";

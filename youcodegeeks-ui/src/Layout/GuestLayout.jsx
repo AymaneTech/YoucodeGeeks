@@ -1,17 +1,14 @@
 import {Outlet} from "react-router-dom";
 import {Bell, Moon, Search} from "lucide-react";
 import {Discord} from "@/assets/CustomSvg/Discord.jsx";
+import Logo from "@/components/Partials/Elements/Logo.jsx";
 
 export const GuestLayout = () => {
     return (
         <div className="GuestLayout bg-[#16161a] overflow-y-hidden">
             <nav
                 className="col-span-12 flex justify-between items-center px-12 py-3 sticky top-0 z-50 bg-[#16161a] text-white shadow-md transition duration-300 ease-in-out">
-                <div className="logo flex items-center  text-2xl">
-                    <h2 className="font-bold font-mono">Youcode </h2>
-                    <span className="text-[#1B4CD2]">{"{"}Geeks{"}"}</span>
-                </div>
-
+                <Logo/>
                 <form>
                     <div className="hidden md:flex border border-gray-500 rounded-lg p-2 px-4  items-center gap-4">
                         <Search/>

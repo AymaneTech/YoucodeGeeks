@@ -12,7 +12,7 @@ import {useDispatch} from "react-redux";
 import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.jsx";
 import {SelectLabel} from "@radix-ui/react-select";
 import {userSchema} from "@/Validations/User.js";
-import {ClassRoomsSelect} from "@/components/Partials/Selects.jsx";
+import {ClassRoomsSelect} from "@/components/Partials/Elements/Selects.jsx";
 import {createUser} from "@/Features/UsersSlice.js";
 
 export const UserCreate = () => {

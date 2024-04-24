@@ -9,7 +9,7 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {classRoomSchema} from "@/Validations/Admin.js";
 import {Pencil} from "lucide-react";
-import {CampusSelect, SchoolYearSelect} from "@/components/Partials/Selects.jsx";
+import {CampusSelect, SchoolYearSelect} from "@/components/Partials/Elements/Selects.jsx";
 import {updateClassRoom} from "@/Features/ClassRoomSlice.js";
 
 export const ClassRoomEdit = ({classRoom}) => {
