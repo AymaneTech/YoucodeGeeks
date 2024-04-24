@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie';
+import {findVariableByName} from "eslint-plugin-react/lib/util/variable.js";
 
 
 export const setToken = token => {
@@ -22,4 +23,8 @@ export const mergeUsers = (users) => {
     const adminsArray = users.admins ? users.admins : [];
 
     return [...studentsArray, ...coachesArray, ...adminsArray];
+}
+
+export const getFullName = ({firstName, lastName}) => {
+    return firstName + " " + lastName;
 }

@@ -1,20 +1,18 @@
-import {useDispatch, useSelector} from "react-redux";
 import '@splidejs/react-splide/css';
 
-import {useEffect} from "react";
-import {getQuestions} from "@/Features/QuestionSlice.js";
-import {PostCard} from "@/components/Partials/PostCard.jsx";
-import {Splide} from "@splidejs/react-splide";
-import {Blink} from "@/components/Partials/Elements/CLink.jsx";
 import {PostsSlide} from "@/components/Student/PostsSlide.jsx";
 import {QuestionsList} from "@/components/Student/QuestionsList.jsx";
+import {TagList} from "@/components/Partials/Elements/TagList.jsx";
+import {TagsCard} from "@/components/Student/TagsCard.jsx";
 
 export const Home = () => {
 
     return (
-        <>
+        <div className="overflow-x-hidden font-mono mx-4 lg:ml-72 mr-8 lg:mr-12">
             <PostsSlide/>
-            <QuestionsList/>
-        </>
+            <section>
+                <QuestionsList/>
+            </section>
+        </div>
     )
 }

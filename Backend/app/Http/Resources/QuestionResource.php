@@ -29,6 +29,7 @@ class QuestionResource extends JsonResource
             "images" => ImageResource::collection($this->images),
             "author" => new AuthorResource($this->author),
             "tags" => $this->tags,
+            "created_at" => $this->created_at->diffForHumans()
         ];
     }
 }

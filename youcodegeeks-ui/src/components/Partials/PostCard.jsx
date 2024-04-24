@@ -1,6 +1,7 @@
 import {SplideSlide} from "@splidejs/react-splide";
-import {UserIcon, UsersIcon} from "lucide-react";
+import {Heart, MessageCircle, UserIcon, UsersIcon} from "lucide-react";
 import {MainButton} from "@/components/Partials/Elements/CLink.jsx";
+import {TagList} from "@/components/Partials/Elements/TagList.jsx";
 
 export const PostCard = ({post}) => {
     const {image, title, details, author, category, tags} = post;
@@ -31,13 +32,18 @@ export const PostCard = ({post}) => {
                     {details}
                 </p>
             </div>
-            <div className="flex items-center gap-3 px-5 pb-3">
-                {tags.map((tag) => (
-                    <span
-                        className="text-sm font-medium bg-blue-100 py-1 px-2 rounded text-blue-500 align-middle">{tag.name}</span>
-                ))}
-            </div>
-            <div className="p-6 pt-0">
+            <TagList px={5} tags={tags} />
+            <div className="p-6 pt-0 flex justify-between">
+                <div className="group flex gap-3 items-center text-white">
+                    <button className="flex gap-1">
+                        <Heart/>
+                        Like
+                    </button>
+                    <button className="flex gap-1">
+                        <MessageCircle />
+                        Comment
+                    </button>
+                </div>
                 <MainButton>Read More</MainButton>
             </div>
         </SplideSlide>
