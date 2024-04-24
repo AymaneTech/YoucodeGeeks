@@ -8,8 +8,10 @@ export const StudentLayout = () => {
             <DashboardNavbar/>
             <HomeSidebar/>
             <main>
-                <Outlet/>
+                <div className="overflow-x-hidden font-mono mx-4 lg:ml-72 mr-8 lg:mr-12">
+                    <Outlet/>
+                </div>
             </main>
         </>
-    )
+)
 }

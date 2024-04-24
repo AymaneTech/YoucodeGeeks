@@ -8,6 +8,7 @@ import authSlice from "@/Features/AuthSlice.js";
 import StatisticsSlice from "@/Features/StatisticsSlice.js";
 import QuestionSlice from "@/Features/QuestionSlice.js";
 import BlogSlice from "@/Features/BlogSlice.js";
+import TagInputSlice from "@/Features/TagInputSlice.js";
 
 export const store = configureStore({
     reducer: {
@@ -20,5 +21,6 @@ export const store = configureStore({
         statistics: StatisticsSlice,
         questions: QuestionSlice,
         blogs: BlogSlice,
+        tagsInput: TagInputSlice,
     }
 })

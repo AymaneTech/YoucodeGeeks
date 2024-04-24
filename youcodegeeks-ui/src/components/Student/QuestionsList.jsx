@@ -4,6 +4,7 @@ import {useEffect} from "react";
 import {Blink} from "@/components/Partials/Elements/CLink.jsx";
 import {QuestionCard} from "@/components/Partials/QuestionCard.jsx";
 import {TagsCard} from "@/components/Student/TagsCard.jsx";
+import {CommunityMembers} from "@/components/Admin/Home/CommunityMembers.jsx";
 
 export const QuestionsList = () => {
     const dispatch = useDispatch();
@@ -15,13 +16,16 @@ export const QuestionsList = () => {
     return (<>
         <div className="header flex justify-between items-center">
             <h2 className="text-2xl font-bold">All the questions</h2>
-            <Blink to="questions/ask">Ask A question</Blink>
+            <Blink to="/questions/ask">Ask A question</Blink>
         </div>
         <div className="flex justify-between items-start">
             <div className="questions-list">
                 {questions.map((question) => (<QuestionCard question={question}/>))}
             </div>
-            <TagsCard/>
+            <div>
+                <TagsCard/>
+                <CommunityMembers/>
+            </div>
         </div>
     </>)
 }

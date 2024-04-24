@@ -17,14 +17,14 @@ export const StudentLogin = () => {
     const {response, user} = useSelector((state) => state.user);
     const form = useForm({
         resolver: zodResolver(loginSchema), defaultValues: {
-            email: "aymane@gmail.com", password: "password",
+            email: "user@gmail.com", password: "password",
         },
     })
 
     const onSubmit = async (values) => {
         await dispatch(Login(values));
         if (isAuthenticated()) {
-            navigate("/dashboard");
+            navigate("/home");
         }
     };
 
