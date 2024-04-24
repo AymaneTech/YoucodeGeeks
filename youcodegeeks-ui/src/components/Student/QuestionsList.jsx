@@ -17,8 +17,8 @@ export const QuestionsList = () => {
             <h2 className="text-2xl font-bold">All the questions</h2>
             <Blink to="questions/ask">Ask A question</Blink>
         </div>
-        <div className="flex justify-between ">
-            <div className="questions-list {/*flex flex-col items-start*/}">
+        <div className="flex justify-between items-start">
+            <div className="questions-list">
                 {questions.map((question) => (<QuestionCard question={question}/>))}
             </div>
             <TagsCard/>

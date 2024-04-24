@@ -1,15 +1,18 @@
 <?php
 
-use App\Http\Controllers\Api\V1\Admin\{CampusController,
+use App\Http\Controllers\Api\V1\Admin\{
+    CampusController,
     CategoryController,
     ClassRoomController,
     ManageUsersController,
     StatisticsController,
     TagController,
-    UserController};
+    UserController
+};
 use App\Http\Controllers\Api\V1\Auth\{AuthApiController, StudentRegisterController};
 use App\Http\Controllers\Api\V1\Student\{AnswerController, BlogController, CommentController, QuestionController};
 use App\Http\Middleware\{IsAdmin, IsGuest, IsLoggedIn, IsStudent};
+use App\Models\Category;
 use App\Models\ClassRoom;
 use Illuminate\Support\Facades\Route;
 
@@ -20,8 +23,11 @@ Route::group([
     Route::post("register", [StudentRegisterController::class, "register"]);
     Route::post('login', [AuthApiController::class, "login"]);
     Route::post('logout', [AuthApiController::class, "logout"]);
-    Route::post('refresh', [AuthApiController::class, "refresh"]);});
+    Route::post('refresh', [AuthApiController::class, "refresh"]);
+});
 
+
+// dashboard routes
 Route::group([
     "prefix" => "v1",
     "middleware" => [IsLoggedIn::class, IsAdmin::class]
@@ -32,11 +38,14 @@ Route::group([
         "categories" => CategoryController::class,
         "tags" => TagController::class,
         "campuses" => CampusController::class,
+    ], [
+        "except" => "index"
     ]);
     Route::get("statistics/", [StatisticsController::class, "statistics"]);
     Route::get("users/verify/{user}", [ManageUsersController::class, "verify"]);
 })->name("dashboard");
 
+// Student Space Routes
 Route::group([
     "prefix" => "v1",
     "middleware" => [IsLoggedIn::class, IsStudent::class]
@@ -47,6 +56,11 @@ Route::group([
         "answers" => AnswerController::class,
         "comments" => CommentController::class
     ]);
+    Route::get("users", [UserController::class, "index"]);
+    Route::get("categories", [CategoryController::class, "index"]);
+    Route::get("classRooms", [ClassRoomController::class, "index"]);
+    Route::get("tags", [TagController::class, "index"]);
+    Route::get("campuses", [CampusController::class, "index"]);
 });
 
 Route::model('classroom', ClassRoom::class);
@@ -55,3 +69,5 @@ Route::model('classroom', ClassRoom::class);
 // helpers endpoint
 Route::get("v1/helpers/classrooms", [ClassRoomController::class, "index"]);
 Route::get("v1/helpers/categories", [CategoryController::class, "index"]);
+
+

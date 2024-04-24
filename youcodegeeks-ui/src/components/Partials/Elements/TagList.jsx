@@ -1,5 +1,4 @@
 export const TagList = ({tags, px = 0}) => {
-    console.log(px)
     return (
         <>
             <div className={`flex items-center gap-3 pb-3 px-${px}`}>
