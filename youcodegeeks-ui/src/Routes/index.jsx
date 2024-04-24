@@ -1,7 +1,6 @@
 import {createBrowserRouter} from "react-router-dom";
 import {Login} from "../Pages/Authentication/Login.jsx";
 import {Register} from "../Pages/Authentication/Register.jsx";
-import {Home} from "../Pages/Home.jsx";
 import {NotFound} from "../Pages/NotFound.jsx";
 import {GuestLayout} from "@/Layout/GuestLayout.jsx";
 import {DashboardLayout} from "@/Layout/DashboardLayout.jsx";
@@ -10,11 +9,10 @@ import {Tags} from "@/Pages/Dashboard/Tags.jsx";
 import {ClassRooms} from "@/Pages/Dashboard/ClassRooms.jsx";
 import {Users} from "@/Pages/Dashboard/Users.jsx";
 import {DashboardHome} from "@/Pages/Dashboard/DashboardHome.jsx";
-import {StudentRegister} from "@/components/Authentication/StudentRegister.jsx";
 import {StudentLayout} from "@/Layout/StudentLayout.jsx";
+import {Home} from "@/Pages/Home/Home.jsx";
 
 export const LOGIN_ROUTE = "/login"
-export const STUDENT_HOME = "/home"
 export const routes = createBrowserRouter([
         {
             element: <DashboardLayout/>,
@@ -48,6 +46,10 @@ export const routes = createBrowserRouter([
         {
             element: <StudentLayout/>,
             children: [
+                {
+                    path: "/home",
+                    element: <Home/>
+                },
                 {
                     path: "/",
                     element: <Home/>

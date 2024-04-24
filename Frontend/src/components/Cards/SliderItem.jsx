@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardBody, CardFooter, Flex, Image, IconButton, Text, Box, Avatar, Button, Heading } from '@chakra-ui/react';
 import { SplideSlide } from '@splidejs/react-splide';
-import { Heart, Linkedin, MessageCircle, TvIcon } from 'lucide-react';
+import { Heart, MessageCircle, TvIcon } from 'lucide-react';
 
 export const SliderItem = ({ post }) => {
   return (

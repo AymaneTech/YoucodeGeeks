@@ -1,4 +1,4 @@
-import { Splide, SplideSlide } from "@splidejs/react-splide"
+import { Splide } from "@splidejs/react-splide"
 import '@splidejs/react-splide/css';
 import { SliderItem } from "./Cards/SliderItem";
 import { Button } from "@chakra-ui/react";

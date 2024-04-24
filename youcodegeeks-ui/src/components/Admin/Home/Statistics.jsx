@@ -21,22 +21,22 @@ export const Statistics = () => {
                     <StatisticsItem options={{
                         title: "Students",
                         number: statistics.students,
-                        icon: <UsersIcon size={40}/>
+                        icon: <UsersIcon className="dark:group-hover:text-gray-950" size={40}/>
                     }}/>
                     <StatisticsItem options={{
                         title: "Coaches",
                         number: statistics.coaches,
-                        icon: <GiTeacher size={40}/>
+                        icon: <GiTeacher className="dark:group-hover:text-gray-950" size={40}/>
                     }}/>
                     <StatisticsItem options={{
                         title: "Blogs",
                         number: statistics.blogs,
-                        icon: <MdOutlineArticle size={40}/>
+                        icon: <MdOutlineArticle className="dark:group-hover:text-gray-950" size={40}/>
                     }}/>
                     <StatisticsItem options={{
                         title: "Questions",
                         number: statistics.questions,
-                        icon: <BiCategoryAlt size={40}/>
+                        icon: <BiCategoryAlt className="dark:group-hover:text-gray-950" size={40}/>
                     }}/>
                 </div>
         </>
