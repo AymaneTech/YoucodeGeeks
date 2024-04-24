@@ -2,6 +2,7 @@
 
 namespace App\DTO\Requests;
 
+use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Requests\UpdateQuestionRequest;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -18,7 +19,7 @@ readonly class PostDTO
         public array $tags,
     )
     {}
-    public static function fromRequest(StoreQuestionRequest|UpdateQuestionRequest $request): PostDTO
+    public static function fromRequest(StoreQuestionRequest|UpdateQuestionRequest|StoreBlogRequest $request): PostDTO
     {
         $validatedData = $request->validated();
         return new self(

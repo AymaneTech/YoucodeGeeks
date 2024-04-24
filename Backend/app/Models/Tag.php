@@ -27,8 +27,12 @@ class Tag extends Model
         ];
     }
 
-    public function posts()
+    public function questions()
     {
         return $this->belongsToMany(Question::class);
+    }
+    public function blogs()
+    {
+        return $this->belongsToMany(Blog::class);
     }
 }
