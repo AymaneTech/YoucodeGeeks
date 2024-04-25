@@ -30,6 +30,7 @@ export const createQuestion = createAsyncThunk(
         } catch (error) {
             return rejectWithValue(error.response.data.errors);
         }
+
     }
 )
 export const showQuestion = createAsyncThunk(
@@ -43,6 +44,7 @@ export const showQuestion = createAsyncThunk(
         }
     }
 )
+
 
 export const questionSlice = createSlice({
     name: "questions",
@@ -82,13 +84,8 @@ export const questionSlice = createSlice({
             });
         builder
             .addCase(showQuestion.fulfilled, (state, action) => {
-                console.log("show questions fulfilled ")
+                state.loading = false;
                 state.question = action.payload;
-            })
-            .addCase(showQuestion.rejected, (state, action) => {
-                console.log("show question rejected");
-                state.error = "Incorrect Information";
-                state.response = action.payload;
             })
     }
 })

@@ -18,6 +18,8 @@ class AnswerResource extends JsonResource
             "id" => $this->id,
             "body" => $this->body,
             "author" => new AuthorResource($this->author),
+            "created_at" => $this->created_at->diffForHumans(),
+            "updated_at" => $this->updated_at->diffForHumans(),
         ];
     }
 }

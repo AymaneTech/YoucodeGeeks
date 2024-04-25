@@ -32,4 +32,7 @@ class AnswerRepository implements AnswerRepositoryInterface
     {
         return $answer->delete();
     }
+    public function findByQuestion(string $id){
+        return Answer::with("author")->where("question_id", $id)->orderBy("created_at", "desc")->get();
+    }
 }

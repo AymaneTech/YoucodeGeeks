@@ -20,7 +20,7 @@ export const QuestionsList = () => {
         </div>
         <div className="flex justify-between items-start">
             <div className="questions-list">
-                {questions.map((question) => (<QuestionCard question={question}/>))}
+                {questions.map((question) => (<QuestionCard key={question.id} question={question}/>))}
             </div>
             <div>
                 <TagsCard/>

@@ -29,4 +29,8 @@ class AnswerService implements AnswerServiceInterface
     {
         return $this->repository->delete($answer);
     }
+    public function findByQuestion($id){
+        $answers = $this->repository->findByQuestion($id);
+        return AnswerResource::collection($answers);
+    }
 }

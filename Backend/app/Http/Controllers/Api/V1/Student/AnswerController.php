@@ -7,6 +7,7 @@ use App\Http\Requests\StoreAnswerRequest;
 use App\Http\Requests\UpdateAnswerRequest;
 use App\Models\Answer;
 use App\Services\Contracts\AnswerServiceInterface;
+use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AnswerController extends BaseApiController
@@ -43,5 +44,15 @@ class AnswerController extends BaseApiController
             message: "answer deleted successfully",
             code: 204
         );
+    }
+    public function findByQuestion($id){
+        try{
+            return $this->sendResponse(
+                message:"question answers retrieved successfully",
+                result: $this->service->findByQuestion($id),
+            );
+        }catch(Exception $e){
+            return $this->sendError(error: $e->getMessage(), code: 500);
+        }
     }
 }

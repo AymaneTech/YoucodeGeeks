@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    output: null
+    output: ""
 }
 
 export const saveOutput = createAsyncThunk(
@@ -15,15 +15,12 @@ export const LexicalSlice = createSlice({
     name: "LexicalSlice",
     initialState,
     reducers: {
-        // You can add other reducers here if needed
     },
     extraReducers: (builder) => {
         builder
             .addCase(saveOutput.fulfilled, (state, action) => {
-
                 state.output = action.payload;
             })
-        // You can handle other cases (pending, rejected) here if needed
     }
 })
 

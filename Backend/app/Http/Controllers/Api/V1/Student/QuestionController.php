@@ -6,6 +6,7 @@ use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Requests\UpdateQuestionRequest;
 use App\Http\Resources\QuestionResource;
+use App\Http\Resources\ShowQuestionResource;
 use App\Models\Post;
 use App\Models\Question;
 use App\Models\Tag;
@@ -43,9 +44,12 @@ class QuestionController extends BaseApiController
 
     public function show(Question $question): JsonResponse
     {
-        return $this->sendResponse(
+        $question = $this->service->show($question);
+        $question->load(['answers' => function($query) {
+            $query->latest();
+        }, 'answers.author']);        return $this->sendResponse(
             message: null,
-            result: ($this->service->show($question)),
+            result: new ShowQuestionResource($question),
         );
     }
 

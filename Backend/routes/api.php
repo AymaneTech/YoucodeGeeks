@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\V1\Admin\{
 use App\Http\Controllers\Api\V1\Auth\{AuthApiController, StudentRegisterController};
 use App\Http\Controllers\Api\V1\Student\{AnswerController, BlogController, CommentController, QuestionController};
 use App\Http\Middleware\{IsAdmin, IsGuest, IsLoggedIn, IsStudent};
+use App\Models\Answer;
 use App\Models\Category;
 use App\Models\ClassRoom;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +62,8 @@ Route::group([
     Route::get("classRooms", [ClassRoomController::class, "index"]);
     Route::get("tags", [TagController::class, "index"]);
     Route::get("campuses", [CampusController::class, "index"]);
+
+    Route::get("questions/answers/{id}", [AnswerController::class, "findByQuestion"]);
 });
 
 Route::model('classroom', ClassRoom::class);

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button.jsx";
+import {Button} from "@/components/ui/button.jsx";
 import Editor from "@/components/LexicalEditor/Editor.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {LexicalComposer} from "@lexical/react/LexicalComposer";
@@ -10,12 +10,12 @@ export const AnswerForm = ({question_id}) => {
     const dispatch = useDispatch();
     const onSubmit = async (e) => {
         e.preventDefault();
-        let data = {
-            question_id, body: output
-        };
-        dispatch(createAnswer(data))
-
-
+        if (output !== `<p class="editor-paragraph"><br></p>`) {
+            let data = {
+                question_id, body: output
+            };
+            dispatch(createAnswer(data))
+        }
     };
 
     return (
@@ -24,7 +24,7 @@ export const AnswerForm = ({question_id}) => {
                 <h3 className="text-xl font-medium my-2">Write your answer</h3>
                 <form onSubmit={onSubmit}>
                     <LexicalComposer initialConfig={editorConfig}>
-                        <Editor />
+                        <Editor/>
                     </LexicalComposer>
                     <Button type="submit" className="flex my-4 self-end">Submit</Button>
                 </form>

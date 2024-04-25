@@ -10,7 +10,7 @@ import QuestionSlice from "@/Features/QuestionSlice.js";
 import BlogSlice from "@/Features/BlogSlice.js";
 import TagInputSlice from "@/Features/TagInputSlice.js";
 import LexicalSlice from "@/Features/LexicalSlice.js";
-import {AnswersSlice} from "@/Features/AnswerSlice.js";
+import AnswerSlice from "@/Features/AnswerSlice.js";
 
 export const store = configureStore({
     reducer: {
@@ -22,7 +22,7 @@ export const store = configureStore({
         users: UsersSlice,
         statistics: StatisticsSlice,
         questions: QuestionSlice,
-        answers: AnswersSlice,
+        answers: AnswerSlice,
         blogs: BlogSlice,
         tagsInput: TagInputSlice,
         lexicalOutput: LexicalSlice

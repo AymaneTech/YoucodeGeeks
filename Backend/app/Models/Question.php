@@ -17,4 +17,7 @@ class Question extends Post
     {
         return $this->belongsToMany(Tag::class);
     }
+    public function answers(){
+        return $this->hasMany(Answer::class);
+    }
 }

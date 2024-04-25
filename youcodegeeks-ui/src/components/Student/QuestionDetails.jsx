@@ -7,7 +7,7 @@ export const QuestionDetails = ({question}) => {
     return (
         <>
             <div className="">
-                <div className="bg-[#1C1E27] p-4 mx-12 rounded-2xl">
+                <div className="bg-[#1A1F3A] p-4 mx-12 rounded-2xl">
                     <div>
                         <div className="flex justify-between items-center my-4">
                             <h1 className="text-4xl font-bold dark:text-white">{title}</h1>

@@ -13,4 +13,5 @@ interface AnswerRepositoryInterface
     public function update(Answer $answer, AnswerUpdateDTO $DTO);
 
     public function delete(Answer $answer);
+    public function findByQuestion(string $id);
 }

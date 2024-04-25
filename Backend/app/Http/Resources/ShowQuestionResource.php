@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class QuestionResource extends JsonResource
+class ShowQuestionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -28,6 +28,7 @@ class QuestionResource extends JsonResource
             ],
             "images" => ImageResource::collection($this->images),
             "author" => new AuthorResource($this->author),
+            "answers" => AnswerResource::collection($this->answers),
             "tags" => $this->tags,
             "created_at" => $this->created_at->diffForHumans()
 
