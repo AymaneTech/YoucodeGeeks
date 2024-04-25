@@ -16,7 +16,7 @@ export const QuestionCard = ({question}) => {
                 </div>
                 <div className="py-4 sm:py-8 mb-6">
                     <div>
-                        <Link to={`questions/${slug}`}
+                        <Link to={`/questions/${slug}`}
                               className="block text-2xl font-medium text-gray-700 dark:text-white">{title}</Link>
                         <span
                             className="inline-block border px-4 py-1.5 my-2 border-white rounded-3xl text-sm">{category.name}</span>
@@ -37,7 +37,7 @@ export const QuestionCard = ({question}) => {
                                 </p>
                             </div>
                         </div>
-                        <Link className="flex items-center text-sm underline " to={`questions/${slug}`}>
+                        <Link className="flex items-center text-sm underline " to={`/questions/${slug}`}>
                             Read More
                             <BiRightArrowAlt size={26}/>
                         </Link>

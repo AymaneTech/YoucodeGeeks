@@ -12,6 +12,7 @@ import {DashboardHome} from "@/Pages/Dashboard/DashboardHome.jsx";
 import {StudentLayout} from "@/Layout/StudentLayout.jsx";
 import {Home} from "@/Pages/Home/Home.jsx";
 import {AskQuestion} from "@/Pages/Home/AskQuestion.jsx";
+import {ShowQuestion} from "@/Pages/Home/ShowQuestion.jsx";
 
 export const LOGIN_ROUTE = "/login"
 export const routes = createBrowserRouter([
@@ -58,6 +59,10 @@ export const routes = createBrowserRouter([
                 {
                     path: "/questions/ask",
                     element: <AskQuestion/>
+                },
+                {
+                    path: "/questions/:slug",
+                    element: <ShowQuestion/>
                 }
             ]
         },

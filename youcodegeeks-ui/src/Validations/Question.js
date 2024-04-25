@@ -8,3 +8,7 @@ export const questionCreateForm = object({
     categoryId: string(),
     images: any()
 })
+
+export const answerSchema = object({
+    body: string().min(10).max(200),
+})

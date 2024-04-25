@@ -2,6 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {axiosClient} from "@/Api/axios.js";
 import {setToken} from "@/Helpers/functions.js";
 import {formDataConfig} from "@/Api/Config.js";
+import Cookies from "js-cookie";
 
 const initialState = {
     user: {},
@@ -52,6 +53,7 @@ const authSlice = createSlice({
                 state.response = "";
             })
             .addCase(Login.rejected, (state, action) => {
+                Cookies.set("user", action.payload);
                 state.loading = false;
                 state.error = "Incorrect Information";
                 state.response = action.payload;
