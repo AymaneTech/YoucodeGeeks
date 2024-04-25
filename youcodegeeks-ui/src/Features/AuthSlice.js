@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {axiosClient, formDataConfig} from "@/Api/axios.js";
+import {axiosClient} from "@/Api/axios.js";
 import {setToken} from "@/Helpers/functions.js";
+import {formDataConfig} from "@/Api/Config.js";
 
 const initialState = {
     user: {},

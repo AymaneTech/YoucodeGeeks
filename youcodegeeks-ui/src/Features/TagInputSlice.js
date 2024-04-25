@@ -20,13 +20,14 @@ export const tagInputSlice = createSlice({
             newTags.splice(action.payload.currPos, 1);
             newTags.splice(action.payload.newPos, 0, action.payload.tag);
             state.tagsInput = newTags;
-        }
+        },
     }
 })
 
 export const {
     addTag,
     handleDelete,
-    handleDrag
+    handleDrag,
+    getInputTags
 } = tagInputSlice.actions
 export default tagInputSlice.reducer;

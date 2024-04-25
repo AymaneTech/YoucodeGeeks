@@ -26,7 +26,7 @@ readonly class PostDTO
             title: $validatedData["title"],
             details: $validatedData["details"],
             body: $validatedData["body"],
-            category_id: $validatedData["category_id"],
+            category_id: $validatedData["categoryId"],
             images: $validatedData["images"],
             author_id: JWTAuth::user()->id,
             tags: $validatedData["tags"],

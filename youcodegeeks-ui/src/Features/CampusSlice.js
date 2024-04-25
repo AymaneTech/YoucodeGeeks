@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {axiosClient} from "@/Api/axios.js";
+import {formDataConfig} from "@/Api/Config.js";
 
 const initialState = {
     campus: [], loading: false, error: "", response: ""

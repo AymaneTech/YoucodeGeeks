@@ -18,9 +18,9 @@ class StoreQuestionRequest extends BaseFormRequest
             "title" => "required | unique:questions",
             "details" => "required",
             "body" => "required",
-            "category_id" => "required",
+            "categoryId" => "required",
             "tags" => "required",
-            "images" => "required | array",
+            "images" => "required",
         ];
     }
 

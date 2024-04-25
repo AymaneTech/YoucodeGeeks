@@ -14,9 +14,6 @@ const Tags = () => {
     const dispatch = useDispatch();
     const {tagsInput} = useSelector((state) => state.tagsInput);
 
-    useEffect(() => {
-        console.log(tagsInput)
-    }, [tagsInput]);
     return (
         <div className="app">
             <h1> Tags </h1>
