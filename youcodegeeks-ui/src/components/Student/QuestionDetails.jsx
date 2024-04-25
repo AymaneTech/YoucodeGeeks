@@ -1,26 +1,16 @@
 import {TagList} from "@/components/Partials/Elements/TagList.jsx";
-import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
-import {useEffect} from "react";
-import {showQuestion} from "@/Features/QuestionSlice.js";
 import {Button} from "@/components/ui/button.jsx";
 
-export const QuestionDetails = () => {
-    const dispatch = useDispatch();
-    const {slug} = useParams();
-    const {question} = useSelector((state) => state.questions);
-    const {title, details, body, created_at, updated_at, category, tags} = question;
+export const QuestionDetails = ({question}) => {
+    const {id, title, details, body, created_at, updated_at, category, tags} = question;
 
-    useEffect(() => {
-        dispatch(showQuestion(slug));
-    }, []);
     return (
         <>
             <div className="">
                 <div className="bg-[#1C1E27] p-4 mx-12 rounded-2xl">
                     <div>
                         <div className="flex justify-between items-center my-4">
-                            <h1 className="text-4xl font-bold">{title}</h1>
+                            <h1 className="text-4xl font-bold dark:text-white">{title}</h1>
                             <a href="#answer">
                                 <Button>Answer</Button>
                             </a>
@@ -48,6 +38,7 @@ export const QuestionDetails = () => {
                     {tags && <TagList tags={tags}/>}
                 </div>
             </div>
+
         </>
     )
 }

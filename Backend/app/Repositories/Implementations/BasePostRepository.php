@@ -14,7 +14,7 @@ abstract class BasePostRepository implements PostRepositoryInterface
 
     public function all()
     {
-        return $this->postModel::with("category", "category.image", "images", "author", "author.role", "author.image", "tags")->get();
+        return $this->postModel::with("category", "category.image", "images", "author", "author.role", "author.image", "tags")->orderBy("created_at", "desc")->get();
     }
 
     public function create(PostDTO $DTO): Post
