@@ -14,19 +14,22 @@ import {SelectLabel} from "@radix-ui/react-select";
 import {Button} from "@/components/ui/button.jsx";
 import {createQuestion} from "@/Features/QuestionSlice.js";
 import {useNavigate} from "react-router-dom";
+import Editor from "@/components/LexicalEditor/Editor.jsx";
+import {LexicalComposer} from "@lexical/react/LexicalComposer";
+import {editorConfig} from "@/components/LexicalEditor/editorConfig.js";
 
 export const AskQuestion = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const {categories} = useSelector((state) => state.categories);
     const {tagsInput} = useSelector((state) => state.tagsInput);
+    const {output} = useSelector((state) => state.lexicalOutput);
     const [image, setImage] = useState([])
 
     const form = useForm({
         resolver: zodResolver(questionCreateForm), defaultValues: {
             title: "lorem Ipsum ",
             details: "Lorem Ipsum ",
-            body: "Lorem Ipsum ",
             categoryId: null,
             images: null,
         }
@@ -35,7 +38,6 @@ export const AskQuestion = () => {
 
     const onSubmit = (values) => {
         const formData = new FormData();
-
         for (let i = 0; i < tagsInput.length; i++) {
             formData.append('tags[]', tagsInput[i].text);
         }
@@ -49,6 +51,7 @@ export const AskQuestion = () => {
                 formData.append(key, value)
             }
         }
+        formData.append("body", output)
         dispatch(createQuestion(formData))
             .then(() => navigate("/home"));
     }
@@ -92,20 +95,9 @@ export const AskQuestion = () => {
                                     </FormItem>
                                 )}
                             />
-                            <FormField
-                                control={control}
-                                name="body"
-                                render={({field}) => (
-                                    <FormItem>
-                                        <FormLabel>Your Details</FormLabel>
-                                        <FormControl>
-                                            <Textarea className="min-h-52"
-                                                      placeholder="Type your details here." {...field} />
-                                        </FormControl>
-                                        <FormMessage/>
-                                    </FormItem>
-                                )}
-                            />
+                            <LexicalComposer initialConfig={editorConfig}>
+                                <Editor/>
+                            </LexicalComposer>
                             <TagInput/>
                             <FormField
                                 control={form.control}

@@ -5,6 +5,7 @@ import {Blink} from "@/components/Partials/Elements/CLink.jsx";
 import {QuestionCard} from "@/components/Partials/QuestionCard.jsx";
 import {TagsCard} from "@/components/Student/TagsCard.jsx";
 import {CommunityMembers} from "@/components/Admin/Home/CommunityMembers.jsx";
+import {CategoriesCard} from "@/components/Student/CategoriesCard.jsx";
 
 export const QuestionsList = () => {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ export const QuestionsList = () => {
             </div>
             <div>
                 <TagsCard/>
+                <CategoriesCard/>
                 <CommunityMembers/>
             </div>
         </div>

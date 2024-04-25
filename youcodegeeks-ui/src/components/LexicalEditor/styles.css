@@ -56,8 +56,11 @@ h1 {
 }
 
 .editor-inner {
-    background: #fff;
+    background: #020817;
+    color: #fff;
+    border: 1px solid #6B7280;
     position: relative;
+    border-radius: 0 0 20px 20px;
 }
 
 .editor-input {
@@ -73,7 +76,7 @@ h1 {
 }
 
 .editor-placeholder {
-    color: #999;
+    color: white;
     overflow: hidden;
     position: absolute;
     text-overflow: ellipsis;
@@ -135,7 +138,7 @@ h1 {
 
 .editor-code {
     border-radius: 16px;
-    background-color: #0D0D0D;
+    background-color: #282C34;
     font-family: Menlo, Consolas, Monaco, monospace;
     display: block;
     padding: 8px 8px 8px 52px;
@@ -153,7 +156,7 @@ h1 {
 .editor-code:before {
     content: attr(data-gutter);
     position: absolute;
-    background-color: #0D0D0D;
+    background-color: #282C34;
     left: 0;
     top: 0;
     border-right: 1px solid #ccc;
@@ -345,8 +348,8 @@ pre::-webkit-scrollbar-thumb {
 .toolbar {
     display: flex;
     margin-bottom: 1px;
-    background: #fff;
-    padding: 4px;
+    background: #020817;
+    border: 1px solid #6B7280;    padding: 4px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     vertical-align: middle;
@@ -380,7 +383,6 @@ pre::-webkit-scrollbar-thumb {
     display: flex;
     opacity: 0.6;
 }
-
 .toolbar button.toolbar-item:disabled i.format {
     opacity: 0.2;
 }
@@ -394,7 +396,7 @@ pre::-webkit-scrollbar-thumb {
 }
 
 .toolbar .toolbar-item:hover:not([disabled]) {
-    background-color: #eee;
+    background-color: #eeeeee;
 }
 
 .toolbar .divider {
@@ -429,7 +431,7 @@ pre::-webkit-scrollbar-thumb {
     width: 200px;
     vertical-align: middle;
     font-size: 14px;
-    color: #777;
+    color: white;
     text-overflow: ellipsis;
     width: 70px;
     overflow: hidden;

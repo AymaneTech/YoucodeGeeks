@@ -30,7 +30,8 @@ export const QuestionDetails = ({question}) => {
                     <div className="problem-details font-sans">
                         <h3 className="font-medium text-xl underline my-4">Problem Details: </h3>
                         <p>{details}</p>
-                        <p>{body}</p>
+                        <div className="w-full text-white  indent-4"
+                             dangerouslySetInnerHTML={{__html: body}}></div>
                     </div>
                     <div className="my-4 rounded-2xl">
                         <img className="w-100 h-100 rounded-2xl" src="/src/assets/images/attached.png" alt=""/>

@@ -17,9 +17,7 @@ import AutoLinkPlugin from "./plugins/AuthoLinkPlugin.jsx";
 
 
 import "./styles.css"
-import {useLexicalComposerContext} from "@lexical/react/LexicalComposerContext";
-import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {OnChangePlugin} from "@lexical/react/LexicalOnChangePlugin";
 import {$generateHtmlFromNodes} from "@lexical/html";
 import {saveOutput} from "@/Features/LexicalSlice.js";

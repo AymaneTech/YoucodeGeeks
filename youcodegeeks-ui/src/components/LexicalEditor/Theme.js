@@ -1,4 +1,4 @@
-export const exampleTheme = {
+export const EditorTheme = {
     ltr: "ltr",
     rtl: "rtl",
     placeholder: "editor-placeholder",

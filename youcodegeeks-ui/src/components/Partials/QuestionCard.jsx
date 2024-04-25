@@ -11,7 +11,7 @@ export const QuestionCard = ({question}) => {
                 className="my-10 flex max-w-md flex-col rounded-2xl bg-white dark:bg-[#1A1F3A] px-4 shadow md:max-w-5xl md:flex-row md:items-center">
                 <div className="shrink-0 my-4 md:mr-8 md:max-w-sm">
                     <img className="rounded-2xl"
-                         src={"https://images.unsplash.com/photo-1663287695452-bf59337d8746?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"}
+                         src={"https://images.unsplash.com/photo-1663287695452-bf59337d8746?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"}
                          alt=""/>
                 </div>
                 <div className="py-4 sm:py-8 mb-6">
@@ -22,9 +22,9 @@ export const QuestionCard = ({question}) => {
                             className="inline-block border px-4 py-1.5 my-2 border-white rounded-3xl text-sm">{category.name}</span>
                     </div>
                     <p className="mb-6 text-gray-500 dark:text-gray-300">{details}</p>
-                    <div className="flex justify-between items-center">
-                        <div>
-                            <TagList tags={tags}/>
+                    <div className="">
+                        <TagList tags={tags}/>
+                        <div className="flex justify-between w-full">
                             <div className="flex items-center">
                                 <img
                                     className="inline-block size-[38px] rounded-full ring-2 ring-white dark:ring-neutral-800"
@@ -36,11 +36,11 @@ export const QuestionCard = ({question}) => {
                                     <span className="text-sm text-gray-400 dark:text-gray-300">{created_at}</span>
                                 </p>
                             </div>
+                            <Link className="flex items-center text-sm underline " to={`/questions/${slug}`}>
+                                Read More
+                                <BiRightArrowAlt size={26}/>
+                            </Link>
                         </div>
-                        <Link className="flex items-center text-sm underline " to={`/questions/${slug}`}>
-                            Read More
-                            <BiRightArrowAlt size={26}/>
-                        </Link>
                     </div>
                 </div>
             </article>
