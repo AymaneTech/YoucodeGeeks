@@ -1,7 +1,7 @@
 import {HomeIcon, School2, TagIcon, UsersIcon} from "lucide-react";
 import {BiCategory} from "react-icons/bi";
 import Logo from "@/components/Partials/Elements/Logo.jsx";
-import {CLink} from "@/components/Partials/Elements/CLink.jsx";
+import {CustomButtons} from "@/components/Partials/Elements/CustomButtons.jsx";
 import {Link} from "react-router-dom";
 
 export const DashboardSidebar = () => {
@@ -15,22 +15,22 @@ export const DashboardSidebar = () => {
 
             <nav className="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
                 <ul className="flex flex-col gap-y-4">
-                    <CLink options={{
+                    <CustomButtons options={{
                         name: "Dashboard", to: "/dashboard", icon: <HomeIcon size={22}/>
                     }}/>
-                    <CLink options={{
+                    <CustomButtons options={{
                         name: "Manage Categories", to: "/dashboard/categories", icon: <BiCategory size={22}/>
                     }}/>
-                    <CLink options={{
+                    <CustomButtons options={{
                         name: "Manage Tags", to: "/dashboard/tags", icon: <TagIcon size={22}/>
                     }}/>
-                    <CLink options={{
+                    <CustomButtons options={{
                         name: "Manage Categories", to: "/dashboard/categories", icon: <BiCategory size={22}/>
                     }}/>
-                    <CLink options={{
+                    <CustomButtons options={{
                         name: "Manage Class rooms", to: "/dashboard/classRooms", icon: <School2 size={22}/>
                     }}/>
-                    <CLink options={{name: "Manage Users", to: "/dashboard/users", icon: <UsersIcon size={22}/>}}/>
+                    <CustomButtons options={{name: "Manage Users", to: "/dashboard/users", icon: <UsersIcon size={22}/>}}/>
                 </ul>
             </nav>
         </div>);

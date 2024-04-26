@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-export const CLink = ({options}) => {
+export const CustomButtons = ({options}) => {
     const {name, to, icon} = options;
     return (
         <li>

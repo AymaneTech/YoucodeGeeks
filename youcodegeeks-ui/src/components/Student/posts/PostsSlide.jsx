@@ -1,4 +1,4 @@
-import {Blink} from "@/components/Partials/Elements/CLink.jsx";
+import {Blink} from "@/components/Partials/Elements/CustomButtons.jsx";
 import {Splide} from "@splidejs/react-splide";
 import {PostCard} from "@/components/Student/posts/PostCard.jsx";
 import {useDispatch, useSelector} from "react-redux";

@@ -1,7 +1,7 @@
 import {BugIcon, HomeIcon, Network, School2, TagIcon, UsersIcon} from "lucide-react";
 import {BiCategory} from "react-icons/bi";
 import Logo from "@/components/Partials/Elements/Logo.jsx";
-import {CLink} from "@/components/Partials/Elements/CLink.jsx";
+import {CustomButtons} from "@/components/Partials/Elements/CustomButtons.jsx";
 import {Link} from "react-router-dom";
 import {PiArticle} from "react-icons/pi";
 
@@ -17,19 +17,19 @@ export const HomeSidebar = () => {
 
         <nav className="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
             <ul className="flex flex-col gap-y-4">
-                <CLink options={{
+                <CustomButtons options={{
                     name: "Home", to: "/home", icon: <HomeIcon size={22}/>
                 }}/>
-                <CLink options={{
+                <CustomButtons options={{
                     name: "Bugs", to: "/Bugs", icon: <BugIcon size={22}/>
                 }}/>
-                <CLink options={{
+                <CustomButtons options={{
                     name: "Posts", to: "/Posts", icon: <PiArticle size={22}/>
                 }}/>
-                <CLink options={{
+                <CustomButtons options={{
                     name: "Network", to: "/network", icon: <Network size={22}/>
                 }}/>
-                <CLink options={{
+                <CustomButtons options={{
                     name: "Class Rooms", to: "/classRooms", icon: <School2 size={22}/>
                 }}/>
             </ul>

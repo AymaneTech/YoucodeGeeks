@@ -1,10 +1,10 @@
 import {SplideSlide} from "@splidejs/react-splide";
 import {Heart, MessageCircle, UserIcon, UsersIcon} from "lucide-react";
-import {MainButton} from "@/components/Partials/Elements/CLink.jsx";
+import {Blink, MainButton} from "@/components/Partials/Elements/CustomButtons.jsx";
 import {TagList} from "@/components/Student/tags/TagList.jsx";
 
 export const PostCard = ({post}) => {
-    const {image, title, details, author, category, tags} = post;
+    const {slug, image, title, details, author, category, tags} = post;
     return (
         <SplideSlide
             className="relative flex flex-col mt-6 text-gray-700 bg-white dark:bg-[#1A1F3A] shadow-md bg-clip-border rounded-xl w-96">
@@ -44,7 +44,7 @@ export const PostCard = ({post}) => {
                         Comment
                     </button>
                 </div>
-                <MainButton>Read More</MainButton>
+                <Blink to={`/posts/${slug}`}>Read More</Blink>
             </div>
         </SplideSlide>
     )
