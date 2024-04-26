@@ -4,19 +4,19 @@ import {getCategories} from "@/Features/CategorySlice.js";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {questionCreateForm} from "@/Validations/Question.js";
-import {Requirements} from "@/components/Partials/Requirements.jsx";
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form.jsx";
-import {Input} from "@/components/ui/input.jsx";
-import {Textarea} from "@/components/ui/textarea.jsx";
-import TagInput from "@/components/Student/tags/TagInput.jsx";
-import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.jsx";
+import {Requirements} from "@/Components/Partials/Requirements.jsx";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/Components/ui/form.jsx";
+import {Input} from "@/Components/ui/input.jsx";
+import {Textarea} from "@/Components/ui/textarea.jsx";
+import TagInput from "@/Components/Student/tags/TagInput.jsx";
+import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/Components/ui/select.jsx";
 import {SelectLabel} from "@radix-ui/react-select";
-import {Button} from "@/components/ui/button.jsx";
+import {Button} from "@/Components/ui/button.jsx";
 import {createQuestion} from "@/Features/QuestionSlice.js";
 import {useNavigate} from "react-router-dom";
-import Editor from "@/components/LexicalEditor/Editor.jsx";
+import Editor from "@/Components/LexicalEditor/Editor.jsx";
 import {LexicalComposer} from "@lexical/react/LexicalComposer";
-import {editorConfig} from "@/components/LexicalEditor/editorConfig.js";
+import {editorConfig} from "@/Components/LexicalEditor/editorConfig.js";
 
 export const AskQuestion = () => {
     const navigate = useNavigate();

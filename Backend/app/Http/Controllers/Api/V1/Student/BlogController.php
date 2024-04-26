@@ -54,7 +54,7 @@ class BlogController extends BaseApiController
         );
     }
 
-    public function delete(Blog $blog): JsonResponse
+    public function destroy(Blog $blog): JsonResponse
     {
         $this->authorize("delete", $blog);
         $blog->delete();

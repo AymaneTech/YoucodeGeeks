@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreUserRequest;
-use App\Http\Resources\StudentResource;
-use App\Models\Student;
 use App\Models\User;
 use App\Services\Contracts\UserServiceInterface;
 use Mockery\Exception;

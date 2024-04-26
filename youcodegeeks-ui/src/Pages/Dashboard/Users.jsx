@@ -1,9 +1,9 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getUsers} from "@/Features/UsersSlice.js";
-import DataTable from "@/components/DataTable/DataTable.jsx";
-import { usersColumns} from "@/components/DataTable/Columns.jsx";
-import {UserCreate} from "@/components/Admin/Users/UserCreate.jsx";
+import DataTable from "@/Components/DataTable/DataTable.jsx";
+import { usersColumns} from "@/Components/DataTable/Columns.jsx";
+import {UserCreate} from "@/Components/Admin/Users/UserCreate.jsx";
 import {mergeUsers} from "@/Helpers/functions.js";
 
 export const Users = () => {

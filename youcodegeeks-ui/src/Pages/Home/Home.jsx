@@ -1,7 +1,7 @@
 import '@splidejs/react-splide/css';
 
-import {PostsSlide} from "@/components/Student/posts/PostsSlide.jsx";
-import {QuestionsList} from "@/components/Student/questions/QuestionsList.jsx";
+import {PostsSlide} from "@/Components/Student/posts/PostsSlide.jsx";
+import {QuestionsList} from "@/Components/Student/questions/QuestionsList.jsx";
 
 export const Home = () => {
 

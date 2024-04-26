@@ -1,11 +1,11 @@
-import {QuestionDetails} from "@/components/Student/questions/QuestionDetails.jsx";
+import {QuestionDetails} from "@/Components/Student/questions/QuestionDetails.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {useEffect} from "react";
 import {showQuestion} from "@/Features/QuestionSlice.js";
-import {AnswerForm} from "@/components/Student/answers/AnswerForm.jsx";
+import {AnswerForm} from "@/Components/Student/answers/AnswerForm.jsx";
 import {getAnswers} from "@/Features/AnswerSlice.js";
-import {Answers} from "@/components/Student/answers/Answers.jsx";
+import {Answers} from "@/Components/Student/answers/Answers.jsx";
 
 export const ShowQuestion = () => {
     const dispatch = useDispatch();

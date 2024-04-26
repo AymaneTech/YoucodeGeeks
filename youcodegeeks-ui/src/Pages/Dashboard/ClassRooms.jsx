@@ -1,9 +1,9 @@
-import DataTable from "@/components/DataTable/DataTable.jsx";
+import DataTable from "@/Components/DataTable/DataTable.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getClassrooms} from "@/Features/ClassRoomSlice.js";
-import {classRoomssColumns} from "@/components/DataTable/Columns.jsx";
-import {ClassRoomCreate} from "@/components/Admin/ClassRooms/ClassRoomCreate.jsx";
+import {classRoomssColumns} from "@/Components/DataTable/Columns.jsx";
+import {ClassRoomCreate} from "@/Components/Admin/ClassRooms/ClassRoomCreate.jsx";
 
 export const ClassRooms = () => {
     const {classRooms} = useSelector((state) => state.classRooms);

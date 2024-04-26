@@ -1,4 +1,4 @@
-import {StudentLogin} from "@/components/Authentication/StudentLogin.jsx";
+import {StudentLogin} from "@/Components/Authentication/StudentLogin.jsx";
 
 export const Login = () => {
     return (

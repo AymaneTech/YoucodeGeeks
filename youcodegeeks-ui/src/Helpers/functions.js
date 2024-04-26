@@ -3,7 +3,7 @@ import {findVariableByName} from "eslint-plugin-react/lib/util/variable.js";
 
 
 export const setToken = token => {
-    Cookies.set('token', token, {expires: 7});
+    Cookies.set('token', token, {expires: 1});
 }
 
 export const isAuthenticated = () => {

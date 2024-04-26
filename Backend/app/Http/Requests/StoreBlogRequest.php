@@ -19,7 +19,7 @@ class StoreBlogRequest extends BaseFormRequest
             "title" => "required | unique:blogs",
             "details" => "required",
             "body" => "required",
-            "category_id" => "required",
+            "categoryId" => "required",
             "tags" => "required",
             "images" => "required | array"
         ];

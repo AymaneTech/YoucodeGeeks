@@ -14,6 +14,8 @@ import {Home} from "@/Pages/Home/Home.jsx";
 import {AskQuestion} from "@/Pages/Home/questions/AskQuestion.jsx";
 import {ShowQuestion} from "@/Pages/Home/questions/ShowQuestion.jsx";
 import {ShowPost} from "@/Pages/Home/posts/ShowPost.jsx";
+import {Posts} from "@/Pages/Home/posts/Posts.jsx";
+import {WritePost} from "@/Pages/Home/posts/WritePost.jsx";
 
 export const LOGIN_ROUTE = "/login"
 export const routes = createBrowserRouter([
@@ -58,6 +60,14 @@ export const routes = createBrowserRouter([
                     element: <Home/>
                 },
                 {
+                  path: "/blogs",
+                  element: <Posts/>
+                },
+                {
+                    path: "/blogs/write",
+                    element: <WritePost/>
+                },
+                {
                     path: "/questions/ask",
                     element: <AskQuestion/>
                 },
@@ -66,7 +76,7 @@ export const routes = createBrowserRouter([
                     element: <ShowQuestion/>
                 },
                 {
-                    path: "/posts/:slug",
+                    path: "/blogs/:slug",
                     element: <ShowPost/>
                 }
             ]

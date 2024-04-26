@@ -64,6 +64,7 @@ Route::group([
     Route::get("campuses", [CampusController::class, "index"]);
 
     Route::get("questions/answers/{id}", [AnswerController::class, "findByQuestion"]);
+    Route::get("blogs/filter/{param}", [BlogController::class, "findByTag"]);
 });
 
 Route::model('classroom', ClassRoom::class);

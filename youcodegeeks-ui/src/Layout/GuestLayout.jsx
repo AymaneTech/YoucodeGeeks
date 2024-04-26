@@ -1,7 +1,7 @@
 import {Outlet} from "react-router-dom";
 import {Bell, Moon, Search} from "lucide-react";
 import {Discord} from "@/assets/CustomSvg/Discord.jsx";
-import Logo from "@/components/Partials/Elements/Logo.jsx";
+import Logo from "@/Components/Partials/Elements/Logo.jsx";
 
 export const GuestLayout = () => {
     return (

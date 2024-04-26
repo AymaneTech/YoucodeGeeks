@@ -1,9 +1,9 @@
-import DataTable from "@/components/DataTable/DataTable.jsx";
-import {categoriescolumns} from "@/components/DataTable/Columns.jsx";
+import DataTable from "@/Components/DataTable/DataTable.jsx";
+import {categoriescolumns} from "@/Components/DataTable/Columns.jsx";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getCategories} from "@/Features/CategorySlice.js";
-import {CategoryCreate} from "@/components/Admin/Category/CategoryCreate.jsx";
+import {CategoryCreate} from "@/Components/Admin/Category/CategoryCreate.jsx";
 
 export const Categories = () => {
     const dispatch = useDispatch();

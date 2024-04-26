@@ -2,7 +2,7 @@ import {RouterProvider} from "react-router-dom";
 import {routes} from "./Routes/index.jsx";
 import {Provider} from "react-redux";
 import {store} from "@/Store/index.js";
-import {ThemeProvider} from "@/components/Theme/ThemeProvider.jsx";
+import {ThemeProvider} from "@/Components/Theme/ThemeProvider.jsx";
 
 function App() {
 

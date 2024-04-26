@@ -1,4 +1,5 @@
 import {object, string, any} from "zod";
+
 const MAX_FILE_SIZE = 9 * 1024 * 1024; // 5MB in bytes
 
 const ACCEPTED_IMAGE_TYPES = [

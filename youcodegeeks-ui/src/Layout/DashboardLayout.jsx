@@ -1,5 +1,5 @@
-import {DashboardNavbar} from "@/components/Partials/DashboardNavbar.jsx";
-import {DashboardSidebar} from "@/components/Partials/DashboardSideBar.jsx";
+import {DashboardNavbar} from "@/Components/Partials/DashboardNavbar.jsx";
+import {DashboardSidebar} from "@/Components/Partials/DashboardSideBar.jsx";
 import {Outlet} from "react-router-dom";
 
 export const DashboardLayout = () => {

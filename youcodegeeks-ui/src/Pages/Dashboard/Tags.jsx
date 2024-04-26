@@ -1,7 +1,7 @@
-import {TagCreate} from "@/components/Admin/Tag/TagCreate.jsx";
+import {TagCreate} from "@/Components/Admin/Tag/TagCreate.jsx";
 import {useDispatch, useSelector} from "react-redux";
-import DataTable from "@/components/DataTable/DataTable.jsx";
-import {tagsColumns} from "@/components/DataTable/Columns.jsx";
+import DataTable from "@/Components/DataTable/DataTable.jsx";
+import {tagsColumns} from "@/Components/DataTable/Columns.jsx";
 import {useEffect} from "react";
 import {getTags} from "@/Features/TagsSlice.js";
 
