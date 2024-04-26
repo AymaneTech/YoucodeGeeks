@@ -86,7 +86,7 @@ class UserRepository implements UserRepositoryInterface
             "is_verified" => $DTO->isVerified
         ];
         if (property_exists($DTO, "className")) {
-            $array["class_name"] = $DTO->className;
+            $array["class_room_id"] = $DTO->className;
         }
         return $array;
     }

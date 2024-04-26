@@ -117,7 +117,6 @@ export const tagsSlice = createSlice({
                     if (tag.id !== id) {
                         return tag;
                     }
-                    console.log(action.payload)
                     return {
                         ...tag,
                         name: name,

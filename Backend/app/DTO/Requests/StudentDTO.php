@@ -11,7 +11,7 @@ readonly class StudentDTO
         public string $lastName,
         public string $email,
         public string $password,
-        public int $classRoomId,
+        public string $classRoomId,
         public int $role,
         public object $image,
         public bool $isVerified
@@ -25,7 +25,7 @@ readonly class StudentDTO
             lastName: $validatedData['lastName'],
             email: $validatedData['email'],
             password: $validatedData['password'],
-            classRoomId: $validatedData["classRoomId"],
+            classRoomId: $validatedData["class_room_id"],
             role: 1,
             image: $validatedData['image'],
             isVerified: false,

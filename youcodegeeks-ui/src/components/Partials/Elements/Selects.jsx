@@ -16,7 +16,7 @@ export const ClassRoomsSelect = ({ value, onChange }) => {
     }, []);
 
     return (
-        <Select value={value} onValueChange={onChange} name="className">
+        <Select value={value} onValueChange={onChange} name="class_room_id">
             <SelectTrigger>
                 <SelectValue placeholder="Select a class room" />
             </SelectTrigger>

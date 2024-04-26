@@ -38,7 +38,7 @@ export const StudentRegister = () => {
             firstName: "John",
             lastName: "Doe",
             email: "john.doe@example.com",
-            className: "Class A",
+            class_room_id: "Class A",
             password: "password123",
             password_confirmation: "password123",
             image: null,
@@ -54,7 +54,7 @@ export const StudentRegister = () => {
         formData.append("firstName", values.firstName);
         formData.append("lastName", values.lastName);
         formData.append("email", values.email);
-        formData.append("className", values.className);
+        formData.append("class_room_id", values.class_room_id);
         formData.append("password", values.password);
         formData.append("password_confirmation", values.password_confirmation);
 

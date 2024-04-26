@@ -3,12 +3,13 @@
 namespace App\Actions;
 
 use App\DTO\Requests\StudentDTO;
+use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Repositories\Implementations\UserRepository;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class CreateStudentAction
 {
-    public function __construct(public UserRepository $repository)
+    public function __construct(public UserRepositoryInterface $repository)
     {
     }
 

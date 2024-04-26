@@ -34,7 +34,7 @@ export const deleteUser = createAsyncThunk(
     "users/delete",
     async (id, rejectWithValue) => {
         try {
-            const response = await axiosClient.delete(`users/${id}`);
+            await axiosClient.delete(`users/${id}`);
             return id;
         } catch (error) {
             return rejectWithValue(error.response.data.message);
@@ -85,6 +85,7 @@ const UsersSlice = createSlice({
                 state.users = [...state.users, action.payload];
                 state.error = "";
                 state.response = "";
+                console.log(state.users);
             })
             .addCase(createUser.rejected, (state, action) => {
                 console.log("user create rejected");
@@ -99,17 +100,8 @@ const UsersSlice = createSlice({
             })
             .addCase(verifyUser.fulfilled, (state, action) => {
                 console.log("verfiy user fulfilled")
-                const {id, isVerfied} = action.payload;
                 state.loading = false;
-                state.users = state.users.map(user => {
-                    if (user.id !== id) {
-                        return user;
-                    }
-                    return {
-                        ...user,
-                        isVerified: isVerfied,
-                    };
-                });
+                state.users = action.payload
                 state.error = "";
                 state.response = "";
             })

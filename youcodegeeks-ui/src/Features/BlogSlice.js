@@ -3,6 +3,7 @@ import {axiosClient} from "@/Api/axios.js";
 
 const initialState = {
     blogs: [],
+    blog: {},
     loading: false,
     response: "",
     error: "",
@@ -19,6 +20,17 @@ export const getBlogs = createAsyncThunk(
         }
     }
 );
+export const showBlog = createAsyncThunk(
+    "blogs/show",
+    async (slug, rejectWithValue) => {
+        try {
+             const response = await axiosClient.get(`blogs/${slug}`);
+             return response.data.data;
+        }catch (error){
+            return rejectWithValue(error.response.data.message);
+        }
+    }
+)
 
 export const blogSlice = createSlice({
     name: "blogs",
@@ -31,12 +43,21 @@ export const blogSlice = createSlice({
             })
             .addCase(getBlogs.fulfilled, (state, action) => {
                 console.log("get blogs fulfilled ")
+
                 state.loading = false;
                 state.error = "";
                 state.blogs = action.payload;
             })
             .addCase(getBlogs.rejected, (state, action) => {
                 console.log("get blogs rejected")
+            })
+        builder
+            .addCase(showBlog.pending, (state, action) => {
+                state.loading = true;
+            })
+            .addCase(showBlog.fulfilled, (state, action) => {
+                state.loading = false;
+                state.blog = action.payload;
             })
     }
 })

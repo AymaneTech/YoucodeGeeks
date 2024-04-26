@@ -17,7 +17,7 @@ export const registerSchema = object({
     firstName: string().min(2).max(30),
     lastName: string().min(2).max(30),
     email: string().email().min(2).max(30),
-    className: string().min(2).max(30),
+    class_room_id: string().min(2).max(30),
     password: string().min(6).max(30),
     password_confirmation: string().min(6).max(30),
     image: any(),

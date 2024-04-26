@@ -4,7 +4,6 @@ namespace App\Repositories\Implementations;
 
 use App\DTO\Requests\PostDTO;
 use App\Models\Post;
-use App\Models\Question;
 use App\Repositories\Contracts\PostRepositoryInterface;
 
 abstract class BasePostRepository implements PostRepositoryInterface
@@ -40,7 +39,11 @@ abstract class BasePostRepository implements PostRepositoryInterface
 
     public function show(Post $post): Post
     {
-        return $post->load("images", "category", "author", "tags");
+
+        $post = $post->load("images", "category", "author", "tags");
+        $post->views = $post->views + 1;
+        $post->save();
+        return $post;
     }
 
     public function delete(Post $post): bool

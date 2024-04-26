@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('question_tag', function (Blueprint $table) {
             $table->id();
             $table->foreignId("question_id")
-                ->constrained("questions");
+                ->constrained("questions")
+                ->cascadeOnDelete();
             $table->foreignId("tag_id")
-                ->constrained("tags");
+                ->constrained("tags")
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }
