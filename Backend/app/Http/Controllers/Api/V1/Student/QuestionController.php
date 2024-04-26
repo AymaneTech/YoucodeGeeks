@@ -45,9 +45,7 @@ class QuestionController extends BaseApiController
     public function show(Question $question): JsonResponse
     {
         $question = $this->service->show($question);
-        $question->load(['answers' => function($query) {
-            $query->latest();
-        }, 'answers.author']);        return $this->sendResponse(
+        return $this->sendResponse(
             message: null,
             result: new ShowQuestionResource($question),
         );

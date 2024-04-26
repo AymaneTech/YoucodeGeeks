@@ -47,7 +47,8 @@ export const filterByTag = createAsyncThunk(
     "blogs/filter",
     async (param ,rejectWithValue) => {
         try {
-            const response = await axiosClient.get(`blogs/fitler/${param}`);
+            const response = await axiosClient.get(`blogs/filter/${param}`);
+            console.log(response.data)
             return response.data.data;
         }catch (error) {
             return rejectWithValue(error.response.data.message);

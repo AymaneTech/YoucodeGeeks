@@ -12,10 +12,12 @@ class BlogRepository extends BasePostRepository
         parent::__construct($model);
     }
 
-    public function filterByTag($param)
+    public function findByTag($param)
     {
-        return Blog::whereHas("tag", function ($query) use ($param) {
-            $query->where("name", $param);
-        })->get();
+        $tags = is_array($param) ? $param : [$param];
+
+        return Blog::whereHas("tags", function ($query) use ($tags) {
+            $query->whereIn("name", $tags);
+        })->with("category", "author", "images", "tags")->get();
     }
 }

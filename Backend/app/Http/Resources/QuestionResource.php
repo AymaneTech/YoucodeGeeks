@@ -24,7 +24,6 @@ class QuestionResource extends JsonResource
                 "id" => $this->category->id,
                 "name" => $this->category->name,
                 "slug" => $this->category->slug,
-                "image" => (new ImageResource($this->category->image)),
             ],
             "images" => ImageResource::collection($this->images),
             "author" => new AuthorResource($this->author),

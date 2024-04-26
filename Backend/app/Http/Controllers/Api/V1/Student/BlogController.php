@@ -13,6 +13,7 @@ use Illuminate\Http\JsonResponse;
 class BlogController extends BaseApiController
 {
     use AuthorizesRequests;
+
     public function __construct(
         public PostServiceInterface $service)
     {
@@ -62,6 +63,23 @@ class BlogController extends BaseApiController
             message: "question deleted successfully",
             code: 204
         );
+    }
+
+    public function findByTag($param)
+    {
+        try {
+            $blogs = $this->service->findByTag($param);
+            return $this->sendResponse(
+                message: "posts filtered successfully",
+                result: $blogs,
+            );
+        } catch (\Exception $e) {
+            return $this->sendError(
+                error: $e->getMessage(),
+                code: 500
+            );
+        }
+
     }
 
 }

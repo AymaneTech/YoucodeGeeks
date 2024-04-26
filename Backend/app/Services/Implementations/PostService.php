@@ -51,4 +51,10 @@ class PostService implements PostServiceInterface
     {
         return $this->repository->delete($post);
     }
+
+    public function findByTag($param)
+    {
+        $blogs = $this->repository->findByTag($param);
+        return QuestionResource::collection($blogs);
+    }
 }

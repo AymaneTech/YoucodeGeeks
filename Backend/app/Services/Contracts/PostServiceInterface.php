@@ -17,4 +17,6 @@ interface PostServiceInterface
     public function update(Post $post, PostDTO $DTO);
 
     public function delete(Post $post);
+
+    public function findByTag($param);
 }

@@ -11,6 +11,7 @@
         "laravel/framework": "^11.0",
         "laravel/pulse": "^1.0@beta",
         "laravel/sanctum": "^4.0",
+        "laravel/telescope": "^5.0",
         "laravel/tinker": "^2.9",
         "silverhand7/laravel-artisan-maker": "^3.0",
         "tymon/jwt-auth": "^2.1"

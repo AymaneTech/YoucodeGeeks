@@ -41,7 +41,7 @@ abstract class BasePostRepository implements PostRepositoryInterface
     {
 
         $post = $post->load("images", "category", "author", "tags");
-        $post->views = $post->views + 1;
+        $post->views++;
         $post->save();
         return $post;
     }
@@ -49,5 +49,10 @@ abstract class BasePostRepository implements PostRepositoryInterface
     public function delete(Post $post): bool
     {
         return $post->delete();
+    }
+
+    public function findByTag(string $param)
+    {
+
     }
 }

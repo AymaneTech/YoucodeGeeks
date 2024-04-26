@@ -17,4 +17,5 @@ interface PostRepositoryInterface
     public function show(Post $post): Post;
 
     public function delete(Post $post): bool;
+    public function findByTag(string $param);
 }

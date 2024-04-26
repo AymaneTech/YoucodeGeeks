@@ -1,9 +1,9 @@
-
 import {ModeToggle} from "@/Components/Theme/ModeToggle.jsx";
+import {useDispatch} from "react-redux";
 
 
 export const DashboardNavbar = () => {
-
+    const dispatch = useDispatch();
     return (
         <>
             <header
@@ -20,11 +20,11 @@ export const DashboardNavbar = () => {
                                 <path
                                     d="M1 29.5V16.5C1 9.87258 6.37258 4.5 13 4.5C19.6274 4.5 25 9.87258 25 16.5C25 23.1274 19.6274 28.5 13 28.5H12"
                                     className="stroke-blue-600 dark:stroke-white" stroke="currentColor"
-                                    />
+                                />
                                 <path
                                     d="M5 29.5V16.66C5 12.1534 8.58172 8.5 13 8.5C17.4183 8.5 21 12.1534 21 16.66C21 21.1666 17.4183 24.82 13 24.82H12"
                                     className="stroke-blue-600 dark:stroke-white" stroke="currentColor"
-                                    />
+                                />
                                 <circle cx="13" cy="16.5214" r="5" className="fill-blue-600 dark:fill-white"
                                         fill="currentColor"/>
                             </svg>
@@ -58,7 +58,7 @@ export const DashboardNavbar = () => {
                                 </div>
                                 <input type="text" id="icon" name="icon"
                                        className="py-2 px-4 ps-11 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-[#020817] dark:border-white dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                       placeholder="Search"/>
+                                       placeholder="Search" onChange={(e) => dispatch(searchPosts(e.target.value))}/>
                             </div>
                         </div>
 
@@ -104,7 +104,7 @@ export const DashboardNavbar = () => {
                                 width="16" height="16" viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 1L10.6869 7.16086C10.8637 7.35239 10.8637 7.64761 10.6869 7.83914L5 14"
-                                      stroke="currentColor"  />
+                                      stroke="currentColor"/>
                             </svg>
                         </li>
                         <li className="text-sm font-semibold text-gray-800 truncate dark:text-neutral-400"
