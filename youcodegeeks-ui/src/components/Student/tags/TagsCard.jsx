@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {TagList} from "@/components/Partials/Elements/TagList.jsx";
+import {TagList} from "@/components/Student/tags/TagList.jsx";
 import {useEffect} from "react";
 import {getTags} from "@/Features/TagsSlice.js";
 

@@ -8,7 +8,7 @@ import {Requirements} from "@/components/Partials/Requirements.jsx";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form.jsx";
 import {Input} from "@/components/ui/input.jsx";
 import {Textarea} from "@/components/ui/textarea.jsx";
-import TagInput from "@/components/Student/TagInput.jsx";
+import TagInput from "@/components/Student/tags/TagInput.jsx";
 import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.jsx";
 import {SelectLabel} from "@radix-ui/react-select";
 import {Button} from "@/components/ui/button.jsx";

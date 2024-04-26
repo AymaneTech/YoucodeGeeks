@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import {getFullName} from "@/Helpers/functions.js";
-import {TagList} from "@/components/Partials/Elements/TagList.jsx";
+import {TagList} from "@/components/Student/tags/TagList.jsx";
 import {BiRightArrowAlt} from "react-icons/bi";
 
 export const QuestionCard = ({question}) => {

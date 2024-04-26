@@ -14,7 +14,7 @@ export const CommunityMembers = () => {
         <>
             <div className="bg-[#1A1F3A] rounded-xl p-8">
                 <div className="my-4  border-b-[1px] border-gray-500 pb-3">
-                    <h1 className="text-2xl font-bold text-center">Community members</h1>
+                    <h1 className="dark:text-white text-2xl font-bold text-center">Community members</h1>
                 </div>
                 {users.students && users.students.length > 0 ? (
                     <UsersList title="Students" users={users.students} />

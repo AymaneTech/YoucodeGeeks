@@ -1,6 +1,6 @@
 import {Blink} from "@/components/Partials/Elements/CLink.jsx";
 import {Splide} from "@splidejs/react-splide";
-import {PostCard} from "@/components/Partials/PostCard.jsx";
+import {PostCard} from "@/components/Student/posts/PostCard.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getBlogs} from "@/Features/BlogSlice.js";

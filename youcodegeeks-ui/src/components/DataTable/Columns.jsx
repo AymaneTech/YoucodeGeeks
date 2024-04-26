@@ -14,7 +14,7 @@ export const categoriescolumns = () => [
             if (!imageData || !imageData.path) {
                 return <div className="w-12 h-12 rounded-full bg-gray-200 animate-pulse"/>;
             }
-            return <img src={imageData.path} alt={imageData.name || "category Image"}
+            return <img src={imageData.path} alt={imageData.name || "categories Image"}
                         className="w-12 h-12 rounded-full"/>;
         }
     },
@@ -115,7 +115,7 @@ export const questionsColumns = () => [
         accessorKey: "details", header: "Details"
     },
     {
-        accessorKey: "category.name", header: "Category"
+        accessorKey: "categories.name", header: "Category"
     },
     {
         accessorKey: "author.first_name", header: "Author"

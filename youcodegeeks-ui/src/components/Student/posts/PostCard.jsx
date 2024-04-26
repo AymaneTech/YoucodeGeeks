@@ -1,7 +1,7 @@
 import {SplideSlide} from "@splidejs/react-splide";
 import {Heart, MessageCircle, UserIcon, UsersIcon} from "lucide-react";
 import {MainButton} from "@/components/Partials/Elements/CLink.jsx";
-import {TagList} from "@/components/Partials/Elements/TagList.jsx";
+import {TagList} from "@/components/Student/tags/TagList.jsx";
 
 export const PostCard = ({post}) => {
     const {image, title, details, author, category, tags} = post;

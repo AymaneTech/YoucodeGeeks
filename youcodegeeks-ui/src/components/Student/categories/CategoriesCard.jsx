@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {CategoriesList} from "@/components/Student/CategoriesList.jsx";
+import {CategoriesList} from "@/components/Student/categories/CategoriesList.jsx";
 import {getCategories} from "@/Features/CategorySlice.js";
 
 export const CategoriesCard = () => {

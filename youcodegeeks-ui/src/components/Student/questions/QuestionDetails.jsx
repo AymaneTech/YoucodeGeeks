@@ -1,4 +1,4 @@
-import {TagList} from "@/components/Partials/Elements/TagList.jsx";
+import {TagList} from "@/components/Student/tags/TagList.jsx";
 import {Button} from "@/components/ui/button.jsx";
 
 export const QuestionDetails = ({question}) => {

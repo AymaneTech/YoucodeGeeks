@@ -6,7 +6,7 @@ const initialState = {
     categories: [], loading: false, error: "", response: ""
 }
 
-export const createCategory = createAsyncThunk("category/create", async (data, rejectWithValue) => {
+export const createCategory = createAsyncThunk("categories/create", async (data, rejectWithValue) => {
     try {
         const response = await axiosClient.post("categories", data, formDataConfig);
         return response.data.data;
@@ -14,7 +14,7 @@ export const createCategory = createAsyncThunk("category/create", async (data, r
         return rejectWithValue(error.return.data.message);
     }
 })
-export const updateCategory = createAsyncThunk("category/update", async (data, rejectWithValue) => {
+export const updateCategory = createAsyncThunk("categories/update", async (data, rejectWithValue) => {
     try {
         const response = await axiosClient.patch(`categories/${data.slug}`, data.formData, formDataConfig);
         return response.data.data;
@@ -23,7 +23,7 @@ export const updateCategory = createAsyncThunk("category/update", async (data, r
         return rejectWithValue(error.response.data.errors);
     }
 });
-export const deleteCategory = createAsyncThunk("category/delete", async (slug, rejectWithValue) => {
+export const deleteCategory = createAsyncThunk("categories/delete", async (slug, rejectWithValue) => {
     try {
         await axiosClient.delete("categories/" + slug);
         return slug;
