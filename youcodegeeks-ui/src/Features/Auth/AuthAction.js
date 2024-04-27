@@ -9,8 +9,8 @@ export const Login = createAsyncThunk(
     async (userCredentials, {rejectWithValue}) => {
         try {
             const response = await axiosClient.post("login", userCredentials);
+            localStorage.setItem("user", JSON.stringify(response.data.user));
             setToken(response.data.access_token);
-            Cookies.set("user", response.data);
 
             return response.data;
         } catch (error) {
@@ -24,7 +24,9 @@ export const Register = createAsyncThunk(
     async (userCredentials, {rejectWithValue}) => {
         try {
             const response = await axiosClient.post("register", userCredentials, formDataConfig);
+            localStorage.setItem("user", JSON.stringify(response.data.user));
             setToken(response.data.access_token);
+
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data)
