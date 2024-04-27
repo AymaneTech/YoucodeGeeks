@@ -18,6 +18,7 @@ import {Posts} from "@/Pages/Home/posts/Posts.jsx";
 import {WritePost} from "@/Pages/Home/posts/WritePost.jsx";
 import {Bugs} from "@/Pages/Home/questions/Bugs.jsx";
 import {Network} from "@/Pages/Home/Users/Network.jsx";
+import {Profile} from "@/Components/Student/Users/Profile.jsx";
 
 export const LOGIN_ROUTE = "/login"
 export const routes = createBrowserRouter([

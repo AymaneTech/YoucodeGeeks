@@ -3,6 +3,7 @@ import Logo from "@/Components/Partials/Elements/Logo.jsx";
 import {CustomButtons} from "@/Components/Partials/Elements/CustomButtons.jsx";
 import {Link} from "react-router-dom";
 import {PiArticle} from "react-icons/pi";
+import {BiUserCircle} from "react-icons/bi";
 
 export const HomeSidebar = () => {
     return (<div id="application-sidebar"
@@ -29,7 +30,7 @@ export const HomeSidebar = () => {
                     name: "Network", to: "/network", icon: <Network size={22}/>
                 }}/>
                 <CustomButtons options={{
-                    name: "Profile", to: "/profile", icon: <Network size={22}/>
+                    name: "Profile", to: "/profile", icon: <BiUserCircle size={22}/>
                 }}/>
             </ul>
         </nav>

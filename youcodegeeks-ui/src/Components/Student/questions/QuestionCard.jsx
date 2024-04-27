@@ -4,14 +4,14 @@ import {TagList} from "@/Components/Student/tags/TagList.jsx";
 import {BiRightArrowAlt} from "react-icons/bi";
 
 export const QuestionCard = ({question}) => {
-    const {title, slug, details, image, created_at, author, category, tags} = question;
+    const {title, slug, details, images, created_at, author, category, tags} = question;
     return (
         <>
             <article
                 className="my-10 flex max-w-md flex-col rounded-2xl bg-white dark:bg-[#1A1F3A] px-4 shadow md:max-w-5xl md:flex-row md:items-center">
                 <div className="shrink-0 my-4 md:mr-8 md:max-w-sm">
                     <img className="rounded-2xl"
-                         src={"https://images.unsplash.com/photo-1663287695452-bf59337d8746?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"}
+                         src={images[0].path}
                          alt=""/>
                 </div>
                 <div className="py-4 sm:py-8 mb-6">

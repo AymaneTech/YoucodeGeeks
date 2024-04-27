@@ -2,7 +2,6 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 import {axiosClient} from "@/Api/axios.js";
 import {setToken} from "@/Helpers/functions.js";
 import {formDataConfig} from "@/Api/Config.js";
-import Cookies from "js-cookie";
 
 export const Login = createAsyncThunk(
     "user/login",
