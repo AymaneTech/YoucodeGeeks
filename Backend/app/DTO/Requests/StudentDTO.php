@@ -3,6 +3,7 @@
 namespace App\DTO\Requests;
 
 use App\Http\Requests\StoreStudentRequest;
+use App\Http\Requests\StoreUserRequest;
 
 readonly class StudentDTO
 {
@@ -17,7 +18,7 @@ readonly class StudentDTO
         public bool $isVerified
     ){}
 
-    public static function fromRequest(StoreStudentRequest $request)
+    public static function fromRequest(StoreStudentRequest | StoreUserRequest $request)
     {
         $validatedData = $request->validated();
         return new self(
@@ -25,7 +26,7 @@ readonly class StudentDTO
             lastName: $validatedData['lastName'],
             email: $validatedData['email'],
             password: $validatedData['password'],
-            classRoomId: $validatedData["class_room_id"],
+            classRoomId: $validatedData["classRoomId"],
             role: 1,
             image: $validatedData['image'],
             isVerified: false,

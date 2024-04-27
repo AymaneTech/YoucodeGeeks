@@ -40,7 +40,7 @@ export const UserCreate = () => {
         const formData = new FormData()
         formData.append("image", imageValue)
         if (values.role == 1) {
-            formData.append("className", className)
+            formData.append("classRoomId", className)
         }
         for (const [key, value] of Object.entries(values)) {
             if (key !== "image") {

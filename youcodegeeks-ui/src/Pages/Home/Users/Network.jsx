@@ -14,7 +14,7 @@ export const Network = () => {
     }, []);
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 px-5 py-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  gap-12 px-5 py-5">
             {allUsers.map(user => {
                 return (
                     <UserCard key={user.id} user={user}/>

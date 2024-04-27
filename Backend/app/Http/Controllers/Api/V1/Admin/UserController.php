@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api\V1\Admin;
 
+use App\DTO\Requests\StudentDTO;
+use App\DTO\Requests\UserDTO;
 use App\Http\Controllers\BaseApiController;
 use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
@@ -34,7 +36,10 @@ class UserController extends BaseApiController
 
     public function store(StoreUserRequest $request)
     {
-        $user = $this->service->create($request->createDTO());
+        $DTO = $request->get("classRoomId")
+            ? StudentDTO::fromRequest($request)
+            : UserDTO::fromRequest($request);
+        $user = $this->service->create($DTO);
         return $this->sendResponse(
             message: "user created successfully",
             result: $user,

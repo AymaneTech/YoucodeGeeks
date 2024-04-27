@@ -41,7 +41,6 @@ const UsersSlice = createSlice({
                 state.users = [...state.users, action.payload];
                 state.error = "";
                 state.response = "";
-                console.log(state.users);
             })
             .addCase(createUser.rejected, (state, action) => {
                 console.log("user create rejected");

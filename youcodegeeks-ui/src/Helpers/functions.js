@@ -28,3 +28,8 @@ export const mergeUsers = (users) => {
 export const getFullName = ({firstName, lastName}) => {
     return firstName + " " + lastName;
 }
+
+export const getSchoolYearName = (schoolYear) => {
+    const schoolYearNames = ['graduated', 'junior', 'senior'];
+    return schoolYearNames[schoolYear] || 'invalid';
+};

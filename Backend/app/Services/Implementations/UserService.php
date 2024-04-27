@@ -2,7 +2,9 @@
 
 namespace App\Services\Implementations;
 
+use App\DTO\Requests\StudentDTO;
 use App\DTO\Requests\UserDTO;
+use App\Enums\Role;
 use App\Http\Resources\CoachResource;
 use App\Http\Resources\StudentResource;
 use App\Http\Resources\UserResource;
@@ -15,8 +17,10 @@ class UserService implements UserServiceInterface
 {
     public function __construct(
         public UserRepositoryInterface $repository,
-        public ImageServiceInterface $imageService
-    ){}
+        public ImageServiceInterface   $imageService
+    )
+    {
+    }
 
     public function all()
     {
@@ -33,12 +37,13 @@ class UserService implements UserServiceInterface
         return new UserResource($this->repository->show($user));
     }
 
-    public function create(UserDTO $DTO)
+    public function create(UserDTO|StudentDTO $DTO)
     {
         $user = $this->repository->create($DTO);
-         $this->imageService->create($user, $DTO->image);
-        return new UserResource($user);
-
+        $this->imageService->create($user, $DTO->image);
+        return $user->role_id === Role::STUDENT->value
+            ? new StudentResource($user)
+            : new UserResource($user);
     }
 
     public function update(User $user, UserDTO $DTO)

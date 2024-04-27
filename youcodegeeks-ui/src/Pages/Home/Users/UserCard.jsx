@@ -1,28 +1,50 @@
 import React from "react";
+import {getSchoolYearName} from "@/Helpers/functions.js";
 
 export const UserCard = ({user}) => {
-    const {firstName, lastName, email, role} = user;
+    console.log(user)
+    const {firstName, lastName, email, role, classRoom} = user;
     return (
         <>
             <div className="rounded-lg shadow-xl bg-gray-900 text-white" style={{width: '450px'}}>
-                <div className="border-b border-gray-800 px-8 py-3">
-                    <div className="inline-block w-3 h-3 mr-2 rounded-full bg-red-500"></div>
-                    <div className="inline-block w-3 h-3 mr-2 rounded-full bg-yellow-300"></div>
-                    <div className="inline-block w-3 h-3 mr-2 rounded-full bg-green-400"></div>
+                <div className="relative border-b border-gray-800 px-8 py-3">
+                    <div>
+                        <div className="inline-block w-3 h-3 mr-2 rounded-full bg-red-500"></div>
+                        <div className="inline-block w-3 h-3 mr-2 rounded-full bg-yellow-300"></div>
+                        <div className="inline-block w-3 h-3 mr-2 rounded-full bg-green-400"></div>
+                    </div>
+                    <div className="">
+                        <img
+                            className="absolute top-6 right-2 inline-block w-16 h-16 rounded-full ring-2 ring-white dark:ring-neutral-800"
+                            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+                            alt="Image Description"/>
+                    </div>
                 </div>
                 <div className="px-8 py-6">
                     <p>
                         <em className="text-blue-400">const</em> <span
                         className="text-green-400">UserInformation</span>{' '}
                         <span className="text-pink-500">=</span> (<span
-                        className="text-blue-400">user =></span> {' {'}
+                        className="text-blue-400">user {"=>"} </span> {' {'}
                     </p>
                     <p>
                         &nbsp;&nbsp;<span className="text-pink-500">return</span> {' {'}
                     </p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;first_name: <span className="text-yellow-300">{firstName}</span>,</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;last_name: <span className="text-yellow-300">{lastName}</span>,</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;role: <span className="text-yellow-300">{role.name}</span>,</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;position: <span className="text-yellow-300">{role.name}</span>,</p>
+                    {role.name === "student" && (
+                        <div>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;Class Room: {"{"}</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class_name: <span
+                                className="text-yellow-300">{classRoom?.name}</span>,</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;campus: <span
+                                className="text-yellow-300">{classRoom?.campus.name}</span>,</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;School Year: <span
+                                className="text-yellow-300">{getSchoolYearName(classRoom?.schoolYear)}</span>,</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;{"}"}</p>
+                        </div>
+                    )}
 
 
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;email: <span className="text-yellow-300">

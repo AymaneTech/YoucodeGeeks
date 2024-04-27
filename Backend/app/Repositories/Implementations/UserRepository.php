@@ -42,7 +42,7 @@ class UserRepository implements UserRepositoryInterface
             }
             return $user;
         } catch (\Exception $e) {
-            throw new \RuntimeException("Error creating user: " . $e->getMessage());
+            throw new \RuntimeException("Error creating user (user repository): " . $e->getMessage());
         }
     }
 
@@ -86,7 +86,7 @@ class UserRepository implements UserRepositoryInterface
             "is_verified" => $DTO->isVerified
         ];
         if (property_exists($DTO, "classRoomId")) {
-            $array["class_room_id"] = $DTO->className;
+            $array["class_room_id"] = $DTO->classRoomId;
         }
         return $array;
     }

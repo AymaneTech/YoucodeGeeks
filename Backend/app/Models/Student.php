@@ -12,7 +12,7 @@ class Student extends User
         "last_name",
         "email",
         "password",
-        "class_name",
+        "class_room_id",
         "role_id",
         "is_verified"
     ];
