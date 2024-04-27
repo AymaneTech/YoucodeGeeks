@@ -1,11 +1,11 @@
 import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/Components/ui/select.jsx";
-import {FormField, FormItem, FormLabel, FormMessage} from "@/Components/ui/form.jsx";
+import {FormField, FormItem, FormLabel} from "@/Components/ui/form.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {SelectLabel} from "@radix-ui/react-select";
 import {useEffect} from "react";
-import {getCampus} from "@/Features/Campus/CampusSlice.js";
+import {getCampus} from "@/Features/Campus/CampusAction.js";
 import {Controller} from "react-hook-form";
-import {getClassrooms} from "@/Features/ClassRooms/ClassRoomSlice.js";
+import {getClassrooms} from "@/Features/ClassRooms/ClassRoomAction.js";
 
 export const ClassRoomsSelect = ({ value, onChange }) => {
     const dispatch = useDispatch();

@@ -54,7 +54,7 @@ export const blogSlice = createSlice({
             })
         builder
             .addCase(filterByTag.fulfilled, (state, action) => {
-                console.log("filtering blogs by tags");
+                console.log("filtering blogs by tags successfully");
                 state.loading = false;
                 state.blogs = action.payload;
             })
