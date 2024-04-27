@@ -15,7 +15,6 @@ class StatisticsController extends BaseApiController
 {
     public function statistics () {
         try{
-
             return $this->sendResponse(
                 message: "statistics fetched successfully",
                 result: [

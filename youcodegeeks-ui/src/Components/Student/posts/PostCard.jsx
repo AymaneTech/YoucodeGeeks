@@ -4,14 +4,14 @@ import {Blink, } from "@/Components/Partials/Elements/CustomButtons.jsx";
 import {TagList} from "@/Components/Student/tags/TagList.jsx";
 
 export const PostCard = ({post}) => {
-    const {slug, image, title, details, author, category, tags} = post;
+    const {slug, images, title, details, author, category, tags} = post;
     return (
         <SplideSlide
-            className="relative flex flex-col mt-6 text-gray-700 bg-white dark:bg-[#1A1F3A] shadow-md bg-clip-border rounded-xl w-96">
+            className=" flex flex-col mt-6 text-gray-700 bg-white dark:bg-[#1A1F3A] shadow-md bg-clip-border rounded-xl w-96 h-[500px]">
             <div
                 className="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 dark:bg-[#344675] shadow-blue-gray-500/40 dark:shadow-[#344675]/40">
                 <img
-                    src={image?.path || "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80"}
+                    src={images[0].path}
                     alt="card-image"
                     className="object-cover w-full h-full"/>
             </div>

@@ -22,7 +22,7 @@ class UserRepository implements UserRepositoryInterface
     public function all()
     {
         return [
-            "students" => Student::with("image", "role", "classRoom")->get(),
+            "students" => Student::with("image", "role", "classRoom", "classRoom.campus")->get(),
             "coaches" => Coach::with("image", "role")->get(),
             "admins" => Admin::with("image", "role")->get()
         ];
@@ -85,7 +85,7 @@ class UserRepository implements UserRepositoryInterface
             "role_id" => $DTO->role,
             "is_verified" => $DTO->isVerified
         ];
-        if (property_exists($DTO, "className")) {
+        if (property_exists($DTO, "classRoomId")) {
             $array["class_room_id"] = $DTO->className;
         }
         return $array;

@@ -36,7 +36,7 @@ class UserService implements UserServiceInterface
     public function create(UserDTO $DTO)
     {
         $user = $this->repository->create($DTO);
-        // $this->imageService->create($user, $DTO->image);
+         $this->imageService->create($user, $DTO->image);
         return new UserResource($user);
 
     }

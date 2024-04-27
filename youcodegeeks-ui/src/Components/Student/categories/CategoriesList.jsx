@@ -14,16 +14,16 @@ export const CategoriesList = () => {
     return (
         <>
             <div className={`flex flex-wrap items-center gap-3 pb-3 `}>
-                 <Link to="/bugs"
-                     key="all"
-                     className="text-center text-sm font-medium bg-blue-100 py-1 px-2 rounded-2xl text-blue-900 align-middle"
-                     onClick={() => dispatch(getCategories())}
-                 >All</Link>
+                <Link to="/bugs"
+                      key="all"
+                      className="text-center text-sm font-medium bg-blue-100 py-1 px-2 rounded-2xl text-blue-900 align-middle"
+                      onClick={() => dispatch(getCategories())}
+                >All</Link>
                 {categories.map((category) => (
                     <Link to={`/bugs?category=${category.name}`}
-                        key={category.id}
-                        className="text-center text-sm font-medium bg-blue-100 py-1 px-2 rounded-2xl text-blue-900 align-middle"
-                        onClick={() => dispatch(searchQuestions({search: null, category: category.name}))}
+                          key={category.id}
+                          className="text-center text-sm font-medium bg-blue-100 py-1 px-2 rounded-2xl text-blue-900 align-middle"
+                          onClick={() => dispatch(searchQuestions({search: null, category: category.name}))}
                     >{category.name}</Link>
                 ))}
             </div>

@@ -17,6 +17,7 @@ import {ShowPost} from "@/Pages/Home/posts/ShowPost.jsx";
 import {Posts} from "@/Pages/Home/posts/Posts.jsx";
 import {WritePost} from "@/Pages/Home/posts/WritePost.jsx";
 import {Bugs} from "@/Pages/Home/questions/Bugs.jsx";
+import {Network} from "@/Pages/Home/Users/Network.jsx";
 
 export const LOGIN_ROUTE = "/login"
 export const routes = createBrowserRouter([
@@ -83,6 +84,10 @@ export const routes = createBrowserRouter([
                 {
                     path: "/blogs/:slug",
                     element: <ShowPost/>
+                },
+                {
+                    path: "/network",
+                    element: <Network/>
                 }
             ]
         },
