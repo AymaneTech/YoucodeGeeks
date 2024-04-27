@@ -28,6 +28,9 @@ export const HomeSidebar = () => {
                 <CustomButtons options={{
                     name: "Network", to: "/network", icon: <Network size={22}/>
                 }}/>
+                <CustomButtons options={{
+                    name: "Profile", to: "/profile", icon: <Network size={22}/>
+                }}/>
             </ul>
         </nav>
     </div>);

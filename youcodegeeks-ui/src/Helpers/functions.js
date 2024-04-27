@@ -1,5 +1,4 @@
 import Cookies from 'js-cookie';
-import {findVariableByName} from "eslint-plugin-react/lib/util/variable.js";
 
 
 export const setToken = token => {

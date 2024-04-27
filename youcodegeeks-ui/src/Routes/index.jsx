@@ -88,6 +88,13 @@ export const routes = createBrowserRouter([
                 {
                     path: "/network",
                     element: <Network/>
+                },
+                {
+                    path: "/profile",
+                    element: <Profile/>
+                },
+                {
+                    path: "/profile/:slug",
                 }
             ]
         },
