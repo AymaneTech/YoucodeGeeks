@@ -67,5 +67,20 @@ class QuestionController extends BaseApiController
             message: "question deleted successfully",
         );
     }
+    public function search()
+    {
+        try {
+            $blogs = $this->service->searchBlogs(request(["search", "category"]));
+            return $this->sendResponse(
+                message: "blogs filtered successfully",
+                result: $blogs,
+            );
+        } catch (\Exception $e) {
+            return $this->sendError(
+                error: $e->getMessage(),
+                code: 500,
+            );
+        }
+    }
 
 }

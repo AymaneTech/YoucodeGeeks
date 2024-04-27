@@ -9,6 +9,7 @@ use App\Models\Blog;
 use App\Services\Contracts\PostServiceInterface;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
+use function Laravel\Prompts\error;
 
 class BlogController extends BaseApiController
 {
@@ -79,7 +80,6 @@ class BlogController extends BaseApiController
                 code: 500
             );
         }
-
     }
 
 }

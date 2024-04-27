@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Blog::class, BlogPolicy::class);
         Gate::policy(Comment::class, CommentPolicy::class);
 
-        Gate::define(ability: "manage-dashboard", callback: function ($user) {
+        Gate::define(ability: "manage-dashboard", callback:  function ($user) {
             return $user->role_id === Role::ADMIN->value;
         });
         Gate::define(ability: "student-questions", callback: function ($user) {

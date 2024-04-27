@@ -1,5 +1,5 @@
-import { createSlice} from "@reduxjs/toolkit";
-import { getQuestions, createQuestion, showQuestion} from "@/Features/Questions/QuestionAction.js";
+import {createSlice} from "@reduxjs/toolkit";
+import {getQuestions, createQuestion, showQuestion, searchQuestions} from "@/Features/Questions/QuestionAction.js";
 
 const initialState = {
     questions: [],
@@ -50,6 +50,12 @@ export const questionSlice = createSlice({
             .addCase(showQuestion.fulfilled, (state, action) => {
                 state.loading = false;
                 state.question = action.payload;
+            })
+        builder
+            .addCase(searchQuestions.fulfilled, (state, action) => {
+                console.log("searching questions successfully");
+                state.loading = false;
+                state.questions = action.payload;
             })
     }
 })

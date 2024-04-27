@@ -1,19 +1,15 @@
 <?php
 
-use App\Http\Controllers\Api\V1\Admin\{
-    CampusController,
+use App\Http\Controllers\Api\V1\Admin\{CampusController,
     CategoryController,
     ClassRoomController,
     ManageUsersController,
     StatisticsController,
     TagController,
-    UserController
-};
+    UserController};
 use App\Http\Controllers\Api\V1\Auth\{AuthApiController, StudentRegisterController};
 use App\Http\Controllers\Api\V1\Student\{AnswerController, BlogController, CommentController, QuestionController};
 use App\Http\Middleware\{IsAdmin, IsGuest, IsLoggedIn, IsStudent};
-use App\Models\Answer;
-use App\Models\Category;
 use App\Models\ClassRoom;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +61,7 @@ Route::group([
 
     Route::get("questions/answers/{id}", [AnswerController::class, "findByQuestion"]);
     Route::get("blogs/filter/{param}", [BlogController::class, "findByTag"]);
+    Route::post("questions/search", [QuestionController::class, "search"]);
 });
 
 Route::model('classroom', ClassRoom::class);

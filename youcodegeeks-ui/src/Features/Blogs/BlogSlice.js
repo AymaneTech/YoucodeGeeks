@@ -1,5 +1,5 @@
 import { createSlice} from "@reduxjs/toolkit";
-import {getBlogs, showBlog, createBlog, filterByTag} from "@/Features/Blogs/BlogAction.js";
+import {getBlogs, showBlog, createBlog, filterByTag, } from "@/Features/Blogs/BlogAction.js";
 
 const initialState = {
     blogs: [],
@@ -51,12 +51,6 @@ export const blogSlice = createSlice({
                 console.log("create blog rejected");
                 state.error = "Incorrect information";
                 state.response = action.payload;
-            })
-        builder
-            .addCase(filterByTag.fulfilled, (state, action) => {
-                console.log("filtering blogs by tags successfully");
-                state.loading = false;
-                state.blogs = action.payload;
             })
     }
 })

@@ -19,4 +19,5 @@ interface PostServiceInterface
     public function delete(Post $post);
 
     public function findByTag($param);
+    public function searchBlogs(array $filters);
 }

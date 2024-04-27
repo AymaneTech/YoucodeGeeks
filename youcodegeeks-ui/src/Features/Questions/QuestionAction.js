@@ -37,3 +37,14 @@ export const showQuestion = createAsyncThunk(
         }
     }
 )
+export const searchQuestions = createAsyncThunk(
+    "questions/search",
+    async (param, rejectWithValue) => {
+        try {
+            const response = await axiosClient.post(`questions/search`, param);
+            return response.data.data;
+        }catch (error){
+            rejectWithValue(error.response.data.message);
+        }
+    }
+)

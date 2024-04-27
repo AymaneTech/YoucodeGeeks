@@ -18,4 +18,5 @@ interface PostRepositoryInterface
 
     public function delete(Post $post): bool;
     public function findByTag(string $param);
+    public function searchBlogs(array $filters);
 }

@@ -57,4 +57,8 @@ class PostService implements PostServiceInterface
         $blogs = $this->repository->findByTag($param);
         return QuestionResource::collection($blogs);
     }
+    public function searchBlogs (array $filters){
+        $blogs = $this->repository->searchBlogs($filters);
+        return QuestionResource::collection($blogs);
+    }
 }

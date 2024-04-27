@@ -39,7 +39,6 @@ abstract class BasePostRepository implements PostRepositoryInterface
 
     public function show(Post $post): Post
     {
-
         $post = $post->load("images", "category", "author", "tags");
         $post->views++;
         $post->save();
@@ -53,6 +52,11 @@ abstract class BasePostRepository implements PostRepositoryInterface
 
     public function findByTag(string $param)
     {
+        // TODO: This function is implemented only in blog repository.
+    }
 
+    public function searchBlogs(array $filters)
+    {
+        // TODO: This function is implemented only in blog repository.
     }
 }

@@ -14,10 +14,8 @@ class BlogRepository extends BasePostRepository
 
     public function findByTag($param)
     {
-        $tags = is_array($param) ? $param : [$param];
-
-        return Blog::whereHas("tags", function ($query) use ($tags) {
-            $query->whereIn("name", $tags);
+        return Blog::whereHas("tags", function ($query) use ($param) {
+            $query->whereIn("name", [$param]);
         })->with("category", "author", "images", "tags")->get();
     }
 }
