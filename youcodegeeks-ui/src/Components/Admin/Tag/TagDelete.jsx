@@ -2,7 +2,7 @@ import {Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Dia
 import {Button} from "@/Components/ui/button.jsx";
 import {useDispatch} from "react-redux";
 import {Trash} from "lucide-react";
-import {deleteTag} from "@/Features/TagsSlice.js";
+import {deleteTag} from "@/Features/Tags/TagsAction.js";
 
 export const TagDelete = ({slug}) => {
 

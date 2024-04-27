@@ -14,10 +14,10 @@ import {Loader} from "lucide-react";
 import {useEffect, useState} from "react";
 import {registerSchema} from "@/Validations/User.js";
 import {useDispatch, useSelector} from "react-redux";
-import {Register} from "@/Features/AuthSlice.js";
+import {Register} from "@/Features/Auth/AuthAction.js";
 import {isAuthenticated} from "@/Helpers/functions.js";
 import {useNavigate} from "react-router-dom";
-import {getClassrooms} from "@/Features/ClassRoomSlice.js";
+import {getClassrooms} from "@/Features/ClassRooms/ClassRoomAction.js";
 import {ClassRoomsSelect} from "@/Components/Partials/Elements/Selects.jsx";
 
 export const StudentRegister = () => {

@@ -14,7 +14,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/Components/ui/form.jsx";
 import {createTagSchema} from "@/Validations/Admin.js";
 import {useDispatch} from "react-redux";
-import {createTag} from "@/Features/TagsSlice.js";
+import {createTag} from "@/Features/Tags/TagsAction.js";
 
 export const TagCreate = () => {
 

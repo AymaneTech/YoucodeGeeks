@@ -10,7 +10,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {classRoomSchema} from "@/Validations/Admin.js";
 import {Pencil} from "lucide-react";
 import {CampusSelect, SchoolYearSelect} from "@/Components/Partials/Elements/Selects.jsx";
-import {updateClassRoom} from "@/Features/ClassRoomSlice.js";
+import {updateClassRoom} from "@/Features/ClassRooms/ClassRoomAction.js";
 
 export const ClassRoomEdit = ({classRoom}) => {
     const dispatch = useDispatch()

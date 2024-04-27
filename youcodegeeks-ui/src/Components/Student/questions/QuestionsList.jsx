@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {getQuestions} from "@/Features/QuestionSlice.js";
+import {getQuestions} from "@/Features/Questions/QuestionAction.js";
 import {useEffect} from "react";
 import {Blink} from "@/Components/Partials/Elements/CustomButtons.jsx";
 import {QuestionCard} from "@/Components/Student/questions/QuestionCard.jsx";

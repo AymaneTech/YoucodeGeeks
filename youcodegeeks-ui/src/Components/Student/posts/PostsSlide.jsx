@@ -3,7 +3,7 @@ import {Splide} from "@splidejs/react-splide";
 import {PostCard} from "@/Components/Student/posts/PostCard.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getBlogs} from "@/Features/BlogSlice.js";
+import {getBlogs} from "@/Features/Blogs/BlogAction.js";
 
 export const PostsSlide = () => {
     const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import {ShieldOff, UserRoundCheck} from "lucide-react";
 import {useDispatch} from "react-redux";
-import {verifyUser} from "@/Features/UsersSlice.js";
+import {verifyUser} from "@/Features/Users/UsersAction.js";
 
 export const UserVerify = ({user}) => {
 

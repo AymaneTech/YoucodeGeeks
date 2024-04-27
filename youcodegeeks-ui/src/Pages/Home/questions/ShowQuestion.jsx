@@ -2,9 +2,9 @@ import {QuestionDetails} from "@/Components/Student/questions/QuestionDetails.js
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {useEffect} from "react";
-import {showQuestion} from "@/Features/QuestionSlice.js";
+import {showQuestion} from "@/Features/Questions/QuestionAction.js";
 import {AnswerForm} from "@/Components/Student/answers/AnswerForm.jsx";
-import {getAnswers} from "@/Features/AnswerSlice.js";
+import {getAnswers} from "@/Features/Answers/AnswerAction.js";
 import {Answers} from "@/Components/Student/answers/Answers.jsx";
 
 export const ShowQuestion = () => {

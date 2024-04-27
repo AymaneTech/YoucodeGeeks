@@ -1,9 +1,5 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {axiosClient} from "@/Api/axios.js";
-import {setToken} from "@/Helpers/functions.js";
-import {formDataConfig} from "@/Api/Config.js";
-import Cookies from "js-cookie";
-
+import { createSlice} from "@reduxjs/toolkit";
+import {Login, Register} from "@/Features/Auth/AuthAction.js"
 const initialState = {
     user: {},
     loading: false,
@@ -11,31 +7,6 @@ const initialState = {
     response: ""
 }
 
-export const Login = createAsyncThunk(
-    "user/login",
-    async (userCredentials, {rejectWithValue}) => {
-        try {
-            const response = await axiosClient.post("login", userCredentials);
-            setToken(response.data.access_token);
-            return response.data;
-        } catch (error) {
-            return rejectWithValue(error.response.data.message);
-        }
-    }
-);
-
-export const Register = createAsyncThunk(
-    "user/register",
-    async (userCredentials, {rejectWithValue}) => {
-        try {
-            const response = await axiosClient.post("register", userCredentials, formDataConfig);
-            setToken(response.data.access_token);
-            return response.data;
-        } catch (error) {
-            return rejectWithValue(error.response.data)
-        }
-    }
-)
 
 const authSlice = createSlice({
     name: "user",
@@ -53,7 +24,6 @@ const authSlice = createSlice({
                 state.response = "";
             })
             .addCase(Login.rejected, (state, action) => {
-                Cookies.set("user", action.payload);
                 state.loading = false;
                 state.error = "Incorrect Information";
                 state.response = action.payload;

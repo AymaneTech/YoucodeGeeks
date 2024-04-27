@@ -1,5 +1,4 @@
-import {BugIcon, HomeIcon, Network, School2, TagIcon, UsersIcon} from "lucide-react";
-import {BiCategory} from "react-icons/bi";
+import {BugIcon, HomeIcon, Network, } from "lucide-react";
 import Logo from "@/Components/Partials/Elements/Logo.jsx";
 import {CustomButtons} from "@/Components/Partials/Elements/CustomButtons.jsx";
 import {Link} from "react-router-dom";
@@ -28,9 +27,6 @@ export const HomeSidebar = () => {
                 }}/>
                 <CustomButtons options={{
                     name: "Network", to: "/network", icon: <Network size={22}/>
-                }}/>
-                <CustomButtons options={{
-                    name: "Class Rooms", to: "/classRooms", icon: <School2 size={22}/>
                 }}/>
             </ul>
         </nav>

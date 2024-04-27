@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import DataTable from "@/Components/DataTable/DataTable.jsx";
 import {questionsColumns} from "@/Components/DataTable/Columns.jsx";
 import {CommunityMembers} from "@/Components/Admin/Home/CommunityMembers.jsx";
-import {getQuestions} from "@/Features/QuestionSlice.js";
+import {getQuestions} from "@/Features/Questions/QuestionAction.js";
 
 export const DashboardHome = () => {
     const dispatch = useDispatch();

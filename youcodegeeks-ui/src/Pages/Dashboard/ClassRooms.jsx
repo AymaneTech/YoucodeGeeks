@@ -1,7 +1,7 @@
 import DataTable from "@/Components/DataTable/DataTable.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getClassrooms} from "@/Features/ClassRoomSlice.js";
+import {getClassrooms} from "@/Features/ClassRooms/ClassRoomAction.js";
 import {classRoomssColumns} from "@/Components/DataTable/Columns.jsx";
 import {ClassRoomCreate} from "@/Components/Admin/ClassRooms/ClassRoomCreate.jsx";
 

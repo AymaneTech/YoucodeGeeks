@@ -1,6 +1,5 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {axiosClient} from "@/Api/axios.js";
-import {formDataConfig} from "@/Api/Config.js";
+import { createSlice} from "@reduxjs/toolkit";
+import { getQuestions, createQuestion, showQuestion} from "@/Features/Questions/QuestionAction.js";
 
 const initialState = {
     questions: [],
@@ -9,42 +8,6 @@ const initialState = {
     response: "",
     error: "",
 };
-
-export const getQuestions = createAsyncThunk(
-    "questions/get",
-    async (rejectWithValue) => {
-        try {
-            const response = await axiosClient.get("questions");
-            return response.data.data;
-        } catch (error) {
-            return rejectWithValue(error.response.data.message);
-        }
-    }
-);
-export const createQuestion = createAsyncThunk(
-    "questions/create",
-    async (data, rejectWithValue) => {
-        try {
-            const response = await axiosClient.post("questions", data, formDataConfig);
-            console.log(response.data.data);
-            return response.data.data;
-        } catch (error) {
-            return rejectWithValue(error.response.data.errors);
-        }
-
-    }
-)
-export const showQuestion = createAsyncThunk(
-    "questions/show",
-    async (slug, rejectWithValue) => {
-        try {
-            const response = await axiosClient.get(`questions/${slug}`);
-            return response.data.data;
-        } catch (error) {
-            return rejectWithValue(error.response.data.message);
-        }
-    }
-)
 
 
 export const questionSlice = createSlice({

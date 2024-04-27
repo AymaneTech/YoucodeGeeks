@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getUsers} from "@/Features/UsersSlice.js";
+import {getUsers} from "@/Features/Users/UsersAction.js";
 import {UsersList} from "@/Components/Admin/Home/UsersList.jsx";
 
 export const CommunityMembers = () => {

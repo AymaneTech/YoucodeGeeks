@@ -13,7 +13,7 @@ import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVal
 import {SelectLabel} from "@radix-ui/react-select";
 import {userSchema} from "@/Validations/User.js";
 import {ClassRoomsSelect} from "@/Components/Partials/Elements/Selects.jsx";
-import {createUser} from "@/Features/UsersSlice.js";
+import {createUser} from "@/Features/Users/UsersAction.js";
 
 export const UserCreate = () => {
     const [imageValue, setImageValue] = useState()

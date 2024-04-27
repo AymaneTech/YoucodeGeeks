@@ -3,9 +3,9 @@ import {FormField, FormItem, FormLabel, FormMessage} from "@/Components/ui/form.
 import {useDispatch, useSelector} from "react-redux";
 import {SelectLabel} from "@radix-ui/react-select";
 import {useEffect} from "react";
-import {getCampus} from "@/Features/CampusSlice.js";
+import {getCampus} from "@/Features/Campus/CampusSlice.js";
 import {Controller} from "react-hook-form";
-import {getClassrooms} from "@/Features/ClassRoomSlice.js";
+import {getClassrooms} from "@/Features/ClassRooms/ClassRoomSlice.js";
 
 export const ClassRoomsSelect = ({ value, onChange }) => {
     const dispatch = useDispatch();

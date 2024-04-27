@@ -10,12 +10,12 @@ import {Button} from "@/Components/ui/button.jsx";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/Components/ui/form.jsx";
 import {Input} from "@/Components/ui/input.jsx";
 import {Label} from "@/Components/ui/label.jsx";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {createCategorySchema} from "@/Validations/Admin.js";
-import {updateCategory} from "@/Features/CategorySlice.js";
+import {updateCategory} from "@/Features/Categories/CategoryAction.js";
 import {Pencil} from "lucide-react";
 
 export const CategoryEdit = ({category}) => {

@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import DataTable from "@/Components/DataTable/DataTable.jsx";
 import {tagsColumns} from "@/Components/DataTable/Columns.jsx";
 import {useEffect} from "react";
-import {getTags} from "@/Features/TagsSlice.js";
+import {getTags} from "@/Features/Tags/TagsAction.js";
 
 export const Tags = () => {
     const {tags} = useSelector((state) => state.tags);

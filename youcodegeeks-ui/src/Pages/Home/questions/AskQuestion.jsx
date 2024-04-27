@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {getCategories} from "@/Features/CategorySlice.js";
+import {getCategories} from "@/Features/Categories/CategoryAction.js";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {questionCreateForm} from "@/Validations/Question.js";
@@ -12,7 +12,7 @@ import TagInput from "@/Components/Student/tags/TagInput.jsx";
 import {Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue} from "@/Components/ui/select.jsx";
 import {SelectLabel} from "@radix-ui/react-select";
 import {Button} from "@/Components/ui/button.jsx";
-import {createQuestion} from "@/Features/QuestionSlice.js";
+import {createQuestion} from "@/Features/Questions/QuestionAction.js";
 import {useNavigate} from "react-router-dom";
 import Editor from "@/Components/LexicalEditor/Editor.jsx";
 import {LexicalComposer} from "@lexical/react/LexicalComposer";

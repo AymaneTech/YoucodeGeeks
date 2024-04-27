@@ -1,9 +1,8 @@
 import {useEffect} from "react";
 import {Link, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {showBlog} from "@/Features/BlogSlice.js";
+import {showBlog} from "@/Features/Blogs/BlogAction.js";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
-import {CategoriesList} from "@/Components/Student/categories/CategoriesList.jsx";
 import {TagList} from "@/Components/Student/tags/TagList.jsx";
 
 export const ShowPost = () => {
@@ -32,8 +31,7 @@ export const ShowPost = () => {
                                           className="inline-flex items-center gap-x-1.5 text-sm text-gray-600 decoration-2 hover:underline dark:text-blue-500">
                                         <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"
                                              width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                             stroke-linejoin="round">
+                                             stroke="currentColor">
                                             <path d="m15 18-6-6 6-6"/>
                                         </svg>
                                         Back to Home
@@ -70,21 +68,21 @@ export const ShowPost = () => {
                                             }}>
                                                 <SplideSlide>
                                                     <div className="w-[600px] h-[400px]">
-                                                        <img class=" object-cover rounded-xl"
+                                                        <img className=" object-cover rounded-xl"
                                                              src="https://images.unsplash.com/photo-1671726203638-83742a2721a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
                                                              alt="Image Description"/>
                                                     </div>
                                                 </SplideSlide>
                                                 <SplideSlide>
                                                     <div className="w-[600px] h-[400px]">
-                                                        <img class=" object-cover rounded-xl"
+                                                        <img className=" object-cover rounded-xl"
                                                              src="https://images.unsplash.com/photo-1671726203638-83742a2721a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
                                                              alt="Image Description"/>
                                                     </div>
                                                 </SplideSlide>
                                                 <SplideSlide>
                                                     <div className="w-[600px] h-[400px]">
-                                                        <img class=" object-cover rounded-xl"
+                                                        <img className=" object-cover rounded-xl"
                                                              src="https://images.unsplash.com/photo-1671726203638-83742a2721a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
                                                              alt="Image Description"/>
                                                     </div>
@@ -104,9 +102,7 @@ export const ShowPost = () => {
                                                         className="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200">
                                                     <svg className="flex-shrink-0 size-4"
                                                          xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                         stroke-width="2" stroke-linecap="round"
-                                                         stroke-linejoin="round">
+                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                                         <path
                                                             d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
                                                     </svg>
@@ -127,9 +123,7 @@ export const ShowPost = () => {
                                                         className="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200">
                                                     <svg className="flex-shrink-0 size-4"
                                                          xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                         stroke-width="2" stroke-linecap="round"
-                                                         stroke-linejoin="round">
+                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                                         <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/>
                                                     </svg>
                                                     16
@@ -149,9 +143,7 @@ export const ShowPost = () => {
                                                         className="hs-dropdown-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200">
                                                     <svg className="flex-shrink-0 size-4"
                                                          xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                         stroke-width="2" stroke-linecap="round"
-                                                         stroke-linejoin="round">
+                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                                         <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
                                                         <polyline points="16 6 12 2 8 6"/>
                                                         <line x1="12" x2="12" y1="2" y2="15"/>
@@ -165,9 +157,7 @@ export const ShowPost = () => {
                                                        href="#">
                                                         <svg className="flex-shrink-0 size-4"
                                                              xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                             stroke-width="2" stroke-linecap="round"
-                                                             stroke-linejoin="round">
+                                                             viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                                             <path
                                                                 d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
                                                             <path
@@ -194,7 +184,7 @@ export const ShowPost = () => {
                                                              fill="currentColor" viewBox="0 0 16 16">
                                                             <path
                                                                 d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-                                                            }                           </svg>
+                                                        </svg>
                                                         Share on Facebook
                                                     </a>
                                                     <a className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-400 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:text-neutral-400 dark:hover:bg-neutral-900 dark:focus:ring-neutral-400"

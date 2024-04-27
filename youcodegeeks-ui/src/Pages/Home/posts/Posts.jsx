@@ -1,10 +1,10 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {filterByTag, getBlogs} from '@/Features/BlogSlice.js';
+import {filterByTag, getBlogs} from '@/Features/Blogs/BlogAction.js';
 import {Blink} from '@/Components/Partials/Elements/CustomButtons.jsx';
 import {Link, useSearchParams} from "react-router-dom";
 import {TagList} from "@/Components/Student/tags/TagList.jsx";
-import {getTags} from "@/Features/TagsSlice.js";
+import {getTags} from "@/Features/Tags/TagsAction.js";
 
 export const Posts = () => {
     const [searchInput, setSearchInput] = useState()

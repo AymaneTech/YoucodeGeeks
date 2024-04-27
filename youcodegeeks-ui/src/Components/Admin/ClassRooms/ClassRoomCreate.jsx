@@ -16,7 +16,7 @@ import { classRoomSchema } from "@/Validations/Admin.js";
 
 import {CampusSelect, SchoolYearSelect} from "@/Components/Partials/Elements/Selects.jsx";
 import {useDispatch} from "react-redux";
-import {createClassRooms} from "@/Features/ClassRoomSlice.js";
+import {createClassRooms} from "@/Features/ClassRooms/ClassRoomAction.js";
 
 export const ClassRoomCreate = () => {
     const dispatch = useDispatch();

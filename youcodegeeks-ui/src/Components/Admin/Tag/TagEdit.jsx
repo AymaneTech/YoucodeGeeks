@@ -9,13 +9,12 @@ import {
 import {Button} from "@/Components/ui/button.jsx";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/Components/ui/form.jsx";
 import {Input} from "@/Components/ui/input.jsx";
-import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import { createTagSchema } from "@/Validations/Admin.js";
 import {Pencil} from "lucide-react";
-import {updateTag} from "@/Features/TagsSlice.js";
+import {updateTag} from "@/Features/Tags/TagsAction.js";
 
 export const TagEdit = ({tag}) => {
     const dispatch = useDispatch()

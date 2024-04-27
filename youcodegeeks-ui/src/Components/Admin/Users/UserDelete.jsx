@@ -1,9 +1,8 @@
 import {Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger} from "@/Components/ui/dialog.jsx";
 import {Button} from "@/Components/ui/button.jsx";
 import {useDispatch} from "react-redux";
-import {deleteCategory} from "@/Features/CategorySlice.js";
 import {Trash} from "lucide-react";
-import {deleteUser} from "@/Features/UsersSlice.js";
+import {deleteUser} from "@/Features/Users/UsersAction.js";
 
 export const UserDelete = ({id}) => {
 

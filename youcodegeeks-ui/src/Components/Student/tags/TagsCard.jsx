@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {TagList} from "@/Components/Student/tags/TagList.jsx";
 import {useEffect} from "react";
-import {getTags} from "@/Features/TagsSlice.js";
+import {getTags} from "@/Features/Tags/TagsAction.js";
 
 export const TagsCard = () => {
     const dispatch = useDispatch();

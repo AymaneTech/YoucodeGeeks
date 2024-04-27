@@ -1,6 +1,6 @@
 import {SplideSlide} from "@splidejs/react-splide";
-import {Heart, MessageCircle, UserIcon, UsersIcon} from "lucide-react";
-import {Blink, MainButton} from "@/Components/Partials/Elements/CustomButtons.jsx";
+import {Heart, MessageCircle, UserIcon} from "lucide-react";
+import {Blink, } from "@/Components/Partials/Elements/CustomButtons.jsx";
 import {TagList} from "@/Components/Student/tags/TagList.jsx";
 
 export const PostCard = ({post}) => {

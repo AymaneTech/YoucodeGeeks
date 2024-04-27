@@ -2,7 +2,7 @@ import {Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Dia
 import {Button} from "@/Components/ui/button.jsx";
 import {useDispatch} from "react-redux";
 import {Trash} from "lucide-react";
-import {deleteClassRoom} from "@/Features/ClassRoomSlice.js";
+import {deleteClassRoom} from "@/Features/ClassRooms/ClassRoomAction.js";
 
 export const ClassRoomDelete = ({slug}) => {
 

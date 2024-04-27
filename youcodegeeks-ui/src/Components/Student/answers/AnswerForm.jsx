@@ -3,7 +3,7 @@ import Editor from "@/Components/LexicalEditor/Editor.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {LexicalComposer} from "@lexical/react/LexicalComposer";
 import {editorConfig} from "@/Components/LexicalEditor/editorConfig.js";
-import {createAnswer} from "@/Features/AnswerSlice.js";
+import {createAnswer} from "@/Features/Answers/AnswerAction.js";
 
 export const AnswerForm = ({question_id}) => {
     const {output} = useSelector((state) => state.lexicalOutput);

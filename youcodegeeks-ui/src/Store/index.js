@@ -1,16 +1,16 @@
 import {configureStore} from "@reduxjs/toolkit";
-import classRoomSlice from "@/Features/ClassRoomSlice.js";
-import CategorySlice from "@/Features/CategorySlice.js";
-import TagsSlice from "@/Features/TagsSlice.js";
-import CampusSlice from "@/Features/CampusSlice.js";
-import UsersSlice from "@/Features/UsersSlice.js";
-import authSlice from "@/Features/AuthSlice.js";
+import classRoomSlice from "@/Features/ClassRooms/ClassRoomSlice.js";
+import CategorySlice from "@/Features/Categories/CategorySlice.js";
+import TagsSlice from "@/Features/Tags/TagsSlice.js";
+import CampusSlice from "@/Features/Campus/CampusSlice.js";
+import UsersSlice from "@/Features/Users/UsersSlice.js";
+import authSlice from "@/Features/Auth/AuthSlice.js";
 import StatisticsSlice from "@/Features/StatisticsSlice.js";
-import QuestionSlice from "@/Features/QuestionSlice.js";
-import BlogSlice from "@/Features/BlogSlice.js";
+import QuestionSlice from "@/Features/Questions/QuestionSlice.js";
+import BlogSlice from "@/Features/Blogs/BlogSlice.js";
 import TagInputSlice from "@/Features/TagInputSlice.js";
 import LexicalSlice from "@/Features/LexicalSlice.js";
-import AnswerSlice from "@/Features/AnswerSlice.js";
+import AnswerSlice from "@/Features/Answers/AnswerSlice.js";
 
 export const store = configureStore({
     reducer: {

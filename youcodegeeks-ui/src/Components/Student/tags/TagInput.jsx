@@ -1,4 +1,3 @@
-import {useEffect, useState} from 'react';
 import { WithContext as ReactTags } from 'react-tag-input';
 import {useDispatch, useSelector} from "react-redux";
 import {addTag, handleDelete, handleDrag} from "@/Features/TagInputSlice.js";

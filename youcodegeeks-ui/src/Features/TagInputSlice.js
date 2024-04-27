@@ -28,6 +28,5 @@ export const {
     addTag,
     handleDelete,
     handleDrag,
-    getInputTags
 } = tagInputSlice.actions
 export default tagInputSlice.reducer;

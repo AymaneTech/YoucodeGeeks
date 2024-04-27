@@ -16,7 +16,7 @@ import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/
 import {createCategorySchema} from "@/Validations/Admin.js";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {createCategory} from "@/Features/CategorySlice.js";
+import {createCategory} from "@/Features/Categories/CategoryAction.js";
 
 export const CategoryCreate = () => {
 
