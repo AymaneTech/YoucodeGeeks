@@ -1,8 +1,6 @@
-import React from "react";
 import {getSchoolYearName} from "@/Helpers/functions.js";
 
 export const UserCard = ({user}) => {
-    console.log(user)
     const {firstName, lastName, email, role, classRoom} = user;
     return (
         <>

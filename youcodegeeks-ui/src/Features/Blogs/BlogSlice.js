@@ -52,6 +52,12 @@ export const blogSlice = createSlice({
                 state.error = "Incorrect information";
                 state.response = action.payload;
             })
+        builder
+            .addCase(filterByTag.fulfilled, (state, action) => {
+                console.log("filter by tag fulfilled");
+                state.loading = false;
+                state.blogs = action.payload;
+            })
     }
 })
 
