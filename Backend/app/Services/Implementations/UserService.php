@@ -77,7 +77,7 @@ class UserService implements UserServiceInterface
 
     public function getProfileResource($user)
     {
-        return $user->role->id === Role::STUDENT->value
+        return $user->role_id === Role::STUDENT->value
             ? new StudentProfileResource($user)
             : new UserResource($user);
     }

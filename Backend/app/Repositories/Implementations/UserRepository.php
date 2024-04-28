@@ -8,7 +8,6 @@ use App\DTO\Requests\UserDTO;
 use App\Enums\Role;
 use App\Models\Admin;
 use App\Models\Coach;
-use App\Models\Image;
 use App\Models\Student;
 use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryInterface;
@@ -22,7 +21,8 @@ use Illuminate\Validation\UnauthorizedException;
 class UserRepository implements UserRepositoryInterface
 {
     public function __construct(public ImageServiceInterface $service)
-    {}
+    {
+    }
 
     public function all()
     {
@@ -83,10 +83,13 @@ class UserRepository implements UserRepositoryInterface
 
     public function profile(User $user)
     {
-        if (!$user->role === Role::STUDENT->value) {
-            return $user;
+        if ($user->role->id === Role::STUDENT->value) {
+            return Student::where("email", $user->email)->with("questions", "questions.images", "questions.author", "questions.tags", "questions.category", "answers", "comments", "classRoom", "classRoom.campus")->first();
+        } else if ($user->role->id === Role::ADMIN->value) {
+            return Admin::where("email", $user->email)->first();
+        }else {
+            return Coach::where("email", $user->email)->first();
         }
-        return Student::where("email", $user->email)->with("questions","questions.images", "questions.author", "questions.tags", "questions.category", "answers", "comments", "classRoom", "classRoom.campus")->first();
     }
 
     public function updateProfile(User $user, UpdateProfileDTO $DTO)
@@ -97,7 +100,7 @@ class UserRepository implements UserRepositoryInterface
             "email" => $DTO->email,
             "bio" => $DTO->bio
         ]);
-        return Student::where("email", $user->email)->with("questions","questions.images", "questions.author", "questions.tags", "questions.category", "answers", "comments", "classRoom", "classRoom.campus")->first();
+        return Student::where("email", $user->email)->with("questions", "questions.images", "questions.author", "questions.tags", "questions.category", "answers", "comments", "classRoom", "classRoom.campus")->first();
     }
 
     private function getArr(UserDTO|StudentDTO $DTO): array

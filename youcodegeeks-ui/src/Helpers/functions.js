@@ -24,11 +24,13 @@ export const logoutUser = () =>{
 
 export const getUserFromLocalStorage = () => {
     const user = localStorage.getItem("user");
-    if (user){
-        return false;
+
+    if (user) {
+      return JSON.parse(user);
     }
-    return JSON.parse(user)
-}
+
+    return false;
+  }
 
 export const mergeUsers = (users) => {
     const studentsArray = users.students ? users.students : [];

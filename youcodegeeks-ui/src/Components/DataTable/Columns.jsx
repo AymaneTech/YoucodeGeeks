@@ -7,6 +7,9 @@ import {ClassRoomDelete} from "@/Components/Admin/ClassRooms/ClassRoomDelete.jsx
 import {UserDelete} from "@/Components/Admin/Users/UserDelete.jsx";
 import {UserVerify} from "@/Components/Admin/Users/UserVerify.jsx";
 
+import {RoleFlag, Status} from "@/Components/Partials/Elements/RoleFlag.jsx";
+
+
 export const categoriescolumns = () => [
     {
         accessorKey: "image", header: "Image", cell: ({row}) => {
@@ -92,10 +95,14 @@ export const usersColumns = () => [
         accessorKey: "email", header: "Email"
     },
     {
-        accessorKey: "role.name", header: "User Role"
+        accessorKey: "role.name", header: "User Role", cell: ({row}) => {
+            return <RoleFlag role={row.original.role.name}/>
+        }
     },
     {
-        accessorKey: "isVerified", header: "Status"
+        accessorKey: "isVerified", header: "Status", cell: ({row}) => {
+            return <Status status={row.original.isVerified}/>
+        }
     },
     {
         id: "actions", cell: ({row}) => (
