@@ -86,7 +86,7 @@ class UserRepository implements UserRepositoryInterface
         if (!$user->role === Role::STUDENT->value) {
             return $user;
         }
-        return Student::where("email", $user->email)->with("questions", "answers", "comments", "classRoom", "classRoom.campus")->first();
+        return Student::where("email", $user->email)->with("questions","questions.images", "questions.author", "questions.tags", "questions.category", "answers", "comments", "classRoom", "classRoom.campus")->first();
     }
 
     public function updateProfile(User $user, UpdateProfileDTO $DTO)
@@ -97,7 +97,7 @@ class UserRepository implements UserRepositoryInterface
             "email" => $DTO->email,
             "bio" => $DTO->bio
         ]);
-        return Student::where("email", $user->email)->with("questions", "answers", "comments", "classRoom", "classRoom.campus")->first();
+        return Student::where("email", $user->email)->with("questions","questions.images", "questions.author", "questions.tags", "questions.category", "answers", "comments", "classRoom", "classRoom.campus")->first();
     }
 
     private function getArr(UserDTO|StudentDTO $DTO): array

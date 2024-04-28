@@ -23,6 +23,7 @@ class ProfileController extends BaseApiController
                 result: $user
             );
         } catch (Exception $e) {
+
             return $this->sendError(
                 error: $e->getMessage()
             );

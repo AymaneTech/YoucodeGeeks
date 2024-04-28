@@ -8,8 +8,6 @@ import {updateProfile} from "@/Validations/User.js";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/Components/ui/form.jsx";
 import {Input} from "@/Components/ui/input.jsx";
 import {Textarea} from "@/Components/ui/textarea.jsx";
-import DataTable from "@/Components/DataTable/DataTable.jsx";
-import {questionsColumns} from "@/Components/DataTable/Columns.jsx";
 
 export const Profile = () => {
     const dispatch = useDispatch();
@@ -19,7 +17,10 @@ export const Profile = () => {
 
     const form = useForm({
         resolver: zodResolver(updateProfile), defaultValues: {
-            firstName, lastName, email, bio,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            bio: bio,
         }
     });
     const {formState, control, handleSubmit} = form;
@@ -50,7 +51,7 @@ export const Profile = () => {
 
                                     <img
                                         className="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
-                                        src={user.image.path || "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"}
+                                        src={user.image && user?.image?.path}
                                         alt="Bordered avatar"/>
 
                                     <div className="flex flex-col space-y-5 sm:ml-8">
@@ -119,7 +120,8 @@ export const Profile = () => {
                                                     <FormItem className="mb-6">
                                                         <FormLabel>Bio</FormLabel>
                                                         <FormControl>
-                                                            <Textarea placeholder="Type bio about you" {...field} />
+                                                            <Textarea
+                                                                placeholder="Type bio about you" {...field} >{bio}</Textarea>
                                                         </FormControl>
                                                         <FormMessage>
                                                         </FormMessage>
@@ -141,7 +143,7 @@ export const Profile = () => {
                     </div>
                 </div>
                 <div>
-                    <DataTable data={questions} columns={questionsColumns()}/>
+                    {/*<DataTable data={questions} columns={questionsColumns()}/>*/}
                 </div>
             </main>
         </>

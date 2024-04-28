@@ -13,6 +13,7 @@ class UpdateProfileRequest extends BaseFormRequest
             "lastName" => "required",
             "email" => "required",
             "bio" => "required",
+            "image" => "required",
         ];
     }
 

@@ -64,6 +64,7 @@ class UserService implements UserServiceInterface
     public function updateProfile(User $user, UpdateProfileDTO $DTO)
     {
         $user = $this->repository->updateProfile($user ,$DTO);
+        $this->imageService->update($user, $DTO->image);
         return new StudentProfileResource($user);
     }
 

@@ -11,6 +11,7 @@ readonly class UpdateProfileDTO
         public string $lastName,
         public string $email,
         public string $bio,
+        public object $image
     )
     {
     }
@@ -23,7 +24,8 @@ readonly class UpdateProfileDTO
             firstName: $firstName,
             lastName: $lastName,
             email: $email,
-            bio: $bio
+            bio: $bio,
+            image: $image
         );
     }
 

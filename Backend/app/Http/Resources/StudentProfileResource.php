@@ -21,6 +21,7 @@ class StudentProfileResource extends JsonResource
             "email" => $this->email,
             "classRoom" => new ClassRoomResource($this->classRoom),
             "role" => new RoleResource($this->whenLoaded("role")),
+            "image" => new ImageResource($this->image),
             "questions" => QuestionResource::collection($this->whenLoaded("questions")),
             "blogs" => QuestionResource::collection($this->whenLoaded("blogs")),
             "answers" => AnswerResource::collection($this->whenLoaded("answers")),
