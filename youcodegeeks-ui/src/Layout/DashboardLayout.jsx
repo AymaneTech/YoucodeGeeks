@@ -1,8 +1,17 @@
 import {DashboardNavbar} from "@/Components/Partials/DashboardNavbar.jsx";
 import {DashboardSidebar} from "@/Components/Partials/DashboardSideBar.jsx";
-import {Outlet} from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+import {getUserFromLocalStorage} from "@/Helpers/functions.js";
 
 export const DashboardLayout = () => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        const user = getUserFromLocalStorage();
+        if (!user || user.role.name !== "admin") {
+            navigate("/login");
+        }
+    }, []);
     return (
         <>
             <DashboardNavbar/>

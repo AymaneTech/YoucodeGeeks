@@ -1,8 +1,16 @@
-import {Outlet} from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
 import Logo from "@/Components/Partials/Elements/Logo.jsx";
 import {Blink} from "@/Components/Partials/Elements/CustomButtons.jsx";
+import {useEffect} from "react";
+import Cookies from "js-cookie";
 
 export const GuestLayout = () => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (Cookies.get("token")) {
+            navigate("/")
+        }
+    }, []);
     return (
         <div className="GuestLayout bg-[#020817] overflow-y-hidden">
             <nav
@@ -20,7 +28,6 @@ export const GuestLayout = () => {
             <main>
                 <Outlet/>
             </main>
-            <footer>footer</footer>
         </div>
     )
 }

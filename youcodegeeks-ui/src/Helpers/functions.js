@@ -23,7 +23,11 @@ export const logoutUser = () =>{
 }
 
 export const getUserFromLocalStorage = () => {
-    return JSON.parse(localStorage.getItem("user"));
+    const user = localStorage.getItem("user");
+    if (user){
+        return false;
+    }
+    return JSON.parse(user)
 }
 
 export const mergeUsers = (users) => {

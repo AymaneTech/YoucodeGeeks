@@ -22,6 +22,7 @@ import {ClassRoomsSelect} from "@/Components/Partials/Elements/Selects.jsx";
 
 export const StudentRegister = () => {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [className, setClassName] = useState(null)
     const {response} = useSelector((state) => state.user);
 
     const dispatch = useDispatch();
@@ -38,7 +39,7 @@ export const StudentRegister = () => {
             firstName: "John",
             lastName: "Doe",
             email: "john.doe@example.com",
-            class_room_id: "Class A",
+            classRoomId: 1,
             password: "password123",
             password_confirmation: "password123",
             image: null,
@@ -54,14 +55,14 @@ export const StudentRegister = () => {
         formData.append("firstName", values.firstName);
         formData.append("lastName", values.lastName);
         formData.append("email", values.email);
-        formData.append("class_room_id", values.class_room_id);
+        formData.append("classRoomId", className)
         formData.append("password", values.password);
         formData.append("password_confirmation", values.password_confirmation);
 
-        await dispatch(Register(formData));
-        if (isAuthenticated()) {
-            navigate("/home");
-        }
+        await dispatch(Register(formData))
+            .then(() => {
+                navigate("/waiting-page");
+            })
     };
 
     useEffect(() => {
@@ -69,7 +70,8 @@ export const StudentRegister = () => {
     }, []);
 
     return (
-        <div className="flex justify-center items-center bg-cover bg-center w-[100vw] h-[100vh] bg-[url('/src/assets/images/hero.png')] font-mono">
+        <div
+            className="flex justify-center items-center bg-cover bg-center w-[100vw] h-[100vh] bg-[url('/src/assets/images/hero.png')] font-mono">
             <div className="flex gap-12 dark:bg-gradient-to-r dark:from-gray-700 dark:to-black p-20 rounded-2xl">
                 <div className="flex flex-col gap-6">
                     <div>
@@ -88,7 +90,10 @@ export const StudentRegister = () => {
                                         <FormItem className="w-72">
                                             <FormLabel>First Name</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="John" {...field} style={{backgroundColor: 'transparent', border: "1px solid white"}} />
+                                                <Input placeholder="John" {...field} style={{
+                                                    backgroundColor: 'transparent',
+                                                    border: "1px solid white"
+                                                }}/>
                                             </FormControl>
                                             <FormMessage>
                                                 {response && response.firstName && response.firstName}
@@ -103,7 +108,10 @@ export const StudentRegister = () => {
                                         <FormItem className="w-72">
                                             <FormLabel>Last Name</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Doe" {...field} style={{backgroundColor: 'transparent', border: "1px solid white"}} />
+                                                <Input placeholder="Doe" {...field} style={{
+                                                    backgroundColor: 'transparent',
+                                                    border: "1px solid white"
+                                                }}/>
                                             </FormControl>
                                             <FormMessage>
                                                 {response && response.lastName && response.lastName}
@@ -120,7 +128,8 @@ export const StudentRegister = () => {
                                     <FormItem>
                                         <FormLabel>Email</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="john.doe@example.com" {...field} style={{backgroundColor: 'transparent', border: "1px solid white"}} />
+                                            <Input placeholder="john.doe@example.com" {...field}
+                                                   style={{backgroundColor: 'transparent', border: "1px solid white"}}/>
                                         </FormControl>
                                         <FormMessage>
                                             {response && response.email && response.email}
@@ -128,7 +137,20 @@ export const StudentRegister = () => {
                                     </FormItem>
                                 )}
                             />
-                            <ClassRoomsSelect/>
+                            <FormField
+                                control={form.control}
+                                name="classRoomId"
+                                render={({field}) => (
+                                    <FormItem>
+                                        <FormLabel>Class Room</FormLabel>
+                                        <ClassRoomsSelect
+                                            value={field.value}
+                                            onChange={(e) => setClassName(e)}
+                                        />
+                                        <FormMessage/>
+                                    </FormItem>
+                                )}
+                            />
                             <div className="flex justify-between">
                                 <FormField
                                     control={control}
@@ -137,7 +159,10 @@ export const StudentRegister = () => {
                                         <FormItem className="w-72">
                                             <FormLabel>Password</FormLabel>
                                             <FormControl>
-                                                <Input type="password" placeholder="password123" {...field} style={{backgroundColor: 'transparent', border: "1px solid white"}} />
+                                                <Input type="password" placeholder="password123" {...field} style={{
+                                                    backgroundColor: 'transparent',
+                                                    border: "1px solid white"
+                                                }}/>
                                             </FormControl>
                                             <FormMessage>
                                                 {response && response.password && response.password}
@@ -152,7 +177,11 @@ export const StudentRegister = () => {
                                         <FormItem className="w-72">
                                             <FormLabel>Confirm Password</FormLabel>
                                             <FormControl>
-                                                <Input type="password" placeholder="Confirm your password" {...field} style={{backgroundColor: 'transparent', border: "1px solid white"}} />
+                                                <Input type="password" placeholder="Confirm your password" {...field}
+                                                       style={{
+                                                           backgroundColor: 'transparent',
+                                                           border: "1px solid white"
+                                                       }}/>
                                             </FormControl>
                                             <FormMessage>
                                                 {response && response.password_confirmation && response.password_confirmation}

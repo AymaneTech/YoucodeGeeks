@@ -2,7 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\User;
+use Nette\Schema\ValidationException;
 
 class LoginUserRequest extends BaseFormRequest
 {
@@ -12,5 +13,13 @@ class LoginUserRequest extends BaseFormRequest
             "email" => "required | email | string",
             "password" => "required | min:3 | max:250",
         ];
+    }
+
+    public function authenticate()
+    {
+        $user = User::where("email", $this->validated("email"))->first();
+        if($user && ! $user->is_verified){
+            throw new ValidationException("the user is verified by the administrator");
+        }
     }
 }

@@ -1,4 +1,4 @@
-import {object, string, any} from "zod";
+import {object, string, any, number} from "zod";
 
 const MAX_FILE_SIZE = 9 * 1024 * 1024; // 5MB in bytes
 
@@ -18,7 +18,7 @@ export const registerSchema = object({
     firstName: string().min(2).max(30),
     lastName: string().min(2).max(30),
     email: string().email().min(2).max(30),
-    class_room_id: string().min(2).max(30),
+    classRoomId: number(),
     password: string().min(6).max(30),
     password_confirmation: string().min(6).max(30),
     image: any(),

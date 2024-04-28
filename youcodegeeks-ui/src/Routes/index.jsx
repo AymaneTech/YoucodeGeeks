@@ -111,9 +111,13 @@ export const routes = createBrowserRouter([
                     element: <Register/>
                 },
                 {
+                    path: "/waiting-page",
+                    element: <p className="text-center mx-32 my-64 text-2xl">please wait until the admin accept your request </p>
+                },
+                {
                     path: "/*",
                     element: <NotFound/>
-                }
+                },
             ]
         }
     ]

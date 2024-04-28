@@ -15,7 +15,8 @@ class AuthApiController extends BaseApiController
     public function login(LoginUserRequest $request)
     {
         $credentials = $request->validated();
-        try  {
+        try {
+            $request->authenticate();
             if (!$token = JWTAuth::attempt($credentials)) {
                 return $this->sendError(error: "Invalid credentials", code: 401);
             }
