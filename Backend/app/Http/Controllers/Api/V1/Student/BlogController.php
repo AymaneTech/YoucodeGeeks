@@ -9,7 +9,6 @@ use App\Models\Blog;
 use App\Services\Contracts\PostServiceInterface;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
-use function Laravel\Prompts\error;
 
 class BlogController extends BaseApiController
 {
@@ -41,10 +40,19 @@ class BlogController extends BaseApiController
 
     public function show(Blog $blog): JsonResponse
     {
-        return $this->sendResponse(
-            message: "",
-            result: $this->service->show($blog),
-        );
+        try {
+            $result = $this->service->show($blog);
+            $relatedBlogs = $this->service->relatedBlogs($blog);
+            return $this->sendResponse(
+                message: "",
+                result: [
+                    "blog" => $result,
+                    "relatedBlogs" => $relatedBlogs
+                ],
+            );
+        }catch (\Exception $e) {
+            return $this->sendError(error: $e->getMessage());
+        }
     }
 
     public function update(UpdateBlogRequest $request, Blog $blog): JsonResponse

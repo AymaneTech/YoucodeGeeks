@@ -1,7 +1,7 @@
 import {getSchoolYearName} from "@/Helpers/functions.js";
 
 export const UserCard = ({user}) => {
-    const {firstName, lastName, email, role, classRoom} = user;
+    const {firstName, lastName, email, role, classRoom, image} = user;
     return (
         <>
             <div className="rounded-lg shadow-xl bg-gray-900 text-white" style={{width: '450px'}}>
@@ -14,7 +14,7 @@ export const UserCard = ({user}) => {
                     <div className="">
                         <img
                             className="absolute top-6 right-2 inline-block w-16 h-16 rounded-full ring-2 ring-white dark:ring-neutral-800"
-                            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+                            src={image.path}
                             alt="Image Description"/>
                     </div>
                 </div>

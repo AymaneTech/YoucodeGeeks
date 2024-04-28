@@ -9,12 +9,8 @@ import {UserVerify} from "@/Components/Admin/Users/UserVerify.jsx";
 
 export const categoriescolumns = () => [
     {
-        accessorKey: "image", header: "Image", cell: info => {
-            const imageData = info.getValue();
-            if (!imageData || !imageData.path) {
-                return <div className="w-12 h-12 rounded-full bg-gray-200 animate-pulse"/>;
-            }
-            return <img src={imageData.path} alt={imageData.name || "categories Image"}
+        accessorKey: "image", header: "Image", cell: ({row}) => {
+            return <img src={row.original.image.path} alt={row.original.name || "categories Image"}
                         className="w-12 h-12 rounded-full"/>;
         }
     },
@@ -77,6 +73,12 @@ export const classRoomssColumns = () => [
 ]
 
 export const usersColumns = () => [
+    {
+        accessorKey: "image", header: "Image", cell: ({row}) => {
+            return <img src={row.original?.image.path} alt={row.original.name || "categories Image"}
+                        className="w-12 h-12 rounded-full"/>;
+        }
+    },
     {
         accessorKey: "id", header: "ID"
     },

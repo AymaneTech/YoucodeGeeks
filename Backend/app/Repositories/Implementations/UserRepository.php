@@ -8,9 +8,11 @@ use App\DTO\Requests\UserDTO;
 use App\Enums\Role;
 use App\Models\Admin;
 use App\Models\Coach;
+use App\Models\Image;
 use App\Models\Student;
 use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryInterface;
+use App\Services\Contracts\ImageServiceInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\UnauthorizedException;
 
@@ -19,6 +21,9 @@ use Illuminate\Validation\UnauthorizedException;
  */
 class UserRepository implements UserRepositoryInterface
 {
+    public function __construct(public ImageServiceInterface $service)
+    {}
+
     public function all()
     {
         return [
@@ -40,6 +45,7 @@ class UserRepository implements UserRepositoryInterface
             } else {
                 throw new \InvalidArgumentException("Invalid user role: {$DTO->role}");
             }
+            $this->service->create($user, $DTO->image);
             return $user;
         } catch (\Exception $e) {
             throw new \RuntimeException("Error creating user (user repository): " . $e->getMessage());

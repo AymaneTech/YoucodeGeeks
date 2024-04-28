@@ -21,6 +21,7 @@ class StudentResource extends JsonResource
             "lastName" => $this->last_name,
             "email" => $this->email,
             "classRoom" => new ClassRoomResource($this->classRoom),
+            "image" => new ImageResource($this->image),
             "role" => new RoleResource($this->role),
             "isVerified" => $this->is_verified
         ];

@@ -3,7 +3,7 @@ export const Requirements = () => {
         <>
             <div className="flex items-center justify-between gap-8">
                 <div className="flex flex-col gap-8">
-                    <h1 className="text-3xl mt-8 font-bold">Ask public question to the community: </h1>
+                    <h1 className="text-3xl mt-8 font-bold text-white">Ask public question to the community: </h1>
                     <div
                         className="flex flex-col gap-4 p-6 border w-[800px]  border-[#7b7f93] rounded-lg  dark:bg-[#1A1F3A]">
                         <h2 className="font-bold text-3xl">Hey Nerd! </h2>

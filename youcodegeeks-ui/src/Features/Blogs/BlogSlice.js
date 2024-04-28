@@ -4,6 +4,7 @@ import {getBlogs, showBlog, createBlog, filterByTag, } from "@/Features/Blogs/Bl
 const initialState = {
     blogs: [],
     blog: {},
+    relatedBlogs: [],
     loading: false,
     response: "",
     error: "",
@@ -35,7 +36,8 @@ export const blogSlice = createSlice({
             })
             .addCase(showBlog.fulfilled, (state, action) => {
                 state.loading = false;
-                state.blog = action.payload;
+                state.blog = action.payload.blog;
+                state.relatedBlogs = action.payload.relatedBlogs;
             });
         builder
             .addCase(createBlog.pending, (state, action) => {

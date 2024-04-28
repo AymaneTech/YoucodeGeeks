@@ -23,7 +23,7 @@ class AuthApiController extends BaseApiController
             return $this->sendError(error: "Could not create token", code: 500,);
         }
         $user = new UserResource(
-            User::where("email", $credentials["email"])->first()
+            User::where("email", $credentials["email"])->with("image", "role")->first()
         );
         return $this->respondWithToken($token, $user);
     }

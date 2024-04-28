@@ -20,4 +20,6 @@ interface PostServiceInterface
 
     public function findByTag($param);
     public function searchBlogs(array $filters);
+
+    public function relatedBlogs(Post $post);
 }

@@ -136,7 +136,7 @@ export const UserCreate = () => {
                                     <FormItem>
                                         <FormLabel>Password</FormLabel>
                                         <FormControl>
-                                            <Input
+                                            <Input type="password"
                                                 placeholder="password"
                                                 {...field}
                                             />
@@ -155,6 +155,7 @@ export const UserCreate = () => {
                                         </FormLabel>
                                         <FormControl>
                                             <Input
+                                                type="password"
                                                 placeholder="password"
                                                 {...field}
                                             />
