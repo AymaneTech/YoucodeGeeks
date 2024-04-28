@@ -16,21 +16,22 @@ export const ClassRoomsSelect = ({ value, onChange }) => {
     }, []);
 
     return (
-        <Select value={value} onValueChange={onChange} name="class_room_id">
-            <SelectTrigger>
-                <SelectValue placeholder="Select a class room" />
+        <Select value={value} onValueChange={onChange} name="class_room_id" style={{border: '1px solid white', borderRadius: '0.25rem', padding: '0.5rem', backgroundColor: 'transparent'}}>
+            <SelectTrigger className="bg-transparent border border-white">
+                <SelectValue className="bg-transparent border border-white" placeholder="Select a class room" style={{color: 'white'}} />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent >
                 <SelectGroup>
-                    <SelectLabel>Class Rooms</SelectLabel>
+                    <SelectLabel style={{color: 'white'}}>Class Rooms</SelectLabel>
                     {classRooms.map((classRoom) => (
-                        <SelectItem key={classRoom.id} value={classRoom.id}>
+                        <SelectItem key={classRoom.id} value={classRoom.id} style={{color: 'white'}}>
                             {classRoom.name}
                         </SelectItem>
                     ))}
                 </SelectGroup>
             </SelectContent>
         </Select>
+
     );
 };
 
