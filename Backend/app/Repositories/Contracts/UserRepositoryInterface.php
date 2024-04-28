@@ -3,6 +3,7 @@
 namespace App\Repositories\Contracts;
 
 use App\DTO\Requests\StudentDTO;
+use App\DTO\Requests\UpdateProfileDTO;
 use App\DTO\Requests\UserDTO;
 use App\Models\User;
 
@@ -18,4 +19,6 @@ interface UserRepositoryInterface
 
     public function delete(User $user);
     public function profile(User $user);
+
+    public function updateProfile(User $user, UpdateProfileDTO $DTO);
 }

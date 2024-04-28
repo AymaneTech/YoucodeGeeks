@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getUserFromLocalStorage} from "@/Helpers/functions.js";
-import {getAuthenticatedInfo} from "@/Features/Auth/AuthAction.js";
+import {getAuthenticatedInfo, updateUserProfile} from "@/Features/Auth/AuthAction.js";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {updateProfile} from "@/Validations/User.js";
@@ -12,7 +12,7 @@ import {Textarea} from "@/Components/ui/textarea.jsx";
 export const Profile = () => {
     const dispatch = useDispatch();
     const {user} = useSelector((state) => state.user);
-    const {firstName, lastName, email, bio,} = user;
+    const {firstName, lastName, email, bio,id} = user;
     const [image, setImage] = useState()
 
     const form = useForm({
@@ -27,7 +27,10 @@ export const Profile = () => {
             formData.append(key, value);
         }
         formData.append("image", image);
-        console.log(formData)
+        dispatch(updateUserProfile({
+            id,
+            formData
+        }))
     }
     useEffect(() => {
         const authenticatedUser = getUserFromLocalStorage();

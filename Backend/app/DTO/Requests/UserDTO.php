@@ -4,6 +4,7 @@ namespace App\DTO\Requests;
 
 use App\Enums\Role;
 use App\Http\Requests\StoreUserRequest;
+use function PHPUnit\Framework\exactly;
 
 readonly class UserDTO
 {
@@ -20,7 +21,6 @@ readonly class UserDTO
     public static function fromRequest(StoreUserRequest $request)
     {
         $validatedData = $request->validated();
-
         return new self(
             firstName: $validatedData['firstName'],
             lastName: $validatedData['lastName'],

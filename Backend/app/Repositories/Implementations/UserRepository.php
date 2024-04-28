@@ -3,6 +3,7 @@
 namespace App\Repositories\Implementations;
 
 use App\DTO\Requests\StudentDTO;
+use App\DTO\Requests\UpdateProfileDTO;
 use App\DTO\Requests\UserDTO;
 use App\Enums\Role;
 use App\Models\Admin;
@@ -76,10 +77,20 @@ class UserRepository implements UserRepositoryInterface
 
     public function profile(User $user)
     {
-        if (! $user->role === Role::STUDENT->value){
-            dd("here");
+        if (!$user->role === Role::STUDENT->value) {
             return $user;
         }
+        return Student::where("email", $user->email)->with("questions", "answers", "comments", "classRoom", "classRoom.campus")->first();
+    }
+
+    public function updateProfile(User $user, UpdateProfileDTO $DTO)
+    {
+        $user->update([
+            "first_name" => $DTO->firstName,
+            "last_name" => $DTO->lastName,
+            "email" => $DTO->email,
+            "bio" => $DTO->bio
+        ]);
         return Student::where("email", $user->email)->with("questions", "answers", "comments", "classRoom", "classRoom.campus")->first();
     }
 

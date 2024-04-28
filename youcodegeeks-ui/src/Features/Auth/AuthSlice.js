@@ -1,5 +1,5 @@
 import { createSlice} from "@reduxjs/toolkit";
-import {getAuthenticatedInfo, Login, logout, Register} from "@/Features/Auth/AuthAction.js"
+import {getAuthenticatedInfo, Login, logout, Register, updateUserProfile} from "@/Features/Auth/AuthAction.js"
 const initialState = {
     user: {},
     loading: false,
@@ -51,9 +51,16 @@ const authSlice = createSlice({
             })
         builder
             .addCase(getAuthenticatedInfo.fulfilled, (state, action) => {
+                console.log("user data came")
                 state.loading = false;
                 state.user = action.payload;
             });
+        builder
+            .addCase(updateUserProfile.fulfilled, (state, action) => {
+                console.log("update profile successfully")
+                state.loading = false;
+                state.user = action.payload;
+            })
 
     }
 })

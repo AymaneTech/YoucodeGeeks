@@ -3,6 +3,7 @@
 namespace App\Services\Implementations;
 
 use App\DTO\Requests\StudentDTO;
+use App\DTO\Requests\UpdateProfileDTO;
 use App\DTO\Requests\UserDTO;
 use App\Enums\Role;
 use App\Http\Resources\CoachResource;
@@ -59,7 +60,11 @@ class UserService implements UserServiceInterface
     {
         $user = $this->repository->profile($user);
         return $this->getProfileResource($user);
-
+    }
+    public function updateProfile(User $user, UpdateProfileDTO $DTO)
+    {
+        $user = $this->repository->updateProfile($user ,$DTO);
+        return new StudentProfileResource($user);
     }
 
     private function getResource($user)

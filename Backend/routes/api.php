@@ -53,7 +53,8 @@ Route::group([
         "answers" => AnswerController::class,
         "comments" => CommentController::class
     ]);
-    Route::get("profile/{user}", [ProfileController::class, "show"]);
+    Route::get("profile/{user}", [ProfileController::class, "edit"]);
+    Route::post("profile/{user}", [ProfileController::class, "update"]);
     Route::get("users", [UserController::class, "index"]);
     Route::get("categories", [CategoryController::class, "index"]);
     Route::get("classRooms", [ClassRoomController::class, "index"]);
