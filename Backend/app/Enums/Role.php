@@ -19,4 +19,11 @@ enum Role: int
             "default" => false
         };
     }
+    public static function roleName($role){
+        return match($role) {
+            1 => "Student",
+            2 => "Admin",
+            3 => " Coach"
+        };
+    }
 }

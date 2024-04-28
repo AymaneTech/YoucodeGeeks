@@ -17,9 +17,6 @@ return new class extends Migration
             $table->string("slug");
             $table->text("details");
             $table->text("body");
-            $table->foreignId("author_id")
-                ->constrained("students")
-                ->cascadeOnDelete();
             $table->foreignId("category_id")
                 ->constrained("categories")
                 ->cascadeOnDelete();

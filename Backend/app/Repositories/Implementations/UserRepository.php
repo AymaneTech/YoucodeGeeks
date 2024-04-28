@@ -18,13 +18,12 @@ use Illuminate\Validation\UnauthorizedException;
  */
 class UserRepository implements UserRepositoryInterface
 {
-
     public function all()
     {
         return [
             "students" => Student::with("image", "role", "classRoom", "classRoom.campus")->get(),
-            "coaches" => Coach::with("image", "role")->get(),
-            "admins" => Admin::with("image", "role")->get()
+            "coaches" => Coach::all(),
+            "admins" => Admin::all()
         ];
     }
 
@@ -49,9 +48,9 @@ class UserRepository implements UserRepositoryInterface
     public function show(User $user)
     {
         try {
-            return $user->load("role");
+            return $user;
         } catch (ModelNotFoundException $e) {
-            throw new \RuntimeException("User not found: " . $e->getMessage(), $e->getCode(), $e);
+            throw new \RuntimeException("User not found: " . $e->getMessage(), $e->getCode());
         }
     }
 
@@ -60,9 +59,9 @@ class UserRepository implements UserRepositoryInterface
         try {
             return $user->update($this->getArr($DTO));
         } catch (ModelNotFoundException $e) {
-            throw new \RuntimeException("User not found: " . $e->getMessage(), $e->getCode(), $e);
+            throw new \RuntimeException("User not found: " . $e->getMessage(), $e->getCode());
         } catch (UnauthorizedException $e) {
-            throw new \RuntimeException("Validation error: " . $e->getMessage(), $e->getCode(), $e);
+            throw new \RuntimeException("Validation error: " . $e->getMessage(), $e->getCode());
         }
     }
 
@@ -73,6 +72,15 @@ class UserRepository implements UserRepositoryInterface
         } catch (ModelNotFoundException $e) {
             throw new \RuntimeException("User not found: " . $e->getMessage(), $e->getCode(), $e);
         }
+    }
+
+    public function profile(User $user)
+    {
+        if (! $user->role === Role::STUDENT->value){
+            dd("here");
+            return $user;
+        }
+        return Student::where("email", $user->email)->with("questions", "answers", "comments", "classRoom", "classRoom.campus")->first();
     }
 
     private function getArr(UserDTO|StudentDTO $DTO): array

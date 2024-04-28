@@ -17,5 +17,6 @@ interface UserServiceInterface
     public function update(User $user, UserDTO $DTO);
 
     public function delete(User $user);
+    public function profile (User $user);
 
 }

@@ -12,7 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement("CREATE TABLE blogs () INHERITS(posts)");
+        DB::statement("CREATE TABLE blogs (
+            author_id INTEGER,
+            FOREIGN KEY (author_id) REFERENCES students (id)
+    ) INHERITS(posts)");
         DB::statement("ALTER TABLE  blogs ADD CONSTRAINT  blogs_id_unique UNIQUE (id);");
     }
 

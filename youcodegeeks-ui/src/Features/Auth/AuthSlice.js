@@ -1,5 +1,5 @@
 import { createSlice} from "@reduxjs/toolkit";
-import {Login, Register} from "@/Features/Auth/AuthAction.js"
+import {getAuthenticatedInfo, Login, logout, Register} from "@/Features/Auth/AuthAction.js"
 const initialState = {
     user: {},
     loading: false,
@@ -43,6 +43,16 @@ const authSlice = createSlice({
                 state.loading = false;
                 state.error = "Incorrect Information";
                 state.response = action.payload.errors;
+            });
+        builder
+            .addCase(logout.fulfilled, (state, action) => {
+                state.loading = false;
+                state.user = {};
+            })
+        builder
+            .addCase(getAuthenticatedInfo.fulfilled, (state, action) => {
+                state.loading = false;
+                state.user = action.payload;
             });
 
     }

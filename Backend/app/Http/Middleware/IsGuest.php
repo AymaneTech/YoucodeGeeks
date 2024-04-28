@@ -18,5 +18,6 @@ class IsGuest
         if (!$request->user()) {
             return $next($request);
         }
+        return response()->json(["you are already logged"]);
     }
 }

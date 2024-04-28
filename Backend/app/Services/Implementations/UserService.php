@@ -6,6 +6,7 @@ use App\DTO\Requests\StudentDTO;
 use App\DTO\Requests\UserDTO;
 use App\Enums\Role;
 use App\Http\Resources\CoachResource;
+use App\Http\Resources\StudentProfileResource;
 use App\Http\Resources\StudentResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
@@ -41,9 +42,7 @@ class UserService implements UserServiceInterface
     {
         $user = $this->repository->create($DTO);
         $this->imageService->create($user, $DTO->image);
-        return $user->role_id === Role::STUDENT->value
-            ? new StudentResource($user)
-            : new UserResource($user);
+        return $this->getResource($user);
     }
 
     public function update(User $user, UserDTO $DTO)
@@ -54,5 +53,26 @@ class UserService implements UserServiceInterface
     public function delete(User $user)
     {
         return $this->repository->delete($user);
+    }
+
+    public function profile(User $user)
+    {
+        $user = $this->repository->profile($user);
+        return $this->getProfileResource($user);
+
+    }
+
+    private function getResource($user)
+    {
+        return $user->role_id === Role::STUDENT->value
+            ? new StudentResource($user)
+            : new UserResource($user);
+    }
+
+    public function getProfileResource($user)
+    {
+        return $user->role->id === Role::STUDENT->value
+            ? new StudentProfileResource($user)
+            : new UserResource($user);
     }
 }

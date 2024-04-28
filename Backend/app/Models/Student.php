@@ -2,8 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Student extends User
 {
@@ -20,6 +19,25 @@ class Student extends User
     public function classRoom()
     {
         return $this->belongsTo(ClassRoom::class, "class_room_id");
+    }
+
+    public function questions(): HasMany
+    {
+        return $this->hasMany(Question::class, "author_id");
+    }
+    public function answers(): HasMany
+    {
+        return $this->hasMany(Answer::class, "author_id");
+    }
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class, "author_id");
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, "author_id");
     }
 
 }

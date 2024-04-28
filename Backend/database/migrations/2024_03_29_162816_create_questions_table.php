@@ -12,7 +12,9 @@ return new class extends Migration {
     public function up(): void
     {
         DB::statement("CREATE TABLE questions (
-            solved boolean default false
+            author_id INTEGER,
+            solved boolean default false,
+            FOREIGN KEY (author_id) REFERENCES students (id)
         ) INHERITS(posts)");
         DB::statement("ALTER TABLE  questions ADD CONSTRAINT  questions_id_unique UNIQUE (id);");
     }

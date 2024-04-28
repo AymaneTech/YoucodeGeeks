@@ -35,8 +35,7 @@ class PostService implements PostServiceInterface
     {
         $post = $this->repository->create($DTO);
         $this->tagService->syncTags($post, $DTO->tags);
-         $this->imageService->insert($post, $DTO->images);
-
+//         $this->imageService->insert($post, $DTO->images);
         return new QuestionResource($post);
     }
 

@@ -16,7 +16,7 @@ class IsLoggedIn
     public function handle(Request $request, Closure $next): Response
     {
         if(! $request->user() || ! $request->user()->is_verified){
-            return response()->json(data: ["message" => "should login"], status: 403);
+            return response()->json(data: ["message" => "you should login first"], status: 403);
         }
         return $next($request);
     }

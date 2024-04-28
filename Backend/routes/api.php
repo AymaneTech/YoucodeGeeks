@@ -7,7 +7,7 @@ use App\Http\Controllers\Api\V1\Admin\{CampusController,
     StatisticsController,
     TagController,
     UserController};
-use App\Http\Controllers\Api\V1\Auth\{AuthApiController, StudentRegisterController};
+use App\Http\Controllers\Api\V1\Auth\{AuthApiController, ProfileController, StudentRegisterController};
 use App\Http\Controllers\Api\V1\Student\{AnswerController, BlogController, CommentController, QuestionController};
 use App\Http\Middleware\{IsAdmin, IsGuest, IsLoggedIn, IsStudent};
 use App\Models\ClassRoom;
@@ -53,6 +53,7 @@ Route::group([
         "answers" => AnswerController::class,
         "comments" => CommentController::class
     ]);
+    Route::get("profile/{user}", [ProfileController::class, "show"]);
     Route::get("users", [UserController::class, "index"]);
     Route::get("categories", [CategoryController::class, "index"]);
     Route::get("classRooms", [ClassRoomController::class, "index"]);

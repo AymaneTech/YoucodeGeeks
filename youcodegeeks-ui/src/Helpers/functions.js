@@ -12,9 +12,19 @@ export const isAdmin = (user) => {
     console.log(user)
     return isAuthenticated() && user.role.name === "admin";
 }
+export const autheticate = (token, user) => {
+    localStorage.setItem("user", JSON.stringify(user));
+    setToken(token);
+}
 
-export const img = fileName  => `/src/assets/images/${fileName}`;
-export const css = fileName  => `/src/assets/images/${fileName}`;
+export const logoutUser = () =>{
+    localStorage.removeItem("user");
+    Cookies.remove("token");
+}
+
+export const getUserFromLocalStorage = () => {
+    return JSON.parse(localStorage.getItem("user"));
+}
 
 export const mergeUsers = (users) => {
     const studentsArray = users.students ? users.students : [];

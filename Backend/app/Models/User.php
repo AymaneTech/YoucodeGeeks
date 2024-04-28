@@ -13,6 +13,8 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class User extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable, Sluggable;
+
+    protected $with = ["role", "image"];
     protected $fillable = [
         "first_name",
         "last_name",
@@ -54,10 +56,12 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->morphOne(Image::class, "imageable");
     }
+
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }
+
     public function sluggable(): array
     {
         return [
