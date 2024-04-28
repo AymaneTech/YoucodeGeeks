@@ -1,14 +1,36 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getUserFromLocalStorage} from "@/Helpers/functions.js";
 import {getAuthenticatedInfo} from "@/Features/Auth/AuthAction.js";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {updateProfile} from "@/Validations/User.js";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/Components/ui/form.jsx";
+import {Input} from "@/Components/ui/input.jsx";
+import {Textarea} from "@/Components/ui/textarea.jsx";
 
 export const Profile = () => {
     const dispatch = useDispatch();
-    // const {user} = useSelector((state) => state.auth);
+    const {user} = useSelector((state) => state.user);
+    const {firstName, lastName, email, bio,} = user;
+    const [image, setImage] = useState()
+
+    const form = useForm({
+        resolver: zodResolver(updateProfile), defaultValues: {
+            firstName, lastName, email, bio,
+        }
+    });
+    const {formState, control, handleSubmit} = form;
+    const onSubmit = async (values) => {
+        const formData = new FormData();
+        for (let [key, value] of Object.entries(values)) {
+            formData.append(key, value);
+        }
+        formData.append("image", image);
+        console.log(formData)
+    }
     useEffect(() => {
-        const authenticatedUser =  getUserFromLocalStorage();
-        console.log(authenticatedUser)
+        const authenticatedUser = getUserFromLocalStorage();
         dispatch(getAuthenticatedInfo(authenticatedUser.id))
     }, []);
     return (<>
@@ -26,73 +48,88 @@ export const Profile = () => {
                                     alt="Bordered avatar"/>
 
                                 <div className="flex flex-col space-y-5 sm:ml-8">
-                                    <button type="button"
-                                            className="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-[#202142] rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 dark:bg-gray-800 dark:text-white dark:border-white dark:hover:bg-indigo-900 dark:focus:ring-indigo-300 ">
-                                        Change picture
-                                    </button>
-                                    <button type="button"
-                                            className="py-3.5 px-7 text-base font-medium text-indigo-900 focus:outline-none bg-white dark:bg-[#020817] rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:ring-4 focus:ring-indigo-200 dark:text-white dark:border-white dark:hover:bg-indigo-100 dark:hover:text-[#202142] dark:focus:ring-indigo-300 ">
-                                        Delete picture
-                                    </button>
+                                    <input type="file" name="image" onChange={(e) => setImage(e.target.files[0])}/>
                                 </div>
                             </div>
 
-                            <div className="items-center mt-8 sm:mt-14 text-[#202142] dark:text-white">
+                            <Form {...form}>
+                                <form onSubmit={handleSubmit(onSubmit)}>
+                                    <div className="items-center mt-8 sm:mt-14 text-[#202142] dark:text-white">
+                                        <div
+                                            className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
+                                            <FormField
+                                                control={control}
+                                                name="firstName"
+                                                render={({field}) => (
+                                                    <FormItem className="w-full">
+                                                        <FormLabel>First Name</FormLabel>
+                                                        <FormControl>
+                                                            <Input placeholder="John" {...field} />
+                                                        </FormControl>
+                                                        <FormMessage>
+                                                        </FormMessage>
+                                                    </FormItem>
+                                                )}
+                                            />
 
-                                <div
-                                    className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
-                                    <div className="w-full">
-                                        <label
-                                            className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white">Your
-                                            first name</label>
-                                        <input type="text" id="first_name"
-                                               className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-800 dark:border-white dark:text-white dark:focus:ring-indigo-300 "
-                                               placeholder="Your first name" value="Jane" required/>
+                                            <FormField
+                                                control={control}
+                                                name="lastName"
+                                                render={({field}) => (
+                                                    <FormItem className="w-full">
+                                                        <FormLabel>Last Name</FormLabel>
+                                                        <FormControl>
+                                                            <Input placeholder="Doe" {...field} />
+                                                        </FormControl>
+                                                        <FormMessage>
+                                                        </FormMessage>
+                                                    </FormItem>
+                                                )}
+                                            />
+
+                                        </div>
+
+                                        <div className="mb-2 sm:mb-6">
+                                            <FormField
+                                                control={control}
+                                                name="email"
+                                                render={({field}) => (
+                                                    <FormItem>
+                                                        <FormLabel>Email</FormLabel>
+                                                        <FormControl>
+                                                            <Input placeholder="john.doe@example.com" {...field} />
+                                                        </FormControl>
+                                                        <FormMessage>
+                                                        </FormMessage>
+                                                    </FormItem>
+                                                )}
+                                            />
+                                        </div>
+
+                                        <FormField
+                                            control={control}
+                                            name="bio"
+                                            render={({field}) => (
+                                                <FormItem className="mb-6">
+                                                    <FormLabel>Bio</FormLabel>
+                                                    <FormControl>
+                                                        <Textarea placeholder="Type bio about you" {...field} />
+                                                    </FormControl>
+                                                    <FormMessage>
+                                                    </FormMessage>
+                                                </FormItem>
+                                            )}
+                                        />
+
+                                        <div className="flex justify-end">
+                                            <button type="submit"
+                                                    className="text-white bg-indigo-700  hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Save
+                                            </button>
+                                        </div>
+
                                     </div>
-
-                                    <div className="w-full">
-                                        <label
-                                            className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white">Your
-                                            last name</label>
-                                        <input type="text" id="last_name"
-                                               className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-800 dark:border-white dark:text-white dark:focus:ring-indigo-300 "
-                                               placeholder="Your last name" value="Ferguson" required/>
-                                    </div>
-
-                                </div>
-
-                                <div className="mb-2 sm:mb-6">
-                                    <label
-                                        className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white">Your
-                                        email</label>
-                                    <input type="email" id="email"
-                                           className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-800 dark:border-white dark:text-white dark:focus:ring-indigo-300 "
-                                           placeholder="your.email@mail.com" required/>
-                                </div>
-
-                                <div className="mb-2 sm:mb-6">
-                                    <label
-                                        className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white">Profession</label>
-                                    <input type="text" id="profession"
-                                           className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-800 dark:border-white dark:text-white dark:focus:ring-indigo-300 "
-                                           placeholder="your profession" required/>
-                                </div>
-
-                                <div className="mb-6">
-                                    <label
-                                        className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white">Bio</label>
-                                    <textarea id="message" rows="4"
-                                              className="block p-2.5 w-full text-sm text-indigo-900 bg-indigo-50 rounded-lg border border-indigo-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-800 dark:border-white dark:text-white dark:focus:ring-indigo-300 "
-                                              placeholder="Write your bio here..."></textarea>
-                                </div>
-
-                                <div className="flex justify-end">
-                                    <button type="submit"
-                                            className="text-white bg-indigo-700  hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Save
-                                    </button>
-                                </div>
-
-                            </div>
+                                </form>
+                            </Form>
                         </div>
                     </div>
                 </div>

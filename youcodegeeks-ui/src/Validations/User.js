@@ -33,3 +33,10 @@ export const userSchema = object({
     image: any(),
     role: any(),
 })
+
+export const updateProfile = object({
+    firstName: string().min(2).max(30),
+    lastName: string().min(2).max(30),
+    email: string().email().min(2).max(30),
+    bio: string().min(2).max(500),
+})

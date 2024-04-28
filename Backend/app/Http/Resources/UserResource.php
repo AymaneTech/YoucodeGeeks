@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Enums\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -21,7 +20,7 @@ class UserResource extends JsonResource
             "lastName" => $this->last_name,
             "slug" => $this->slug,
             "email" => $this->email,
-            "role" => Role::roleName($this->role_id),
+            "role" => new RoleResource($this->role),
             "image" => new ImageResource($this->image),
             "isVerified" => $this->is_verified
         ];
