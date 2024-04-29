@@ -20,6 +20,7 @@ export const autheticate = (token, user) => {
 export const logoutUser = () =>{
     localStorage.removeItem("user");
     Cookies.remove("token");
+    console.log("here")
 }
 
 export const getUserFromLocalStorage = () => {

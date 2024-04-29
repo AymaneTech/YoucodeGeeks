@@ -22,10 +22,15 @@ export const StudentLogin = () => {
     })
 
     const onSubmit = async (values) => {
-        await dispatch(Login(values));
-        if (isAuthenticated()) {
-            navigate("/home");
-        }
+        await dispatch(Login(values))
+            .then(action => {
+                let role = action.payload.user.role.name;
+                if (role === "admin" && isAuthenticated()){
+                    navigate("/dashboard")
+                }else if (role === "student" && isAuthenticated()){
+                    navigate("/home")
+                }
+            })
     };
 
     return (

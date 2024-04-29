@@ -2,22 +2,28 @@ import { ModeToggle } from "@/Components/Theme/ModeToggle.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "@/Components/Partials/Elements/Logo.jsx";
 import { SearchBar } from "@/Components/Partials/Elements/SearchBar.jsx";
-import { useEffect } from "react";
-import { getUserFromLocalStorage } from "../../Helpers/functions";
-import { getAuthenticatedInfo } from "../../Features/Auth/AuthAction";
+import {useEffect, useState} from "react";
+import { getUserFromLocalStorage } from "@/Helpers/functions";
+import { getAuthenticatedInfo } from "@/Features/Auth/AuthAction.js";
+import {
+    DropdownMenu, DropdownMenuContent,
+    DropdownMenuRadioGroup, DropdownMenuRadioItem,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger
+} from "@/Components/ui/dropdown-menu.jsx";
+import {Button} from "@/Components/ui/button.jsx";
+import {DropdownMenuLabel} from "@radix-ui/react-dropdown-menu";
 
 export const DashboardNavbar = () => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.user);
+    const [position, setPosition] = useState("bottom")
 
     useEffect(() => {
         const connectedUser = getUserFromLocalStorage();
         dispatch(getAuthenticatedInfo(connectedUser.id))
     }, [])
 
-    useEffect(() => {
-        console.log(user.image?.path);
-    }, [user])
 
     return (
         <>
@@ -77,6 +83,20 @@ export const DashboardNavbar = () => {
                             Dashboard
                         </li>
                     </ol>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="outline">Open</Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="w-56">
+                            <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+                                <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
+                                <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
+                            </DropdownMenuRadioGroup>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
 
                     <button type="button"
                         className="py-2 px-3 flex justify-center items-center gap-x-1.5 text-xs rounded-lg border border-gray-200 text-gray-500 hover:text-gray-600 dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"

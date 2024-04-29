@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Implementations;
 
+use App\Models\Post;
 use App\Models\Question;
 
 /**
@@ -19,4 +20,8 @@ class QuestionRepository extends BasePostRepository
         return Question::search($param)->get();
     }
 
+    public function relatedBlogs(Post $post)
+    {
+        // TODO: Implement relatedBlogs() method.
+    }
 }
