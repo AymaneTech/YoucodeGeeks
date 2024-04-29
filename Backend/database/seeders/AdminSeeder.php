@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
     {
         Admin::create([
             "first_name" => "admin",
-            "last_name" => "admin last name",
+            "last_name" => "admin",
             "email" => "admin@gmail.com",
             "role_id" => 2,
             "is_verified" => true,
@@ -26,9 +26,9 @@ class AdminSeeder extends Seeder
         ]);
 
         Student::create([
-            "first_name" => "user",
-            "last_name" => "user last name",
-            "email" => "user@gmail.com",
+            "first_name" => "aymane",
+            "last_name" => "el maini",
+            "email" => "aymane@gmail.com",
             "role_id" => 1,
             "is_verified" => true,
             "password" => Hash::make("password")

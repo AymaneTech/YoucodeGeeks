@@ -17,7 +17,7 @@ class BlogRepository extends BasePostRepository
     {
         return Blog::where("author_id", $post->author_id)
             ->whereNotIn("id", [$post->id])
-            ->with("author", "images")
+            ->with("author", "images", "category", "tags")
             ->get();
     }
 

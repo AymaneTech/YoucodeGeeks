@@ -21,7 +21,7 @@ export const QuestionCard = ({question}) => {
                         <span
                             className="inline-block border px-4 py-1.5 my-2 border-white rounded-3xl text-sm">{category.name}</span>
                     </div>
-                    <p className="mb-6 text-gray-500 dark:text-gray-300">{details}</p>
+                    <p className="mb-6 text-gray-500 dark:text-gray-300">{details.slice(0, 100)}</p>
                     <div className="">
                         <TagList tags={tags}/>
                         <div className="flex justify-between w-full">

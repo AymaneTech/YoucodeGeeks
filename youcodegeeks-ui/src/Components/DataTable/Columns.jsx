@@ -13,7 +13,7 @@ import {RoleFlag, Status} from "@/Components/Partials/Elements/RoleFlag.jsx";
 export const categoriescolumns = () => [
     {
         accessorKey: "image", header: "Image", cell: ({row}) => {
-            return <img src={row.original.image.path} alt={row.original.name || "categories Image"}
+            return <img src={row?.original?.image?.path} alt={row?.original?.name || "categories Image"}
                         className="w-12 h-12 rounded-full"/>;
         }
     },

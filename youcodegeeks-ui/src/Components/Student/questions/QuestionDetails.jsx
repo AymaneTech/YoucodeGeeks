@@ -2,7 +2,7 @@ import {TagList} from "@/Components/Student/tags/TagList.jsx";
 import {Button} from "@/Components/ui/button.jsx";
 
 export const QuestionDetails = ({question}) => {
-    const {id, title, details, body, created_at, updated_at, category, tags} = question;
+    const {id, title, details, body, created_at, updated_at, category, tags, images} = question;
 
     return (
         <>
@@ -34,7 +34,7 @@ export const QuestionDetails = ({question}) => {
                              dangerouslySetInnerHTML={{__html: body}}></div>
                     </div>
                     <div className="my-4 rounded-2xl">
-                        <img className="w-100 h-100 rounded-2xl" src="/src/assets/images/attached.png" alt=""/>
+                        <img className="w-100 h-100 rounded-2xl" src={images[0].path} alt=""/>
                     </div>
                     {tags && <TagList tags={tags}/>}
                 </div>
